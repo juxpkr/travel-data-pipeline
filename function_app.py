@@ -26,8 +26,14 @@ app = func.FunctionApp()
 # --- 각 함수 모듈을 임포트하고 함수를 'app' 객체에 등록하는 로직 ---
 from functions.exchange_rate_trigger import register_exchange_rate_crawler
 
-
 # 임포트한 register_exchange_rate_crawler 함수를 호출하여
 # 'app' 객체에 실제 exchangeRateCrawler 함수를 등록
 register_exchange_rate_crawler(app)
+
+# --- Google Trends Crawler 함수 ---
+from functions.google_trends_trigger import register_google_trends_crawler
+
+register_google_trends_crawler(app)
+
+
 logging.info("Azure Function App initialization complete.")
