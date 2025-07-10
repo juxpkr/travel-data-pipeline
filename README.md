@@ -1,6 +1,6 @@
 # travel-data-pipiline
 
-
+```
 TRAVEL-DATA-PIPELINE/
 ├── .venv/                         # 파이썬 가상 환경 (각자 설치)
 ├── .vscode/                       # VS Code 설정 (디버깅, 확장 권장 등)
@@ -21,7 +21,7 @@ TRAVEL-DATA-PIPELINE/
 ├── .funcignore                    # Azure 배포 시 제외할 파일/폴더 지정
 ├── .gitignore                     # Git 버전 관리 시 제외할 파일/폴더 지정
 └── README.md                      # 프로젝트 설명
-
+```
 1. venv 통일 : python 3.11.9 
 
 2. local.settings.json 파일 생성
