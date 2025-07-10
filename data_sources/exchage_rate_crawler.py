@@ -5,15 +5,16 @@ from bs4 import BeautifulSoup
 import json
 import os
 
+
 # -------------------------------------------------------------
 # 환율 데이터 수집을 위한 핵심 로직 함수
-# 이 함수는 Azure Functions 트리거 파일에서 호출될 것입니다.
+# 이 함수는 Azure Functions 트리거 파일에서 호출된다.
 # -------------------------------------------------------------
 def get_exchange_rate_data() -> list:
     # 이 함수가 반환할 모든 환율 데이터를 저장할 리스트
     all_exchange_rates = []
 
-    # 4.1 요청 URL (하나은행 환율 조회 API)
+    # 요청 URL (하나은행 환율 조회 API)
     target_url = "https://www.kebhana.com/cms/rate/wpfxd651_01i_01.do"
 
     # 현재 날짜 설정 (YYYYMMDD 및 YYYY-MM-DD 형식)
@@ -30,7 +31,7 @@ def get_exchange_rate_data() -> list:
         "X-Requested-With": "XMLHttpRequest",
     }
 
-    # 4.3 요청 페이로드 (서버로 보낼 데이터)
+    # 요청 페이로드
     request_data = {
         "ajax": "true",
         "curCd": "",  # 모든 통화를 가져오기 위해 빈 값으로 설정
@@ -103,7 +104,7 @@ def get_exchange_rate_data() -> list:
                     else:
                         currency_code = currency_full_text.strip()
 
-                    # 환율 값 추출 (인덱스 주의)
+                    # 환율 값 추출 (인덱스 주의!!)
                     buy_rate_str = cells[1].get_text(strip=True)
                     sell_rate_str = cells[3].get_text(strip=True)
                     send_rate_str = cells[5].get_text(strip=True)
@@ -122,7 +123,9 @@ def get_exchange_rate_data() -> list:
                             send_rate_str.replace(",", "") if send_rate_str else 0.0
                         )
                         receive_rate = float(
-                            receive_rate_str.replace(",", "") if receive_rate_str else 0.0
+                            receive_rate_str.replace(",", "")
+                            if receive_rate_str
+                            else 0.0
                         )
                         standard_rate = float(
                             standard_rate_str.replace(",", "")
@@ -163,9 +166,7 @@ def get_exchange_rate_data() -> list:
                         f"An unexpected error occurred during row parsing: {ex}. Raw row: {row.get_text(strip=True)}"
                     )
 
-            logging.info(
-                f"Total {len(all_exchange_rates)} exchange rates extracted."
-            )
+            logging.info(f"Total {len(all_exchange_rates)} exchange rates extracted.")
 
         else:
             logging.error(
