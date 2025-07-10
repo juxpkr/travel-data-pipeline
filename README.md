@@ -25,7 +25,7 @@ TRAVEL-DATA-PIPELINE/
 1. venv 통일 : python 3.11.9 
 
 2. local.settings.json 파일 생성
-
+```
 {
   "IsEncrypted": false,
   "Values": {
@@ -37,7 +37,7 @@ TRAVEL-DATA-PIPELINE/
     "BlobStorageConnectionString": ""
   }
 }
-
+```
 3. Timre Trigger 설정 -> 로컬 수동 실행
 schedule="0 0 0 1 1 *", run_on_startup=False
 함수 자동 시작 방지
