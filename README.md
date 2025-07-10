@@ -38,6 +38,15 @@ TRAVEL-DATA-PIPELINE/
   }
 }
 ```
-3. Timre Trigger 설정 -> 로컬 수동 실행
+3. Timre Trigger 설정 -> 로컬 수동 실행(함수 자동 시작 방지)
 schedule="0 0 0 1 1 *", run_on_startup=False
-함수 자동 시작 방지
+
+예시)
+```
+@app_instance.timer_trigger(
+        schedule="0 0 0 1 1 *",
+        run_on_startup=False,
+        use_monitor=False,
+        arg_name="myTimer",
+    )
+```
