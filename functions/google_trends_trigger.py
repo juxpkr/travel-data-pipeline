@@ -3,9 +3,9 @@ import datetime
 import json
 import os
 import azure.functions as func
-
-# data_sources 크롤링 로직 함수를 import
-from data_sources.google_trends_crawler import get_integrated_travel_trends
+from azure.storage.queue import QueueClient, BinaryBase64EncodePolicy
+import time
+import random
 
 
 def register_google_trends_crawler(app_instance):
@@ -74,6 +74,7 @@ def register_google_trends_crawler(app_instance):
         "United States of America": "미국 여행",
         "Vietnam": "베트남 여행",
     }
+    anchor_keyword = "해외여행"
 
     # Google Trends 데이터를 수집하는 Azure Function
     @app_instance.timer_trigger(
@@ -89,37 +90,60 @@ def register_google_trends_crawler(app_instance):
             logging.info("Timer run was overdue!")
         logging.info(f"Python googleTrendsCrawler function started at {utc_timestamp}.")
 
-        # get_integrated_travel_trends 함수를 호출하여 통합 트렌드 성장률 데이터를 가져옴
-        all_country_growth_trends_data = get_integrated_travel_trends(
-            country_keywords=country_search_keywords_list,
-            timeframe="today 3-m",  # 지난 3개월 데이터
-            geo="KR",  # 한국에서의 검색 관심도
+        queue_connection_string = os.environ["AzureWebJobsStorage"]
+        queue_name = "google-trends-crawl-requests"
+
+        queue_client = QueueClient.from_connection_string(
+            conn_str=queue_connection_string,
+            queue_name=queue_name,
+            message_encode_policy=BinaryBase64EncodePolicy(),
         )
 
-        if all_country_growth_trends_data:
-            logging.info(
-                f"Total {len(all_country_growth_trends_data)} country trends extracted and calculated."
+        all_search_keywords_values = list(country_search_keywords_list.values())
+        total_keyword_count = len(all_search_keywords_values)
+        # Google Trends API에 보낼 키워드 묶음 4개
+        batch_size_for_trends_api = 4
+
+        messages_to_send_in_batches = []
+        # 4개씩 키워드를 묶어서 메시지를 만든다
+        for i in range(0, total_keyword_count, batch_size_for_trends_api):
+            current_country_keywords_chunk = all_search_keywords_values[
+                i : i + batch_size_for_trends_api
+            ]
+            # 여기에 앵커 키워드를 추가하여 총 5개 키워드 묶음을 만든다.
+            keywords_for_api_request = current_country_keywords_chunk + [anchor_keyword]
+
+            task_message = {
+                # 키워드 리스트 자체를 보냄
+                "keywords": keywords_for_api_request,
+                "timeframe": "today 3-m",
+                "geo": "KR",
+                "request_time": datetime.datetime.utcnow().isoformat(),
+            }
+            messages_to_send_in_batches.append(
+                json.dumps(task_message, ensure_ascii=False)
             )
-            logging.info(
-                json.dumps(all_country_growth_trends_data, indent=2, ensure_ascii=False)
-            )
 
-            try:
-                timestamp_str = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-                file_name = f"country_trends_{timestamp_str}.json"
-                # 파일 저장 경로를 TRAVEL-DATA-PIPELINE/local_output/ 디렉토리 안에 저장
-                output_dir = os.path.join(os.getcwd(), "local_output")
-                os.makedirs(output_dir, exist_ok=True)  # 디렉토리가 없으면 생성
-                output_path = os.path.join(output_dir, file_name)
+        total_messages_sent = 0
+        # Azure Queue Storage batch 전송 최대 메시지 수
+        queue_batch_max_size = 32
 
-                with open(output_path, "w", encoding="utf-8") as f:
-                    json.dump(
-                        all_country_growth_trends_data, f, indent=4, ensure_ascii=False
-                    )
-                logging.info(f"Successfully saved trends data to {output_path}.")
-            except Exception as file_ex:
-                logging.error(f"Failed to save trends data to file: {file_ex}.")
-        else:
-            logging.warning("No country trends data extracted or calculated.")
+        try:
+            # Azure Queue Storage Batching으로 메시지를 보낸다.
+            for i in range(0, len(messages_to_send_in_batches), queue_batch_max_size):
+                batch_to_send = messages_to_send_in_batches[
+                    i : i + queue_batch_max_size
+                ]
 
-        logging.info("Python googleTrendsCrawler function completed.")
+                queue_client.send_message_batch(batch_to_send)
+
+                logging.info(f"Sent batch of {len(batch_to_send)} messages to queue")
+                total_messages_sent += len(batch_to_send)
+                time.sleep(random.uniform(1, 3))
+
+        except Exception as e:
+            logging.error(f"Error sending messages batch to queue: {e}")
+
+        logging.info(
+            f"Python googleTrendsCrawler (Producer) function completed. Total {total_messages_sent} batches sent to '{queue_name}'"
+        )
