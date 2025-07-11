@@ -6,3 +6,8 @@ azure-functions
 requests
 beautifulsoup4
 pytrends
+pandas
+tenacity
+azure-storage-queue
+azure-eventhub
+pytz
