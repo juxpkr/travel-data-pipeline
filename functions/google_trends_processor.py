@@ -4,6 +4,8 @@ import os
 import datetime
 import pytz
 import pandas as pd  # get_trends_data_for_group이 pandas 사용
+import time
+import random
 
 import azure.functions as func
 
@@ -19,29 +21,29 @@ from data_sources.google_trends_crawler import (
 )
 
 
-# --- 재시도 로깅을 위한 헬퍼 함수 (남겨둠. 하위 함수에서 사용하므로) ---
-def retry_log(retry_state):
-    logging.warning(
-        f"Google Trends API 호출 재시도 중 (processor): "
-        f"시도 횟수: {retry_state.attempt_number}번째, "
-        f"다음 시도까지 대기 시간: {retry_state.next_action.sleep}초. "
-        f"마지막으로 발생한 오류: {retry_state.outcome.exception()}"
-    )
-
-
 # --- [Azure Function: 큐 메시지 소비자 (Consumer)] ---
 # 이 함수는 큐에 메시지가 들어올 때마다 자동으로 실행된다.
 def register_google_trends_processor(app_instance):
 
     @app_instance.queue_trigger(
-        queue_name="google-trends-crawl-requests", connection="AzureWebJobsStorage"
+        arg_name="msg",
+        queue_name="google-trends-crawling-queue",
+        connection="AzureWebJobsStorage",
     )
     @app_instance.event_hub_output(
-        event_hub_name="google-trends-events", connection="EventHubConnectionString"
+        arg_name="event_output",
+        event_hub_name="google-trends-events",
+        connection="EventHubConnectionString",
     )
     def googleTrendsProcessor(
         msg: func.QueueMessage, event_output: func.Out[str]
     ) -> None:
+
+        delay_seconds = random.uniform(30, 60)
+        logging.info(f"Google Trends Processor 대기 시간: {delay_seconds:.2f}초")
+        time.sleep(delay_seconds)
+        logging.info("Google Trends Processor 시작")
+
         logging.info(f"큐 메시지 수신: {msg.get_body().decode('utf-8')}")
         message_body = json.loads(msg.get_body().decode("utf-8"))
 
@@ -71,25 +73,42 @@ def register_google_trends_processor(app_instance):
 
             events_to_send = []
             for item in processed_trend_data_list:
+                keyword = item.get("keyword")
+                raw_growth = (
+                    float(item.get("trend_score_raw_growth"))
+                    if pd.notna(item.get("trend_score_raw_growth"))
+                    else None
+                )
+                current_interest = (
+                    int(item.get("trend_score_current_interest"))
+                    if pd.notna(item.get("trend_score_current_interest"))
+                    else None
+                )  # int 또는 float으로 명시적 변환
+                anchor_growth = (
+                    float(item.get("anchor_growth"))
+                    if pd.notna(item.get("anchor_growth"))
+                    else None
+                )
+                anchor_interest = (
+                    int(item.get("anchor_interest"))
+                    if pd.notna(item.get("anchor_interest"))
+                    else None
+                )  # int 또는 float으로 명시적 변환
                 # Producer에서 이미 country_name 정보를 메시지에 포함시켰다면, 여기서 사용.
                 # 아니라면, keyword_to_country_name 딕셔너리를 Consumer에서도 유지해야 한다.
                 # 여기서는 키워드를 기준으로 Event Hub에 보낸다.
                 final_data_to_send = {
                     "dataType": "googleTrend",
-                    "keyword": item.get("keyword"),
-                    "trend_score_raw_growth": item.get("trend_score_raw_growth"),
-                    "trend_score_current_interest": item.get(
-                        "trend_score_current_interest"
-                    ),
-                    "anchor_growth": item.get("anchor_growth"),
-                    "anchor_interest": item.get("anchor_interest"),
+                    "keyword": keyword,
+                    "trend_score_raw_growth": raw_growth,
+                    "trend_score_current_interest": current_interest,
+                    "anchor_growth": anchor_growth,
+                    "anchor_interest": anchor_interest,
                     "crawled_at_utc": current_crawl_time_utc,
                     "crawled_at_kst": current_crawl_time_kst,
                 }
                 events_to_send.append(
-                    func.EventHubOutputMessage(
-                        json.dumps(final_data_to_send, ensure_ascii=False)
-                    )
+                    json.dumps(final_data_to_send, ensure_ascii=False)
                 )
 
             # 여러 이벤트를 한 번에 Event Hub로 보낸다. (Event Hub Output Binding은 리스트를 받음)

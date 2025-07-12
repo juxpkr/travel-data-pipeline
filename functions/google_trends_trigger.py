@@ -91,7 +91,7 @@ def register_google_trends_crawler(app_instance):
         logging.info(f"Python googleTrendsCrawler function started at {utc_timestamp}.")
 
         queue_connection_string = os.environ["AzureWebJobsStorage"]
-        queue_name = "google-trends-crawl-requests"
+        queue_name = "google-trends-crawling-queue"
 
         queue_client = QueueClient.from_connection_string(
             conn_str=queue_connection_string,
@@ -121,26 +121,19 @@ def register_google_trends_crawler(app_instance):
                 "request_time": datetime.datetime.utcnow().isoformat(),
             }
             messages_to_send_in_batches.append(
-                json.dumps(task_message, ensure_ascii=False)
+                json.dumps(task_message, ensure_ascii=False).encode("utf-8")
             )
 
         total_messages_sent = 0
-        # Azure Queue Storage batch 전송 최대 메시지 수
-        queue_batch_max_size = 32
 
         try:
             # Azure Queue Storage Batching으로 메시지를 보낸다.
-            for i in range(0, len(messages_to_send_in_batches), queue_batch_max_size):
-                batch_to_send = messages_to_send_in_batches[
-                    i : i + queue_batch_max_size
-                ]
-
-                queue_client.send_message_batch(batch_to_send)
-
-                logging.info(f"Sent batch of {len(batch_to_send)} messages to queue")
-                total_messages_sent += len(batch_to_send)
+            for message_content in messages_to_send_in_batches:
+                # 큐 클라이언트의 send_message 메서드를 사용하여 개별 메시지 전송
+                queue_client.send_message(message_content)
+                logging.info(f"큐에 메시지 전송 완료: {message_content[:100]}...")
+                total_messages_sent += 1
                 time.sleep(random.uniform(1, 3))
-
         except Exception as e:
             logging.error(f"Error sending messages batch to queue: {e}")
 
