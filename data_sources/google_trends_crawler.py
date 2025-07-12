@@ -7,6 +7,7 @@ import time
 import pytz
 import pandas as pd
 from pytrends.request import TrendReq
+from pytrends.exceptions import ResponseError
 from tenacity import (
     retry,
     wait_exponential,
@@ -14,6 +15,7 @@ from tenacity import (
     retry_if_exception_type,
 )
 from requests.exceptions import RequestException
+from pytrends.exceptions import TooManyRequestsError
 
 
 # 재시도 로깅을 위한 헬퍼 함수
@@ -38,9 +40,11 @@ def get_trends_data_for_group(
     anchor_keyword = "해외여행"
 
     @retry(
-        wait=wait_exponential(multiplier=1, min=60, max=600),
-        stop=stop_after_attempt(5),
-        retry=retry_if_exception_type(RequestException),
+        wait=wait_exponential(multiplier=1, min=120, max=600),
+        stop=stop_after_attempt(3),
+        retry=retry_if_exception_type(
+            (RequestException, ResponseError, TooManyRequestsError)
+        ),
         before_sleep=retry_log,
     )
     def _fetch_trend_data_with_retry():
@@ -49,7 +53,7 @@ def get_trends_data_for_group(
             keywords_in_group, cat=0, timeframe=timeframe, geo=geo, gprop=""
         )
         time_series_data = pytrends_connector.interest_over_time()
-        time.sleep(random.uniform(1, 5))  # API 호출 후 짧은 휴식 (tenacity와 병행)
+        time.sleep(random.uniform(30, 60))  # API 호출 후 짧은 휴식 (tenacity와 병행)
         return time_series_data
 
     try:
@@ -123,8 +127,8 @@ def get_trends_data_for_group(
         return result_for_group
 
     except RequestException as e:
-        logging.error(f"그룹 '{keywords_in_group}'에 대한 요청 오류: {e}")
+        logging.exception(f"그룹 '{keywords_in_group}'에 대한 요청 오류: {e}")
         return []
     except Exception as e:
-        logging.error(f"그룹 '{keywords_in_group}' 처리 중 예상치 못한 오류: {e}")
+        logging.exception(f"그룹 '{keywords_in_group}' 처리 중 예상치 못한 오류: {e}")
         return []
