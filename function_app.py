@@ -35,5 +35,8 @@ from functions.google_trends_trigger import register_google_trends_crawler
 
 register_google_trends_crawler(app)
 
+from functions.google_trends_processor import register_google_trends_processor
+
+register_google_trends_processor(app)
 
 logging.info("Azure Function App initialization complete.")
