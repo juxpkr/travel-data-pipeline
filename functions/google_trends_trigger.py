@@ -90,8 +90,8 @@ def register_google_trends_crawler(app_instance):
             logging.info("Timer run was overdue!")
         logging.info(f"Python googleTrendsCrawler function started at {utc_timestamp}.")
 
-        queue_connection_string = os.environ["AzureWebJobsStorage"]
-        queue_name = "google-trends-crawling-queue"
+        queue_connection_string = os.environ.get("AzureWebJobsStorage")
+        queue_name = os.environ.get("GoogleTrendsQueueName")
 
         queue_client = QueueClient.from_connection_string(
             conn_str=queue_connection_string,
