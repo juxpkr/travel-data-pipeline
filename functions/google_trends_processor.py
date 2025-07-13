@@ -27,12 +27,12 @@ def register_google_trends_processor(app_instance):
 
     @app_instance.queue_trigger(
         arg_name="msg",
-        queue_name="google-trends-crawling-queue",
+        queue_name=os.environ.get("GoogleTrendsQueueName"),
         connection="AzureWebJobsStorage",
     )
     @app_instance.event_hub_output(
         arg_name="event_output",
-        event_hub_name="google-trends-events",
+        event_hub_name=os.environ.get("GoogleTrendsEventHubName"),
         connection="EventHubConnectionString",
     )
     def googleTrendsProcessor(
