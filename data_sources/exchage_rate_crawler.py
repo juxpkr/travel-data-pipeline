@@ -4,15 +4,103 @@ import requests
 from bs4 import BeautifulSoup
 import json
 import os
+import pytz
+
+from data_sources.retry_utils import create_retry_decorator
+from requests.exceptions import RequestException
+
+
+# 재시도 데코레이터 생성
+exchange_rate_api_retry = create_retry_decorator(
+    min_wait_seconds=20,
+    max_wait_seconds=120,
+    max_attempts=3,
+    retry_exceptions=(requests.exceptions.RequestException),
+)
+
+# 통화 코드와 국가명 매핑 딕셔너리
+# Stream Analytics에서 Google Trends와 조인하기 위해 필수적임
+currency_code_to_country_name_map = {
+    "USD": "미국",
+    "JPY": "일본",
+    "EUR": "유럽연합",
+    "CNY": "중국",
+    "GBP": "영국",
+    "AUD": "호주",
+    "CAD": "캐나다",
+    "CHF": "스위스",
+    "HKD": "홍콩",
+    "SGD": "싱가포르",
+    "THB": "태국",
+    "PHP": "필리핀",
+    "SEK": "스웨덴",
+    "NZD": "뉴질랜드",
+    "NOK": "노르웨이",
+    "DKK": "덴마크",
+    "SAR": "사우디아라비아",
+    "MYR": "말레이시아",
+    "MXN": "멕시코",
+    "BRL": "브라질",
+    "AED": "아랍에미리트",
+    "VND": "베트남",
+    "ZAR": "남아프리카공화국",
+    "IDR": "인도네시아",
+    "INR": "인도",
+    "RUB": "러시아",
+    "PLN": "폴란드",
+    "CZK": "체코",
+    "HUF": "헝가리",
+    "TRY": "튀르키예",
+    "ILS": "이스라엘",
+    "KZT": "카자흐스탄",
+    "PKR": "파키스탄",
+    "BDT": "방글라데시",
+    "NPR": "네팔",
+    "LKR": "스리랑카",
+    "MNT": "몽골",
+    "EGP": "이집트",
+    "QAR": "카타르",
+    "KWD": "쿠웨이트",
+    "BHD": "바레인",
+    "LBP": "레바논",
+    "OMR": "오만",
+    "JOD": "요르단",
+    "KHR": "캄보디아",
+    "LAK": "라오스",
+    "MMK": "미얀마",
+    "MOP": "마카오",
+    "MVR": "몰디브",
+    "NLG": "네덜란드",
+    "PAB": "파나마",
+    "PEN": "페루",
+    "RON": "루마니아",
+    "SDG": "수단",
+    "UGX": "우간다",
+    "UZS": "우즈베키스탄",
+    "VEF": "베네수엘라",
+    "XAF": "중앙아프리카 CFA 프랑",
+    "XOF": "서아프리카 CFA 프랑",
+    "ZMW": "잠비아",
+    "KES": "케냐",
+    "COP": "콜롬비아",
+    "TZS": "탄자니아",
+    "FJD": "피지",
+    "LYD": "리비아",
+    "ETB": "에티오피아",
+}
 
 
 # -------------------------------------------------------------
 # 환율 데이터 수집을 위한 핵심 로직 함수
 # 이 함수는 Azure Functions 트리거 파일에서 호출된다.
 # -------------------------------------------------------------
+@exchange_rate_api_retry  # 재시도 데코레이터
 def get_exchange_rate_data() -> list:
     # 이 함수가 반환할 모든 환율 데이터를 저장할 리스트
     all_exchange_rates = []
+
+    kst_timezone = pytz.timezone("Asia/Seoul")
+    current_crawl_time_kst = datetime.datetime.now(kst_timezone).isoformat()
 
     # 요청 URL (하나은행 환율 조회 API)
     target_url = "https://www.kebhana.com/cms/rate/wpfxd651_01i_01.do"
@@ -141,16 +229,18 @@ def get_exchange_rate_data() -> list:
 
                     # 추출된 데이터를 딕셔너리로 구성
                     rate_entry = {
+                        "dataType": "exchangeRate",
                         "currency_code": currency_code,
+                        "country_name": currency_code_to_country_name_map.get(
+                            currency_code, None
+                        ),
                         "date": current_date.strftime("%Y-%m-%d"),
                         "buy_rate": buy_rate,
                         "sell_rate": sell_rate,
                         "send_rate": send_rate,
                         "receive_rate": receive_rate,
                         "standard_rate": standard_rate,
-                        "crawled_at": datetime.datetime.now(
-                            datetime.timezone.utc
-                        ).isoformat(),
+                        "crawled_at_kst": current_crawl_time_kst,
                     }
                     all_exchange_rates.append(rate_entry)
                     logging.info(
