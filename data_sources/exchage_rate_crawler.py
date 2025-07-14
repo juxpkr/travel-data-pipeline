@@ -5,26 +5,36 @@ from bs4 import BeautifulSoup
 import json
 import os
 import pytz
+import time
+import random
+from data_sources.retry_utils import exchange_rate_api_retry
 
-from data_sources.retry_utils import create_retry_decorator
-from requests.exceptions import RequestException
+# --- 웹사이트 URL (상수화만 유지, Payload 키는 문자열 리터럴로) ---
+# 평균 환율 (일평균, 월평균, 연평균) 조회용 URL
+AVERAGE_EXCHANGE_CRAWL_URL = "https://www.kebhana.com/cms/rate/wpfxd651_06i_01.do"
+# 실시간 환율 조회용 URL (이전 Postman 이미지로 확인)
+REALTIME_EXCHANGE_CRAWL_URL = "https://www.kebhana.com/cms/rate/wpfxd651_01i_01.do"
 
-
-# 재시도 데코레이터 생성
-exchange_rate_api_retry = create_retry_decorator(
-    min_wait_seconds=20,
-    max_wait_seconds=120,
-    max_attempts=3,
-    retry_exceptions=(requests.exceptions.RequestException),
-)
+# HTTP 요청 헤더 (Referer는 현재 조회 중인 URL에 맞춰 조정될 필요가 있을 수 있습니다.)
+# 여기서는 AVERAGE_EXCHANGE_CRAWL_URL에 맞춰 Referer를 설정합니다.
+REQUEST_HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+    "Accept": "text/javascript, text/html, application/xml, text/xml, */*",
+    "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+    "Referer": "https://www.kebhana.com/cms/rate/index.do?contentUrl=/cms/rate/wpfxd651_06i.do",  # 현재 평균 환율 조회 페이지 기준
+    "X-Requested-With": "XMLHttpRequest",
+}
 
 # 통화 코드와 국가명 매핑 딕셔너리
-# Stream Analytics에서 Google Trends와 조인하기 위해 필수적임
 currency_code_to_country_name_map = {
     "USD": "미국",
     "JPY": "일본",
     "EUR": "유럽연합",
     "CNY": "중국",
+    "TWD": "대만",
+    "BND": "브루나이",
+    "DZD": "알제리",
+    "CLP": "칠레",
     "GBP": "영국",
     "AUD": "호주",
     "CAD": "캐나다",
@@ -90,39 +100,253 @@ currency_code_to_country_name_map = {
 }
 
 
+# --- 날짜 관련 헬퍼 함수 ---
+def get_first_day_of_year_yyyymmdd(year: int) -> str:
+    return f"{year}0101"
+
+
+def get_first_day_of_month_yyyymmdd(year: int, month: int) -> str:
+    return f"{year}{month:02d}01"
+
+
+def get_last_day_of_month_yyyymmdd(year: int, month: int) -> str:
+    # 다음 달 1일에서 하루를 빼서 해당 월의 마지막 날짜를 구함
+    if month == 12:
+        return (datetime.date(year + 1, 1, 1) - datetime.timedelta(days=1)).strftime(
+            "%Y%m%d"
+        )
+    return (datetime.date(year, month + 1, 1) - datetime.timedelta(days=1)).strftime(
+        "%Y%m%d"
+    )
+
+
+def get_current_kst_datetime(kst_timezone: pytz.timezone) -> datetime.datetime:
+    return datetime.datetime.now(kst_timezone)
+
+
+def get_kst_date_yyyymmdd(dt: datetime.date) -> str:
+    return dt.strftime("%Y%m%d")
+
+
+def get_kst_date_yyyy_mm_dd(dt: datetime.date) -> str:
+    return dt.strftime("%Y-%m-%d")
+
+
 # -------------------------------------------------------------
-# 환율 데이터 수집을 위한 핵심 로직 함수
+# 내부 헬퍼 함수: 실제 웹 요청 및 HTML 파싱
+# -------------------------------------------------------------
+@exchange_rate_api_retry
+def _fetch_and_parse_exchange_rate(
+    target_url: str, headers: dict, data: dict, kst_timezone: pytz.timezone
+) -> list:
+    all_extracted_rates = []
+
+    try:
+        log_inquiry_code = data.get("inqDvCd") or data.get("inqKindCd")
+        logging.info(
+            f"Attempting to send POST request to: {target_url} with inquiry code: {log_inquiry_code} and payload: {data}"
+        )
+        response = requests.post(target_url, headers=headers, data=data, timeout=15)
+        response.raise_for_status()
+
+        logging.info(
+            f"Successfully received response (Status: {response.status_code}) from {target_url} for inquiry code: {log_inquiry_code}"
+        )
+
+        soup = BeautifulSoup(response.text, "html.parser")
+        exchange_rate_table = soup.find("table", class_="tblBasic leftNone")
+
+        if exchange_rate_table:
+            table_body = exchange_rate_table.find("tbody")
+            if not table_body:
+                logging.error(
+                    f"Table body not found for URL: {target_url}, Payload: {data}. Full HTML: {response.text[:1000]}"
+                )
+                raise ValueError("tbody not found in exchange rate table.")
+
+            rows = table_body.find_all("tr")
+
+            # URL에 따른 파싱 로직 및 인덱스 설정
+            expected_min_cells = 0  # 초기화
+            currency_full_text_idx = 0
+            buy_rate_idx = 0
+            sell_rate_idx = 0
+            send_rate_idx = 0
+            receive_rate_idx = 0
+            standard_rate_idx = 0
+
+            if target_url == REALTIME_EXCHANGE_CRAWL_URL:
+                logging.info(
+                    f"Setting parsing indices for REALTIME exchange rates from {target_url}"
+                )
+                expected_min_cells = 11  # 실시간 환율 테이블의 최소 셀 개수 (확정)
+                currency_full_text_idx = 0
+                buy_rate_idx = 1
+                sell_rate_idx = 3
+                send_rate_idx = 5
+                receive_rate_idx = 6
+                standard_rate_idx = 8  # REALTIME HTML thead 분석 기반 최종 확정 인덱스
+
+            elif target_url == AVERAGE_EXCHANGE_CRAWL_URL:
+                logging.info(
+                    f"Setting parsing indices for AVERAGE exchange rates from {target_url}"
+                )
+                expected_min_cells = 9  # 평균 환율 테이블의 최소 셀 개수 (확정)
+                currency_full_text_idx = 0
+                buy_rate_idx = 1
+                sell_rate_idx = 2
+                send_rate_idx = 3
+                receive_rate_idx = 4
+                standard_rate_idx = 6  # AVERAGE Payload 이미지 및 기존 코드 기반 인덱스
+
+            else:
+                logging.error(
+                    f"Unknown target_url provided to _fetch_and_parse_exchange_rate for parsing: {target_url}"
+                )
+                raise ValueError(
+                    f"Unsupported URL for exchange rate parsing: {target_url}"
+                )
+
+            for row in rows:
+                cells = row.find_all("td")
+
+                if len(cells) < expected_min_cells:
+                    logging.warning(
+                        f"Skipping row due to insufficient cells for URL {target_url}, Inquiry Code: {log_inquiry_code}: Expected {expected_min_cells} cells, but found {len(cells)}. Raw row: {row.get_text(strip=True)}"
+                    )
+                    continue
+
+                try:
+                    # 각 셀의 인덱스 대신 위에 정의된 인덱스 변수를 사용합니다.
+                    currency_full_text = cells[currency_full_text_idx].get_text(
+                        strip=True
+                    )
+                    currency_parts = currency_full_text.split()
+                    currency_code = (
+                        currency_parts[1]
+                        .replace("(100)", "")
+                        .replace("(10)", "")
+                        .strip()
+                        if len(currency_parts) > 1
+                        else currency_full_text.strip()
+                    )
+
+                    buy_rate = float(
+                        cells[buy_rate_idx].get_text(strip=True).replace(",", "") or 0.0
+                    )
+                    sell_rate = float(
+                        cells[sell_rate_idx].get_text(strip=True).replace(",", "")
+                        or 0.0
+                    )
+                    send_rate = float(
+                        cells[send_rate_idx].get_text(strip=True).replace(",", "")
+                        or 0.0
+                    )
+                    receive_rate = float(
+                        cells[receive_rate_idx].get_text(strip=True).replace(",", "")
+                        or 0.0
+                    )
+                    standard_rate = float(
+                        cells[standard_rate_idx].get_text(strip=True).replace(",", "")
+                        or 0.0
+                    )
+
+                    current_crawl_time_utc = (
+                        datetime.datetime.now(datetime.timezone.utc).isoformat(
+                            timespec="seconds"
+                        )
+                        + "Z"
+                    )
+                    current_crawl_time_kst = datetime.datetime.now(
+                        kst_timezone
+                    ).isoformat(timespec="seconds")
+
+                    rate_entry = {
+                        "currency_code": currency_code,
+                        "country_name": currency_code_to_country_name_map.get(
+                            currency_code, None
+                        ),
+                        "buy_rate": buy_rate,
+                        "sell_rate": sell_rate,
+                        "send_rate": send_rate,
+                        "receive_rate": receive_rate,
+                        "standard_rate": standard_rate,
+                        "crawled_at_utc": current_crawl_time_utc,
+                        "crawled_at_kst": current_crawl_time_kst,
+                    }
+                    all_extracted_rates.append(rate_entry)
+                    logging.info(
+                        f"Extracted from {target_url.split('/')[-1]} (Inquiry Code: {log_inquiry_code}): {currency_code}, Standard Rate: {standard_rate}"
+                    )
+
+                except ValueError as ve:
+                    # **** 로깅 메시지의 인덱스도 변수로 변경되었습니다! ****
+                    logging.error(
+                        f"Failed to convert rate string to float for {currency_code} (URL: {target_url}, Inquiry Code: {log_inquiry_code}): {ve}. Raw strings: B={cells[buy_rate_idx].get_text()}, S={cells[sell_rate_idx].get_text()}, Std={cells[standard_rate_idx].get_text()}",
+                        exc_info=True,
+                    )
+                    continue
+                except IndexError as ie:
+                    logging.error(
+                        f"Index error while parsing row (URL: {target_url}, Inquiry Code: {log_inquiry_code}): {ie}. Check cell indices. Raw row: {row.get_text(strip=True)}",
+                        exc_info=True,
+                    )
+                    continue
+                except Exception as ex:
+                    logging.error(
+                        f"An unexpected error occurred during row parsing (URL: {target_url}, Inquiry Code: {log_inquiry_code}): {ex}. Raw row: {row.get_text(strip=True)}",
+                        exc_info=True,
+                    )
+                    continue
+
+        else:
+            logging.error(
+                f"Exchange rate table NOT found on the page for URL: {target_url}, Inquiry Code: {log_inquiry_code}. Check HTML structure or Payload. Full HTML: {response.text[:1000]}"
+            )
+    except requests.exceptions.RequestException as re:
+        logging.error(
+            f"Network or HTTP error fetching data from {target_url}, Inquiry Code: {log_inquiry_code}: {re}",
+            exc_info=True,
+        )
+        raise
+    except ValueError as e:
+        logging.error(
+            f"Data parsing error in _fetch_and_parse_exchange_rate for {target_url}, Inquiry Code: {log_inquiry_code}: {e}",
+            exc_info=True,
+        )
+        raise
+    except Exception as e:
+        logging.error(
+            f"An unexpected general error occurred in _fetch_and_parse_exchange_rate for {target_url}, Inquiry Code: {log_inquiry_code}: {e}",
+            exc_info=True,
+        )
+        raise
+    return all_extracted_rates
+
+
+# -------------------------------------------------------------
+# get_exchange_rate_data 함수 (모든 유형 환율 통합 함수)
 # 이 함수는 Azure Functions 트리거 파일에서 호출된다.
 # -------------------------------------------------------------
-@exchange_rate_api_retry  # 재시도 데코레이터
 def get_exchange_rate_data() -> list:
-    # 이 함수가 반환할 모든 환율 데이터를 저장할 리스트
-    all_exchange_rates = []
-
     kst_timezone = pytz.timezone("Asia/Seoul")
-    current_crawl_time_kst = datetime.datetime.now(kst_timezone).isoformat()
+    current_kst_dt = get_current_kst_datetime(kst_timezone)
+    today_date_kst = current_kst_dt.date()
+    today_yyyymmdd = get_kst_date_yyyymmdd(today_date_kst)
+    today_with_hyphens = get_kst_date_yyyy_mm_dd(today_date_kst)
+    current_year = today_date_kst.year
+    current_month = today_date_kst.month
 
-    # 요청 URL (하나은행 환율 조회 API)
-    target_url = "https://www.kebhana.com/cms/rate/wpfxd651_01i_01.do"
+    combined_currency_data = {}
 
-    # 현재 날짜 설정 (YYYYMMDD 및 YYYY-MM-DD 형식)
-    current_date = datetime.date.today()
-    today_yyyymmdd = current_date.strftime("%Y%m%d")
-    today_with_hyphens = current_date.strftime("%Y-%m-%d")
-
-    # 4.2 요청 헤더 (웹 브라우저처럼 보이도록 설정)
-    request_headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0",
-        "Accept": "text/javascript, text/html, application/xml, text/xml, */*",
-        "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-        "Referer": "https://www.kebhana.com/cms/rate/index.do?contentUrl=/cms/rate/wpfxd651_01i.do",
-        "X-Requested-With": "XMLHttpRequest",
-    }
-
-    # 요청 페이로드
-    request_data = {
+    # ------------------------------------------------------------------------------------------------------
+    # 0. 실시간 환율 데이터 크롤링 (REALTIME_EXCHANGE_CRAWL_URL: wpfxd651_01i_01.do)
+    # Payload: inqKindCd: 1, pbldDvCd: 3
+    # ------------------------------------------------------------------------------------------------------
+    logging.info("Starting realtime exchange rate crawling...")
+    realtime_request_data = {
         "ajax": "true",
-        "curCd": "",  # 모든 통화를 가져오기 위해 빈 값으로 설정
+        "curCd": "",
         "tmpInqStrDt": today_with_hyphens,
         "pbldDvCd": "3",
         "pbldsqn": "",
@@ -132,147 +356,204 @@ def get_exchange_rate_data() -> list:
         "hid_enc_data": "",
         "requestTarget": "searchContentDiv",
     }
+    realtime_rates = _fetch_and_parse_exchange_rate(
+        REALTIME_EXCHANGE_CRAWL_URL,
+        REQUEST_HEADERS,
+        realtime_request_data,
+        kst_timezone,
+    )
+    time.sleep(random.uniform(1, 3))
 
-    try:
-        logging.info(f"Attempting to send POST request to: {target_url}")
+    for entry in realtime_rates:
+        currency_code = entry["currency_code"]
+        combined_currency_data[currency_code] = {
+            "dataType": "exchangeRate",
+            "currency_code": currency_code,
+            "country_name": currency_code_to_country_name_map.get(currency_code, None),
+            "realtime_rate": entry["standard_rate"],
+            "realtime_crawled_at_utc": entry["crawled_at_utc"],
+            "realtime_crawled_at_kst": entry["crawled_at_kst"],
+            "daily_avg_rate": None,
+            "monthly_avg_rates": {},
+            "yearly_avg_rate": None,
+        }
+    logging.info(
+        f"Completed realtime exchange rate crawling. {len(realtime_rates)} records processed."
+    )
 
-        response = requests.post(
-            target_url, headers=request_headers, data=request_data, timeout=15
+    # ------------------------------------------------------------------------------------------------------
+    # 1. 당일 일평균 환율 데이터 크롤링 (AVERAGE_EXCHANGE_CRAWL_URL: wpfxd651_06i_01.do, Payload: inqDvCd: 1)
+    # ------------------------------------------------------------------------------------------------------
+    logging.info("Starting daily average exchange rate crawling...")
+    daily_request_data = {
+        "ajax": "true",
+        "curCd": "",
+        "tmpInqStrDt": today_with_hyphens,
+        "inqStrDt": today_yyyymmdd,
+        "inqEndDt": today_yyyymmdd,
+        "inqDvCd": "1",
+        "pbldDvCd": "1",
+        "tmpPbldDvCd": "1",
+        "tmpInqStrDtY_m": current_kst_dt.strftime("%m"),
+        "tmpInqStrDtY_y": current_kst_dt.strftime("%Y"),
+        "tmpInqStrDt_p": today_yyyymmdd,
+        "tmpInqEndDt_p": today_yyyymmdd,
+        "requestTarget": "searchContentDiv",
+        "pbldsqn": "",
+        "hid_key_data": "",
+        "hid_enc_data": "",
+    }
+    daily_avg_rates = _fetch_and_parse_exchange_rate(
+        AVERAGE_EXCHANGE_CRAWL_URL, REQUEST_HEADERS, daily_request_data, kst_timezone
+    )
+    time.sleep(random.uniform(1, 3))
+
+    for entry in daily_avg_rates:
+        currency_code = entry["currency_code"]
+        if currency_code not in combined_currency_data:
+            combined_currency_data[currency_code] = {
+                "dataType": "exchangeRate",
+                "currency_code": currency_code,
+                "country_name": currency_code_to_country_name_map.get(
+                    currency_code, None
+                ),
+                "realtime_rate": None,
+                "realtime_crawled_at_utc": None,
+                "realtime_crawled_at_kst": None,
+                "daily_avg_rate": None,
+                "monthly_avg_rates": {},
+                "yearly_avg_rate": None,
+            }
+        combined_currency_data[currency_code]["daily_avg_rate"] = entry["standard_rate"]
+    logging.info(
+        f"Completed daily average exchange rate crawling. {len(daily_avg_rates)} records processed."
+    )
+
+    # ------------------------------------------------------------------------------------------------------
+    # 2. 월평균 환율 데이터 크롤링 (AVERAGE_EXCHANGE_CRAWL_URL: wpfxd651_06i_01.do, Payload: inqDvCd: 2) - 최근 3개월
+    # ------------------------------------------------------------------------------------------------------
+    logging.info("Starting monthly average exchange rate crawling (last 3 months)...")
+    monthly_avg_rates_map = {}
+    for i in range(3):
+        target_month = current_month - i
+        target_year = current_year
+        if target_month <= 0:
+            target_month += 12
+            target_year -= 1
+
+        month_first_day_yyyymmdd = get_first_day_of_month_yyyymmdd(
+            target_year, target_month
+        )
+        month_end_day_yyyymmdd_for_inqEndDt = (
+            today_yyyymmdd  # Postman 스크린샷에 맞춰 오늘 날짜까지 조회
         )
 
-        response.raise_for_status()  # HTTP 상태 코드 200 OK가 아니면 오류 발생
+        monthly_request_data = {
+            "ajax": "true",
+            "curCd": "",
+            "tmpInqStrDt": f"{target_year}-{target_month:02d}-01",
+            "inqStrDt": month_first_day_yyyymmdd,
+            "inqEndDt": month_end_day_yyyymmdd_for_inqEndDt,
+            "inqDvCd": "2",
+            "pbldDvCd": "1",
+            "tmpPbldDvCd": "1",
+            "tmpInqStrDtY_m": f"{target_month:02d}",
+            "tmpInqStrDtY_y": str(target_year),
+            "tmpInqStrDt_p": month_first_day_yyyymmdd,
+            "tmpInqEndDt_p": month_end_day_yyyymmdd_for_inqEndDt,
+            "requestTarget": "searchContentDiv",
+            "pbldsqn": "",
+            "hid_key_data": "",
+            "hid_enc_data": "",
+        }
+        monthly_avg_result = _fetch_and_parse_exchange_rate(
+            AVERAGE_EXCHANGE_CRAWL_URL,
+            REQUEST_HEADERS,
+            monthly_request_data,
+            kst_timezone,
+        )
+        time.sleep(random.uniform(1, 3))
 
-        logging.info(f"Successfully received response (Status: {response.status_code})")
-        logging.info(f"Response content (first 500 chars): \n{response.text[:500]}")
-
-        # ---------------------- HTML 파싱 ----------------------
-
-        # BeautifulSoup 객체 생성
-        soup = BeautifulSoup(response.text, "html.parser")
-        logging.info("BeautifulSoup object created successfully.")
-
-        # 환율 데이터 HTML 테이블 찾기
-        exchange_rate_table = soup.find("table", class_="tblBasic leftNone")
-
-        if exchange_rate_table:
-            logging.info("Exchange rate table found. Starting data extraction.")
-
-            # Table의 <tbody> 찾기
-            table_body = exchange_rate_table.find("tbody")
-
-            if not table_body:
-                logging.error("Table body not found.")
-                raise ValueError("tbody not found in exchange rate table.")
-
-            # <tr> (행) 찾기
-            rows = table_body.find_all("tr")
-            logging.info(f"Found {len(rows)} data rows in table.")
-
-            # 각 행을 순회하며 데이터 추출
-            for row in rows:
-                cells = row.find_all("td")
-
-                if len(cells) < 11:  # 최소한의 셀 개수 확인
-                    logging.warning(
-                        f"Skipping row due to insufficient cells: {row.get_text(strip=True)}"
-                    )
-                    continue
-
-                try:
-                    # 통화 정보 추출 (예: '미국 USD'에서 'USD' 추출)
-                    currency_full_text = cells[0].get_text(strip=True)
-                    currency_parts = currency_full_text.split()
-                    if len(currency_parts) > 1:
-                        currency_code = (
-                            currency_parts[1]
-                            .replace("(100)", "")
-                            .replace("(10)", "")
-                            .strip()
-                        )
-                    else:
-                        currency_code = currency_full_text.strip()
-
-                    # 환율 값 추출 (인덱스 주의!!)
-                    buy_rate_str = cells[1].get_text(strip=True)
-                    sell_rate_str = cells[3].get_text(strip=True)
-                    send_rate_str = cells[5].get_text(strip=True)
-                    receive_rate_str = cells[6].get_text(strip=True)
-                    standard_rate_str = cells[8].get_text(strip=True)
-
-                    # 문자열을 숫자로 변환 (쉼표 제거, 없으면 0.0)
-                    try:
-                        buy_rate = float(
-                            buy_rate_str.replace(",", "") if buy_rate_str else 0.0
-                        )
-                        sell_rate = float(
-                            sell_rate_str.replace(",", "") if sell_rate_str else 0.0
-                        )
-                        send_rate = float(
-                            send_rate_str.replace(",", "") if send_rate_str else 0.0
-                        )
-                        receive_rate = float(
-                            receive_rate_str.replace(",", "")
-                            if receive_rate_str
-                            else 0.0
-                        )
-                        standard_rate = float(
-                            standard_rate_str.replace(",", "")
-                            if standard_rate_str
-                            else 0.0
-                        )
-
-                    except ValueError as ve:
-                        logging.error(
-                            f"Failed to convert rate string to float for {currency_code}: {ve}. Raw strings: B={buy_rate_str}, S={sell_rate_str}, Std={standard_rate_str}"
-                        )
-                        continue  # 이 행의 데이터는 건너뛰고 다음 행으로
-
-                    # 추출된 데이터를 딕셔너리로 구성
-                    rate_entry = {
-                        "dataType": "exchangeRate",
-                        "currency_code": currency_code,
-                        "country_name": currency_code_to_country_name_map.get(
-                            currency_code, None
-                        ),
-                        "date": current_date.strftime("%Y-%m-%d"),
-                        "buy_rate": buy_rate,
-                        "sell_rate": sell_rate,
-                        "send_rate": send_rate,
-                        "receive_rate": receive_rate,
-                        "standard_rate": standard_rate,
-                        "crawled_at_kst": current_crawl_time_kst,
-                    }
-                    all_exchange_rates.append(rate_entry)
-                    logging.info(
-                        f"Extracted: {currency_code}, Standard Rate: {standard_rate}"
-                    )
-
-                except IndexError as ie:
-                    logging.error(
-                        f"Index error while parsing row: {ie}. Check cell indices. Raw row: {row.get_text(strip=True)}"
-                    )
-                except Exception as ex:
-                    logging.error(
-                        f"An unexpected error occurred during row parsing: {ex}. Raw row: {row.get_text(strip=True)}"
-                    )
-
-            logging.info(f"Total {len(all_exchange_rates)} exchange rates extracted.")
-
-        else:
-            logging.error(
-                "Exchange rate table (class 'tblBasic leftNone') NOT found on the page. Check HTML structure."
+        for entry in monthly_avg_result:
+            currency_code = entry["currency_code"]
+            if currency_code not in monthly_avg_rates_map:
+                monthly_avg_rates_map[currency_code] = {}
+            monthly_avg_rates_map[currency_code][f"{target_year}{target_month:02d}"] = (
+                entry["standard_rate"]
             )
 
-    except requests.exceptions.HTTPError as e:
-        logging.error(
-            f"HTTP Error occurred: {e.response.status_code} - {e.response.text}"
-        )
-    except requests.exceptions.ConnectionError as e:
-        logging.error(f"Connection Error: {e}")
-    except requests.exceptions.Timeout as e:
-        logging.error(f"Request Timeout: {e}")
-    except requests.exceptions.RequestException as e:
-        logging.error(f"An unexpected requests error occurred: {e}")
-    except Exception as e:
-        logging.error(f"An unexpected error occurred: {e}")
-    return all_exchange_rates
+    for currency_code, monthly_data in monthly_avg_rates_map.items():
+        if currency_code not in combined_currency_data:
+            combined_currency_data[currency_code] = {
+                "dataType": "exchangeRate",
+                "currency_code": currency_code,
+                "country_name": currency_code_to_country_name_map.get(
+                    currency_code, None
+                ),
+                "realtime_rate": None,
+                "realtime_crawled_at_utc": None,
+                "realtime_crawled_at_kst": None,
+                "daily_avg_rate": None,
+                "monthly_avg_rates": {},
+                "yearly_avg_rate": None,
+            }
+        combined_currency_data[currency_code]["monthly_avg_rates"] = monthly_data
+    logging.info(
+        f"Completed monthly average exchange rate crawling. {len(monthly_avg_rates_map)} currency maps processed."
+    )
+
+    # ------------------------------------------------------------------------------------------------------
+    # 3. 연평균 환율 데이터 크롤링 (AVERAGE_EXCHANGE_CRAWL_URL: wpfxd651_06i_01.do, Payload: inqDvCd: 3) - 현재 연도
+    # ------------------------------------------------------------------------------------------------------
+    logging.info("Starting yearly average exchange rate crawling...")
+    yearly_request_data = {
+        "ajax": "true",
+        "curCd": "",
+        "tmpInqStrDt": f"{current_year}-01-01",
+        "inqStrDt": get_first_day_of_year_yyyymmdd(current_year),
+        "inqEndDt": today_yyyymmdd,
+        "inqDvCd": "3",
+        "pbldDvCd": "1",
+        "tmpPbldDvCd": "1",
+        "tmpInqStrDtY_m": "01",
+        "tmpInqStrDtY_y": str(current_year),
+        "tmpInqStrDt_p": get_first_day_of_year_yyyymmdd(current_year),
+        "tmpInqEndDt_p": today_yyyymmdd,
+        "requestTarget": "searchContentDiv",
+        "pbldsqn": "",
+        "hid_key_data": "",
+        "hid_enc_data": "",
+    }
+    yearly_avg_rates = _fetch_and_parse_exchange_rate(
+        AVERAGE_EXCHANGE_CRAWL_URL, REQUEST_HEADERS, yearly_request_data, kst_timezone
+    )
+    time.sleep(random.uniform(1, 3))
+
+    for entry in yearly_avg_rates:
+        currency_code = entry["currency_code"]
+        if currency_code not in combined_currency_data:
+            combined_currency_data[currency_code] = {
+                "dataType": "exchangeRate",
+                "currency_code": currency_code,
+                "country_name": currency_code_to_country_name_map.get(
+                    currency_code, None
+                ),
+                "realtime_rate": None,
+                "realtime_crawled_at_utc": None,
+                "realtime_crawled_at_kst": None,
+                "daily_avg_rate": None,
+                "monthly_avg_rates": {},
+                "yearly_avg_rate": None,
+            }
+        combined_currency_data[currency_code]["yearly_avg_rate"] = entry[
+            "standard_rate"
+        ]
+    logging.info(
+        f"Completed yearly average exchange rate crawling. {len(yearly_avg_rates)} records processed."
+    )
+
+    final_exchange_rate_data = list(combined_currency_data.values())
+    logging.info(
+        f"Total {len(final_exchange_rate_data)} combined currency records prepared for Event Hub."
+    )
+    return final_exchange_rate_data
