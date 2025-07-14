@@ -36,3 +36,20 @@ def create_retry_decorator(
         retry=retry_if_exception_type(retry_exceptions),
         before_sleep=retry_log,
     )
+
+
+# Google Trends API용 데코레이터
+google_trends_api_retry = create_retry_decorator(
+    min_wait_seconds=600,  # 10분
+    max_wait_seconds=1200,  # 20분
+    max_attempts=5,
+    retry_exceptions=(RequestException, TooManyRequestsError, ResponseError),
+)
+
+# 환율 API용 데코레이터
+exchange_rate_api_retry = create_retry_decorator(
+    min_wait_seconds=20,  # 20초 (환율은 덜 민감)
+    max_wait_seconds=120,  # 120초 (2분)
+    max_attempts=3,  # 3회
+    retry_exceptions=(RequestException,),  # RequestException만 재시도
+)
