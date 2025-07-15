@@ -3,7 +3,7 @@ import json
 import os
 import datetime
 import pytz
-import pandas as pd  # get_trends_data_for_group이 pandas 사용
+import pandas as pd
 import time
 import random
 
@@ -22,7 +22,7 @@ from data_sources.google_trends_crawler import (
 
 
 # --- [Azure Function: 큐 메시지 소비자 (Consumer)] ---
-# 이 함수는 큐에 메시지가 들어올 때마다 자동으로 실행된다.
+# 이 함수는 큐에 메시지가 들어올 때마다 자동으로 실행
 def register_google_trends_processor(app_instance):
 
     @app_instance.queue_trigger(
@@ -39,9 +39,6 @@ def register_google_trends_processor(app_instance):
         msg: func.QueueMessage, event_output: func.Out[str]
     ) -> None:
 
-        delay_seconds = random.uniform(30, 60)
-        logging.info(f"Google Trends Processor 대기 시간: {delay_seconds:.2f}초")
-        time.sleep(delay_seconds)
         logging.info("Google Trends Processor 시작")
 
         logging.info(f"큐 메시지 수신: {msg.get_body().decode('utf-8')}")
@@ -111,7 +108,7 @@ def register_google_trends_processor(app_instance):
                     json.dumps(final_data_to_send, ensure_ascii=False)
                 )
 
-            # 여러 이벤트를 한 번에 Event Hub로 보낸다. (Event Hub Output Binding은 리스트를 받음)
+            # 여러 이벤트를 한 번에 Event Hub로 보냄
             event_output.set(events_to_send)
             logging.info(
                 f"처리된 Google Trend 데이터 {len(events_to_send)}개 Event Hub로 전송 완료."
