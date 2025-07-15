@@ -29,11 +29,12 @@ TRAVEL-DATA-PIPELINE/
 {
   "IsEncrypted": false,
   "Values": {
-    "AzureWebJobsStorage": "",
+    "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;AccountName=traveldatastorage;AccountKey=BO5JiqcPzLc09q4xIEg7Tf64xk66LlYyTgmcRw6Yvphn2i5ewjUClGJRtdkt958ioh4wooxd9Fv1+AStn6gaFg==;EndpointSuffix=core.windows.net",
     "FUNCTIONS_WORKER_RUNTIME": "python",
-    "EventHubConnectionString": "",
-    "EventHubName": "",
-    "AzureWebHookUrl": "",
+    "EventHubConnectionString": "Endpoint=sb://travel-data-pipeline-eventhubs-ns.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=Ofzlz5Oc/gZUHNv0lQAIEq7u3xuLYIJpD+AEhPGbp48=",
+    "GoogleTrendsEventHubName": "google-trends-events",
+    "ExchangeRateEventHubName": "exchange-rate-events",
+    "GoogleTrendsQueueName": "google-trends-crawling-queue",
     "BlobStorageConnectionString": ""
   }
 }
