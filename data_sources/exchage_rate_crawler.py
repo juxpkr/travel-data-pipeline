@@ -9,27 +9,59 @@ import time
 import random
 from data_sources.retry_utils import exchange_rate_api_retry
 
-# --- 웹사이트 URL (상수화만 유지, Payload 키는 문자열 리터럴로) ---
 # 평균 환율 (일평균, 월평균, 연평균) 조회용 URL
 AVERAGE_EXCHANGE_CRAWL_URL = "https://www.kebhana.com/cms/rate/wpfxd651_06i_01.do"
-# 실시간 환율 조회용 URL (이전 Postman 이미지로 확인)
+# 실시간 환율 조회용 URL
 REALTIME_EXCHANGE_CRAWL_URL = "https://www.kebhana.com/cms/rate/wpfxd651_01i_01.do"
 
-# HTTP 요청 헤더 (Referer는 현재 조회 중인 URL에 맞춰 조정될 필요가 있을 수 있습니다.)
-# 여기서는 AVERAGE_EXCHANGE_CRAWL_URL에 맞춰 Referer를 설정합니다.
+# Referer URL 상수
+REFERER_AVERAGE_EXCHANGE_URL = (
+    "https://www.kebhana.com/cms/rate/index.do?contentUrl=/cms/rate/wpfxd651_06i.do"
+)
+REFERER_REALTIME_EXCHANGE_URL = (
+    "https://www.kebhana.com/cms/rate/index.do?contentUrl=/cms/rate/wpfxd651_01i.do"
+)
+
+
+# HTTP 요청 헤더
 REQUEST_HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
     "Accept": "text/javascript, text/html, application/xml, text/xml, */*",
     "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-    "Referer": "https://www.kebhana.com/cms/rate/index.do?contentUrl=/cms/rate/wpfxd651_06i.do",  # 현재 평균 환율 조회 페이지 기준
     "X-Requested-With": "XMLHttpRequest",
 }
+
+EUROZONE_COUNTRIES = [
+    "오스트리아",
+]
+
 
 # 통화 코드와 국가명 매핑 딕셔너리
 currency_code_to_country_name_map = {
     "USD": "미국",
     "JPY": "일본",
-    "EUR": "유럽연합",
+    "EUR": [
+        "오스트리아",
+        "벨기에",
+        "핀란드",
+        "프랑스",
+        "독일",
+        "그리스",
+        "아일랜드",
+        "이탈리아",
+        "라트비아",
+        "리투아니아",
+        "네덜란드",
+        "포르투갈",
+        "슬로바키아",
+        "슬로베니아",
+        "스페인",
+        "에스토니아",
+        "키프로스",
+        "룩셈부르크",
+        "몰타",
+        "크로아티아",
+    ],
     "CNY": "중국",
     "TWD": "대만",
     "BND": "브루나이",
@@ -142,6 +174,9 @@ def _fetch_and_parse_exchange_rate(
     all_extracted_rates = []
 
     try:
+        # headers 딕셔너리를 복사하여 Referer를 추가
+        current_request_headers = headers.copy()  # headers 인자를 복사하여 사용
+
         log_inquiry_code = data.get("inqDvCd") or data.get("inqKindCd")
         logging.info(
             f"Attempting to send POST request to: {target_url} with inquiry code: {log_inquiry_code} and payload: {data}"
@@ -167,7 +202,7 @@ def _fetch_and_parse_exchange_rate(
             rows = table_body.find_all("tr")
 
             # URL에 따른 파싱 로직 및 인덱스 설정
-            expected_min_cells = 0  # 초기화
+            expected_min_cells = 0
             currency_full_text_idx = 0
             buy_rate_idx = 0
             sell_rate_idx = 0
@@ -179,25 +214,27 @@ def _fetch_and_parse_exchange_rate(
                 logging.info(
                     f"Setting parsing indices for REALTIME exchange rates from {target_url}"
                 )
-                expected_min_cells = 11  # 실시간 환율 테이블의 최소 셀 개수 (확정)
+                expected_min_cells = 11  # 실시간 환율 테이블의 최소 셀 개수
                 currency_full_text_idx = 0
                 buy_rate_idx = 1
                 sell_rate_idx = 3
                 send_rate_idx = 5
                 receive_rate_idx = 6
-                standard_rate_idx = 8  # REALTIME HTML thead 분석 기반 최종 확정 인덱스
+                standard_rate_idx = 8
+                current_request_headers["Referer"] = REFERER_REALTIME_EXCHANGE_URL
 
             elif target_url == AVERAGE_EXCHANGE_CRAWL_URL:
                 logging.info(
                     f"Setting parsing indices for AVERAGE exchange rates from {target_url}"
                 )
-                expected_min_cells = 9  # 평균 환율 테이블의 최소 셀 개수 (확정)
+                expected_min_cells = 9  # 평균 환율 테이블의 최소 셀 개수
                 currency_full_text_idx = 0
                 buy_rate_idx = 1
                 sell_rate_idx = 2
                 send_rate_idx = 3
                 receive_rate_idx = 4
-                standard_rate_idx = 6  # AVERAGE Payload 이미지 및 기존 코드 기반 인덱스
+                standard_rate_idx = 6
+                current_request_headers["Referer"] = REFERER_AVERAGE_EXCHANGE_URL
 
             else:
                 logging.error(
@@ -217,7 +254,7 @@ def _fetch_and_parse_exchange_rate(
                     continue
 
                 try:
-                    # 각 셀의 인덱스 대신 위에 정의된 인덱스 변수를 사용합니다.
+                    # 각 셀의 인덱스 대신 위에 정의된 인덱스 변수를 사용
                     currency_full_text = cells[currency_full_text_idx].get_text(
                         strip=True
                     )
@@ -280,7 +317,6 @@ def _fetch_and_parse_exchange_rate(
                     )
 
                 except ValueError as ve:
-                    # **** 로깅 메시지의 인덱스도 변수로 변경되었습니다! ****
                     logging.error(
                         f"Failed to convert rate string to float for {currency_code} (URL: {target_url}, Inquiry Code: {log_inquiry_code}): {ve}. Raw strings: B={cells[buy_rate_idx].get_text()}, S={cells[sell_rate_idx].get_text()}, Std={cells[standard_rate_idx].get_text()}",
                         exc_info=True,
@@ -326,7 +362,7 @@ def _fetch_and_parse_exchange_rate(
 
 # -------------------------------------------------------------
 # get_exchange_rate_data 함수 (모든 유형 환율 통합 함수)
-# 이 함수는 Azure Functions 트리거 파일에서 호출된다.
+# 이 함수는 Azure Functions 트리거 파일에서 호출
 # -------------------------------------------------------------
 def get_exchange_rate_data() -> list:
     kst_timezone = pytz.timezone("Asia/Seoul")
@@ -340,7 +376,7 @@ def get_exchange_rate_data() -> list:
     combined_currency_data = {}
 
     # ------------------------------------------------------------------------------------------------------
-    # 0. 실시간 환율 데이터 크롤링 (REALTIME_EXCHANGE_CRAWL_URL: wpfxd651_01i_01.do)
+    # 실시간 환율 데이터 크롤링 (REALTIME_EXCHANGE_CRAWL_URL: wpfxd651_01i_01.do)
     # Payload: inqKindCd: 1, pbldDvCd: 3
     # ------------------------------------------------------------------------------------------------------
     logging.info("Starting realtime exchange rate crawling...")
@@ -382,7 +418,7 @@ def get_exchange_rate_data() -> list:
     )
 
     # ------------------------------------------------------------------------------------------------------
-    # 1. 당일 일평균 환율 데이터 크롤링 (AVERAGE_EXCHANGE_CRAWL_URL: wpfxd651_06i_01.do, Payload: inqDvCd: 1)
+    # 당일 일평균 환율 데이터 크롤링 (AVERAGE_EXCHANGE_CRAWL_URL: wpfxd651_06i_01.do, Payload: inqDvCd: 1)
     # ------------------------------------------------------------------------------------------------------
     logging.info("Starting daily average exchange rate crawling...")
     daily_request_data = {
@@ -430,7 +466,7 @@ def get_exchange_rate_data() -> list:
     )
 
     # ------------------------------------------------------------------------------------------------------
-    # 2. 월평균 환율 데이터 크롤링 (AVERAGE_EXCHANGE_CRAWL_URL: wpfxd651_06i_01.do, Payload: inqDvCd: 2) - 최근 3개월
+    # 월평균 환율 데이터 크롤링 (AVERAGE_EXCHANGE_CRAWL_URL: wpfxd651_06i_01.do, Payload: inqDvCd: 2) - 최근 3개월
     # ------------------------------------------------------------------------------------------------------
     logging.info("Starting monthly average exchange rate crawling (last 3 months)...")
     monthly_avg_rates_map = {}
@@ -444,9 +480,7 @@ def get_exchange_rate_data() -> list:
         month_first_day_yyyymmdd = get_first_day_of_month_yyyymmdd(
             target_year, target_month
         )
-        month_end_day_yyyymmdd_for_inqEndDt = (
-            today_yyyymmdd  # Postman 스크린샷에 맞춰 오늘 날짜까지 조회
-        )
+        month_end_day_yyyymmdd_for_inqEndDt = today_yyyymmdd
 
         monthly_request_data = {
             "ajax": "true",
@@ -503,7 +537,7 @@ def get_exchange_rate_data() -> list:
     )
 
     # ------------------------------------------------------------------------------------------------------
-    # 3. 연평균 환율 데이터 크롤링 (AVERAGE_EXCHANGE_CRAWL_URL: wpfxd651_06i_01.do, Payload: inqDvCd: 3) - 현재 연도
+    # 연평균 환율 데이터 크롤링 (AVERAGE_EXCHANGE_CRAWL_URL: wpfxd651_06i_01.do, Payload: inqDvCd: 3) - 현재 연도
     # ------------------------------------------------------------------------------------------------------
     logging.info("Starting yearly average exchange rate crawling...")
     yearly_request_data = {
