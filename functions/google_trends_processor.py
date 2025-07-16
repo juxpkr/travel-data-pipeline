@@ -21,6 +21,70 @@ from data_sources.google_trends_crawler import (
     get_trends_data_for_group,
 )
 
+# --- STANDARD_COUNTRY_MAP ---
+STANDARD_COUNTRY_MAP = {}
+
+# 맵 파일 경로
+MAP_FILE_PATH = os.path.join(
+    os.path.dirname(os.path.dirname(__file__)), "config", "standard_country_map.json"
+)
+
+try:
+    with open(MAP_FILE_PATH, "r", encoding="utf-8") as f:
+        STANDARD_COUNTRY_MAP = json.load(f)
+    logging.info(
+        f"Standard country mapping data loaded successfully from {MAP_FILE_PATH}."
+    )
+except FileNotFoundError:
+    logging.error(f"Mapping file not found at {MAP_FILE_PATH}. Using fallback map.")
+    # 로드 실패 시 최소한의 기본 맵 (새로운 키 이름으로)
+    STANDARD_COUNTRY_MAP = {
+        "아르헨티나": {
+            "korean_name": "아르헨티나",
+            "english_name": "Argentina",
+            "country_code_3": "ARG",
+            "country_code_2": "AR",
+        },
+        "해외여행": {
+            "korean_name": "해외여행_전체",
+            "english_name": "Global Travel",
+            "country_code_3": "GLOBAL",
+            "country_code_2": "XX",
+        },
+    }
+except json.JSONDecodeError as e:
+    logging.error(f"Error decoding JSON mapping file: {e}. Using fallback map.")
+    STANDARD_COUNTRY_MAP = {
+        "아르헨티나": {
+            "korean_name": "아르헨티나",
+            "english_name": "Argentina",
+            "country_code_3": "ARG",
+            "country_code_2": "AR",
+        },
+        "해외여행": {
+            "korean_name": "해외여행_전체",
+            "english_name": "Global Travel",
+            "country_code_3": "GLOBAL",
+            "country_code_2": "XX",
+        },
+    }
+except Exception as e:
+    logging.error(f"Unexpected error loading mapping file: {e}. Using fallback map.")
+    STANDARD_COUNTRY_MAP = {
+        "아르헨티나": {
+            "korean_name": "아르헨티나",
+            "english_name": "Argentina",
+            "country_code_3": "ARG",
+            "country_code_2": "AR",
+        },
+        "해외여행": {
+            "korean_name": "해외여행_전체",
+            "english_name": "Global Travel",
+            "country_code_3": "GLOBAL",
+            "country_code_2": "XX",
+        },
+    }
+
 
 # --- [Azure Function: 큐 메시지 소비자 (Consumer)] ---
 # 이 함수는 큐에 메시지가 들어올 때마다 자동으로 실행
@@ -72,6 +136,29 @@ def register_google_trends_processor(app_instance):
             events_to_send = []
             for item in processed_trend_data_list:
                 keyword = item.get("keyword")
+
+                # -- 국가명 표준화 로직
+                # keyword에서 "여행" 을 제거하여 순수한 한글 국가명 추출
+                korean_country_name = (
+                    keyword.replace(" 여행", "") if "여행" in keyword else keyword
+                )
+
+                # STANDARD_COUNTRY_MAP을 사용하여 해당 국가의 모든 표준 정보 딕셔너리 조회
+                country_info = STANDARD_COUNTRY_MAP.get(korean_country_name, {})
+
+                # '해외여행' 앵커 키워드에 대한 처리
+                if keyword == "해외여행":
+                    country_info = STANDARD_COUNTRY_MAP.get("해외여행", {})
+
+                # 조회된 정보 딕셔너리에서 각 컬럼 값 추출
+                country_korean_name = country_info.get("korean_name", "Unknown_Korean")
+                country_english_name = country_info.get(
+                    "english_name", "Unknown_English"
+                )
+                country_code_3 = country_info.get("country_code_3", "N/A")
+                country_code_2 = country_info.get("country_code_2", "N/A")
+                # --- 국가명 표준화 로직 끝 ---
+
                 raw_growth_val = (
                     float(item.get("trend_score_raw_growth"))
                     if pd.notna(item.get("trend_score_raw_growth"))
@@ -138,6 +225,10 @@ def register_google_trends_processor(app_instance):
                 final_data_to_send = {
                     "dataType": "googleTrend",
                     "keyword": keyword,
+                    "country_korean_name": country_korean_name,
+                    "country_english_name": country_english_name,
+                    "country_code_3": country_code_3,
+                    "country_code_2": country_code_2,
                     "final_trend_score": final_trend_score,
                     "trend_score_raw_growth": raw_growth_val,
                     "scaled_raw_growth": scaled_raw_growth,
