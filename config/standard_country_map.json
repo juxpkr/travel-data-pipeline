@@ -1,0 +1,4436 @@
+{
+    "아르헨티나": {
+        "korean_name": "아르헨티나",
+        "english_name": "Argentina",
+        "country_code_3": "ARG",
+        "country_code_2": "AR"
+    },
+    "Argentina": {
+        "korean_name": "아르헨티나",
+        "english_name": "Argentina",
+        "country_code_3": "ARG",
+        "country_code_2": "AR"
+    },
+    "ARG": {
+        "korean_name": "아르헨티나",
+        "english_name": "Argentina",
+        "country_code_3": "ARG",
+        "country_code_2": "AR"
+    },
+    "AR": {
+        "korean_name": "아르헨티나",
+        "english_name": "Argentina",
+        "country_code_3": "ARG",
+        "country_code_2": "AR"
+    },
+    "호주": {
+        "korean_name": "호주",
+        "english_name": "Australia",
+        "country_code_3": "AUS",
+        "country_code_2": "AU"
+    },
+    "Australia": {
+        "korean_name": "호주",
+        "english_name": "Australia",
+        "country_code_3": "AUS",
+        "country_code_2": "AU"
+    },
+    "AUS": {
+        "korean_name": "호주",
+        "english_name": "Australia",
+        "country_code_3": "AUS",
+        "country_code_2": "AU"
+    },
+    "AU": {
+        "korean_name": "호주",
+        "english_name": "Australia",
+        "country_code_3": "AUS",
+        "country_code_2": "AU"
+    },
+    "오스트리아": {
+        "korean_name": "오스트리아",
+        "english_name": "Austria",
+        "country_code_3": "AUT",
+        "country_code_2": "AT"
+    },
+    "Austria": {
+        "korean_name": "오스트리아",
+        "english_name": "Austria",
+        "country_code_3": "AUT",
+        "country_code_2": "AT"
+    },
+    "AUT": {
+        "korean_name": "오스트리아",
+        "english_name": "Austria",
+        "country_code_3": "AUT",
+        "country_code_2": "AT"
+    },
+    "AT": {
+        "korean_name": "오스트리아",
+        "english_name": "Austria",
+        "country_code_3": "AUT",
+        "country_code_2": "AT"
+    },
+    "벨기에": {
+        "korean_name": "벨기에",
+        "english_name": "Belgium",
+        "country_code_3": "BEL",
+        "country_code_2": "BE"
+    },
+    "Belgium": {
+        "korean_name": "벨기에",
+        "english_name": "Belgium",
+        "country_code_3": "BEL",
+        "country_code_2": "BE"
+    },
+    "BEL": {
+        "korean_name": "벨기에",
+        "english_name": "Belgium",
+        "country_code_3": "BEL",
+        "country_code_2": "BE"
+    },
+    "BE": {
+        "korean_name": "벨기에",
+        "english_name": "Belgium",
+        "country_code_3": "BEL",
+        "country_code_2": "BE"
+    },
+    "브라질": {
+        "korean_name": "브라질",
+        "english_name": "Brazil",
+        "country_code_3": "BRA",
+        "country_code_2": "BR"
+    },
+    "Brazil": {
+        "korean_name": "브라질",
+        "english_name": "Brazil",
+        "country_code_3": "BRA",
+        "country_code_2": "BR"
+    },
+    "BRA": {
+        "korean_name": "브라질",
+        "english_name": "Brazil",
+        "country_code_3": "BRA",
+        "country_code_2": "BR"
+    },
+    "BR": {
+        "korean_name": "브라질",
+        "english_name": "Brazil",
+        "country_code_3": "BRA",
+        "country_code_2": "BR"
+    },
+    "불가리아": {
+        "korean_name": "불가리아",
+        "english_name": "Bulgaria",
+        "country_code_3": "BGR",
+        "country_code_2": "BG"
+    },
+    "Bulgaria": {
+        "korean_name": "불가리아",
+        "english_name": "Bulgaria",
+        "country_code_3": "BGR",
+        "country_code_2": "BG"
+    },
+    "BGR": {
+        "korean_name": "불가리아",
+        "english_name": "Bulgaria",
+        "country_code_3": "BGR",
+        "country_code_2": "BG"
+    },
+    "BG": {
+        "korean_name": "불가리아",
+        "english_name": "Bulgaria",
+        "country_code_3": "BGR",
+        "country_code_2": "BG"
+    },
+    "캄보디아": {
+        "korean_name": "캄보디아",
+        "english_name": "Cambodia",
+        "country_code_3": "KHM",
+        "country_code_2": "KH"
+    },
+    "Cambodia": {
+        "korean_name": "캄보디아",
+        "english_name": "Cambodia",
+        "country_code_3": "KHM",
+        "country_code_2": "KH"
+    },
+    "KHM": {
+        "korean_name": "캄보디아",
+        "english_name": "Cambodia",
+        "country_code_3": "KHM",
+        "country_code_2": "KH"
+    },
+    "KH": {
+        "korean_name": "캄보디아",
+        "english_name": "Cambodia",
+        "country_code_3": "KHM",
+        "country_code_2": "KH"
+    },
+    "캐나다": {
+        "korean_name": "캐나다",
+        "english_name": "Canada",
+        "country_code_3": "CAN",
+        "country_code_2": "CA"
+    },
+    "Canada": {
+        "korean_name": "캐나다",
+        "english_name": "Canada",
+        "country_code_3": "CAN",
+        "country_code_2": "CA"
+    },
+    "CAN": {
+        "korean_name": "캐나다",
+        "english_name": "Canada",
+        "country_code_3": "CAN",
+        "country_code_2": "CA"
+    },
+    "CA": {
+        "korean_name": "캐나다",
+        "english_name": "Canada",
+        "country_code_3": "CAN",
+        "country_code_2": "CA"
+    },
+    "칠레": {
+        "korean_name": "칠레",
+        "english_name": "Chile",
+        "country_code_3": "CHL",
+        "country_code_2": "CL"
+    },
+    "Chile": {
+        "korean_name": "칠레",
+        "english_name": "Chile",
+        "country_code_3": "CHL",
+        "country_code_2": "CL"
+    },
+    "CHL": {
+        "korean_name": "칠레",
+        "english_name": "Chile",
+        "country_code_3": "CHL",
+        "country_code_2": "CL"
+    },
+    "CL": {
+        "korean_name": "칠레",
+        "english_name": "Chile",
+        "country_code_3": "CHL",
+        "country_code_2": "CL"
+    },
+    "중국": {
+        "korean_name": "중국",
+        "english_name": "China",
+        "country_code_3": "CHN",
+        "country_code_2": "CN"
+    },
+    "China": {
+        "korean_name": "중국",
+        "english_name": "China",
+        "country_code_3": "CHN",
+        "country_code_2": "CN"
+    },
+    "CHN": {
+        "korean_name": "중국",
+        "english_name": "China",
+        "country_code_3": "CHN",
+        "country_code_2": "CN"
+    },
+    "CN": {
+        "korean_name": "중국",
+        "english_name": "China",
+        "country_code_3": "CHN",
+        "country_code_2": "CN"
+    },
+    "콜롬비아": {
+        "korean_name": "콜롬비아",
+        "english_name": "Colombia",
+        "country_code_3": "COL",
+        "country_code_2": "CO"
+    },
+    "Colombia": {
+        "korean_name": "콜롬비아",
+        "english_name": "Colombia",
+        "country_code_3": "COL",
+        "country_code_2": "CO"
+    },
+    "COL": {
+        "korean_name": "콜롬비아",
+        "english_name": "Colombia",
+        "country_code_3": "COL",
+        "country_code_2": "CO"
+    },
+    "CO": {
+        "korean_name": "콜롬비아",
+        "english_name": "Colombia",
+        "country_code_3": "COL",
+        "country_code_2": "CO"
+    },
+    "코스타리카": {
+        "korean_name": "코스타리카",
+        "english_name": "Costa Rica",
+        "country_code_3": "CRI",
+        "country_code_2": "CR"
+    },
+    "Costa Rica": {
+        "korean_name": "코스타리카",
+        "english_name": "Costa Rica",
+        "country_code_3": "CRI",
+        "country_code_2": "CR"
+    },
+    "CRI": {
+        "korean_name": "코스타리카",
+        "english_name": "Costa Rica",
+        "country_code_3": "CRI",
+        "country_code_2": "CR"
+    },
+    "CR": {
+        "korean_name": "코스타리카",
+        "english_name": "Costa Rica",
+        "country_code_3": "CRI",
+        "country_code_2": "CR"
+    },
+    "크로아티아": {
+        "korean_name": "크로아티아",
+        "english_name": "Croatia",
+        "country_code_3": "HRV",
+        "country_code_2": "HR"
+    },
+    "Croatia": {
+        "korean_name": "크로아티아",
+        "english_name": "Croatia",
+        "country_code_3": "HRV",
+        "country_code_2": "HR"
+    },
+    "HRV": {
+        "korean_name": "크로아티아",
+        "english_name": "Croatia",
+        "country_code_3": "HRV",
+        "country_code_2": "HR"
+    },
+    "HR": {
+        "korean_name": "크로아티아",
+        "english_name": "Croatia",
+        "country_code_3": "HRV",
+        "country_code_2": "HR"
+    },
+    "쿠바": {
+        "korean_name": "쿠바",
+        "english_name": "Cuba",
+        "country_code_3": "CUB",
+        "country_code_2": "CU"
+    },
+    "Cuba": {
+        "korean_name": "쿠바",
+        "english_name": "Cuba",
+        "country_code_3": "CUB",
+        "country_code_2": "CU"
+    },
+    "CUB": {
+        "korean_name": "쿠바",
+        "english_name": "Cuba",
+        "country_code_3": "CUB",
+        "country_code_2": "CU"
+    },
+    "CU": {
+        "korean_name": "쿠바",
+        "english_name": "Cuba",
+        "country_code_3": "CUB",
+        "country_code_2": "CU"
+    },
+    "체코": {
+        "korean_name": "체코",
+        "english_name": "Czech Republic",
+        "country_code_3": "CZE",
+        "country_code_2": "CZ"
+    },
+    "Czech Republic": {
+        "korean_name": "체코",
+        "english_name": "Czech Republic",
+        "country_code_3": "CZE",
+        "country_code_2": "CZ"
+    },
+    "CZE": {
+        "korean_name": "체코",
+        "english_name": "Czech Republic",
+        "country_code_3": "CZE",
+        "country_code_2": "CZ"
+    },
+    "CZ": {
+        "korean_name": "체코",
+        "english_name": "Czech Republic",
+        "country_code_3": "CZE",
+        "country_code_2": "CZ"
+    },
+    "덴마크": {
+        "korean_name": "덴마크",
+        "english_name": "Denmark",
+        "country_code_3": "DNK",
+        "country_code_2": "DK"
+    },
+    "Denmark": {
+        "korean_name": "덴마크",
+        "english_name": "Denmark",
+        "country_code_3": "DNK",
+        "country_code_2": "DK"
+    },
+    "DNK": {
+        "korean_name": "덴마크",
+        "english_name": "Denmark",
+        "country_code_3": "DNK",
+        "country_code_2": "DK"
+    },
+    "DK": {
+        "korean_name": "덴마크",
+        "english_name": "Denmark",
+        "country_code_3": "DNK",
+        "country_code_2": "DK"
+    },
+    "이집트": {
+        "korean_name": "이집트",
+        "english_name": "Egypt",
+        "country_code_3": "EGY",
+        "country_code_2": "EG"
+    },
+    "Egypt": {
+        "korean_name": "이집트",
+        "english_name": "Egypt",
+        "country_code_3": "EGY",
+        "country_code_2": "EG"
+    },
+    "EGY": {
+        "korean_name": "이집트",
+        "english_name": "Egypt",
+        "country_code_3": "EGY",
+        "country_code_2": "EG"
+    },
+    "EG": {
+        "korean_name": "이집트",
+        "english_name": "Egypt",
+        "country_code_3": "EGY",
+        "country_code_2": "EG"
+    },
+    "에스토니아": {
+        "korean_name": "에스토니아",
+        "english_name": "Estonia",
+        "country_code_3": "EST",
+        "country_code_2": "EE"
+    },
+    "Estonia": {
+        "korean_name": "에스토니아",
+        "english_name": "Estonia",
+        "country_code_3": "EST",
+        "country_code_2": "EE"
+    },
+    "EST": {
+        "korean_name": "에스토니아",
+        "english_name": "Estonia",
+        "country_code_3": "EST",
+        "country_code_2": "EE"
+    },
+    "EE": {
+        "korean_name": "에스토니아",
+        "english_name": "Estonia",
+        "country_code_3": "EST",
+        "country_code_2": "EE"
+    },
+    "핀란드": {
+        "korean_name": "핀란드",
+        "english_name": "Finland",
+        "country_code_3": "FIN",
+        "country_code_2": "FI"
+    },
+    "Finland": {
+        "korean_name": "핀란드",
+        "english_name": "Finland",
+        "country_code_3": "FIN",
+        "country_code_2": "FI"
+    },
+    "FIN": {
+        "korean_name": "핀란드",
+        "english_name": "Finland",
+        "country_code_3": "FIN",
+        "country_code_2": "FI"
+    },
+    "FI": {
+        "korean_name": "핀란드",
+        "english_name": "Finland",
+        "country_code_3": "FIN",
+        "country_code_2": "FI"
+    },
+    "프랑스": {
+        "korean_name": "프랑스",
+        "english_name": "France",
+        "country_code_3": "FRA",
+        "country_code_2": "FR"
+    },
+    "France": {
+        "korean_name": "프랑스",
+        "english_name": "France",
+        "country_code_3": "FRA",
+        "country_code_2": "FR"
+    },
+    "FRA": {
+        "korean_name": "프랑스",
+        "english_name": "France",
+        "country_code_3": "FRA",
+        "country_code_2": "FR"
+    },
+    "FR": {
+        "korean_name": "프랑스",
+        "english_name": "France",
+        "country_code_3": "FRA",
+        "country_code_2": "FR"
+    },
+    "조지아": {
+        "korean_name": "조지아",
+        "english_name": "Georgia",
+        "country_code_3": "GEO",
+        "country_code_2": "GE"
+    },
+    "Georgia": {
+        "korean_name": "조지아",
+        "english_name": "Georgia",
+        "country_code_3": "GEO",
+        "country_code_2": "GE"
+    },
+    "GEO": {
+        "korean_name": "조지아",
+        "english_name": "Georgia",
+        "country_code_3": "GEO",
+        "country_code_2": "GE"
+    },
+    "GE": {
+        "korean_name": "조지아",
+        "english_name": "Georgia",
+        "country_code_3": "GEO",
+        "country_code_2": "GE"
+    },
+    "독일": {
+        "korean_name": "독일",
+        "english_name": "Germany",
+        "country_code_3": "DEU",
+        "country_code_2": "DE"
+    },
+    "Germany": {
+        "korean_name": "독일",
+        "english_name": "Germany",
+        "country_code_3": "DEU",
+        "country_code_2": "DE"
+    },
+    "DEU": {
+        "korean_name": "독일",
+        "english_name": "Germany",
+        "country_code_3": "DEU",
+        "country_code_2": "DE"
+    },
+    "DE": {
+        "korean_name": "독일",
+        "english_name": "Germany",
+        "country_code_3": "DEU",
+        "country_code_2": "DE"
+    },
+    "그리스": {
+        "korean_name": "그리스",
+        "english_name": "Greece",
+        "country_code_3": "GRC",
+        "country_code_2": "GR"
+    },
+    "Greece": {
+        "korean_name": "그리스",
+        "english_name": "Greece",
+        "country_code_3": "GRC",
+        "country_code_2": "GR"
+    },
+    "GRC": {
+        "korean_name": "그리스",
+        "english_name": "Greece",
+        "country_code_3": "GRC",
+        "country_code_2": "GR"
+    },
+    "GR": {
+        "korean_name": "그리스",
+        "english_name": "Greece",
+        "country_code_3": "GRC",
+        "country_code_2": "GR"
+    },
+    "헝가리": {
+        "korean_name": "헝가리",
+        "english_name": "Hungary",
+        "country_code_3": "HUN",
+        "country_code_2": "HU"
+    },
+    "Hungary": {
+        "korean_name": "헝가리",
+        "english_name": "Hungary",
+        "country_code_3": "HUN",
+        "country_code_2": "HU"
+    },
+    "HUN": {
+        "korean_name": "헝가리",
+        "english_name": "Hungary",
+        "country_code_3": "HUN",
+        "country_code_2": "HU"
+    },
+    "HU": {
+        "korean_name": "헝가리",
+        "english_name": "Hungary",
+        "country_code_3": "HUN",
+        "country_code_2": "HU"
+    },
+    "아이슬란드": {
+        "korean_name": "아이슬란드",
+        "english_name": "Iceland",
+        "country_code_3": "ISL",
+        "country_code_2": "IS"
+    },
+    "Iceland": {
+        "korean_name": "아이슬란드",
+        "english_name": "Iceland",
+        "country_code_3": "ISL",
+        "country_code_2": "IS"
+    },
+    "ISL": {
+        "korean_name": "아이슬란드",
+        "english_name": "Iceland",
+        "country_code_3": "ISL",
+        "country_code_2": "IS"
+    },
+    "IS": {
+        "korean_name": "아이슬란드",
+        "english_name": "Iceland",
+        "country_code_3": "ISL",
+        "country_code_2": "IS"
+    },
+    "인도": {
+        "korean_name": "인도",
+        "english_name": "India",
+        "country_code_3": "IND",
+        "country_code_2": "IN"
+    },
+    "India": {
+        "korean_name": "인도",
+        "english_name": "India",
+        "country_code_3": "IND",
+        "country_code_2": "IN"
+    },
+    "IND": {
+        "korean_name": "인도",
+        "english_name": "India",
+        "country_code_3": "IND",
+        "country_code_2": "IN"
+    },
+    "IN": {
+        "korean_name": "인도",
+        "english_name": "India",
+        "country_code_3": "IND",
+        "country_code_2": "IN"
+    },
+    "인도네시아": {
+        "korean_name": "인도네시아",
+        "english_name": "Indonesia",
+        "country_code_3": "IDN",
+        "country_code_2": "ID"
+    },
+    "Indonesia": {
+        "korean_name": "인도네시아",
+        "english_name": "Indonesia",
+        "country_code_3": "IDN",
+        "country_code_2": "ID"
+    },
+    "IDN": {
+        "korean_name": "인도네시아",
+        "english_name": "Indonesia",
+        "country_code_3": "IDN",
+        "country_code_2": "ID"
+    },
+    "ID": {
+        "korean_name": "인도네시아",
+        "english_name": "Indonesia",
+        "country_code_3": "IDN",
+        "country_code_2": "ID"
+    },
+    "이란": {
+        "korean_name": "이란",
+        "english_name": "Iran",
+        "country_code_3": "IRN",
+        "country_code_2": "IR"
+    },
+    "Iran": {
+        "korean_name": "이란",
+        "english_name": "Iran",
+        "country_code_3": "IRN",
+        "country_code_2": "IR"
+    },
+    "IRN": {
+        "korean_name": "이란",
+        "english_name": "Iran",
+        "country_code_3": "IRN",
+        "country_code_2": "IR"
+    },
+    "IR": {
+        "korean_name": "이란",
+        "english_name": "Iran",
+        "country_code_3": "IRN",
+        "country_code_2": "IR"
+    },
+    "아일랜드": {
+        "korean_name": "아일랜드",
+        "english_name": "Ireland",
+        "country_code_3": "IRL",
+        "country_code_2": "IE"
+    },
+    "Ireland": {
+        "korean_name": "아일랜드",
+        "english_name": "Ireland",
+        "country_code_3": "IRL",
+        "country_code_2": "IE"
+    },
+    "IRL": {
+        "korean_name": "아일랜드",
+        "english_name": "Ireland",
+        "country_code_3": "IRL",
+        "country_code_2": "IE"
+    },
+    "IE": {
+        "korean_name": "아일랜드",
+        "english_name": "Ireland",
+        "country_code_3": "IRL",
+        "country_code_2": "IE"
+    },
+    "이스라엘": {
+        "korean_name": "이스라엘",
+        "english_name": "Israel",
+        "country_code_3": "ISR",
+        "country_code_2": "IL"
+    },
+    "Israel": {
+        "korean_name": "이스라엘",
+        "english_name": "Israel",
+        "country_code_3": "ISR",
+        "country_code_2": "IL"
+    },
+    "ISR": {
+        "korean_name": "이스라엘",
+        "english_name": "Israel",
+        "country_code_3": "ISR",
+        "country_code_2": "IL"
+    },
+    "IL": {
+        "korean_name": "이스라엘",
+        "english_name": "Israel",
+        "country_code_3": "ISR",
+        "country_code_2": "IL"
+    },
+    "이탈리아": {
+        "korean_name": "이탈리아",
+        "english_name": "Italy",
+        "country_code_3": "ITA",
+        "country_code_2": "IT"
+    },
+    "Italia": {
+        "korean_name": "이탈리아",
+        "english_name": "Italy",
+        "country_code_3": "ITA",
+        "country_code_2": "IT"
+    },
+    "ITA": {
+        "korean_name": "이탈리아",
+        "english_name": "Italy",
+        "country_code_3": "ITA",
+        "country_code_2": "IT"
+    },
+    "IT": {
+        "korean_name": "이탈리아",
+        "english_name": "Italy",
+        "country_code_3": "ITA",
+        "country_code_2": "IT"
+    },
+    "일본": {
+        "korean_name": "일본",
+        "english_name": "Japan",
+        "country_code_3": "JPN",
+        "country_code_2": "JP"
+    },
+    "Japan": {
+        "korean_name": "일본",
+        "english_name": "Japan",
+        "country_code_3": "JPN",
+        "country_code_2": "JP"
+    },
+    "JPN": {
+        "korean_name": "일본",
+        "english_name": "Japan",
+        "country_code_3": "JPN",
+        "country_code_2": "JP"
+    },
+    "JP": {
+        "korean_name": "일본",
+        "english_name": "Japan",
+        "country_code_3": "JPN",
+        "country_code_2": "JP"
+    },
+    "라오스": {
+        "korean_name": "라오스",
+        "english_name": "Laos",
+        "country_code_3": "LAO",
+        "country_code_2": "LA"
+    },
+    "Laos": {
+        "korean_name": "라오스",
+        "english_name": "Laos",
+        "country_code_3": "LAO",
+        "country_code_2": "LA"
+    },
+    "LAO": {
+        "korean_name": "라오스",
+        "english_name": "Laos",
+        "country_code_3": "LAO",
+        "country_code_2": "LA"
+    },
+    "LA": {
+        "korean_name": "라오스",
+        "english_name": "Laos",
+        "country_code_3": "LAO",
+        "country_code_2": "LA"
+    },
+    "라트비아": {
+        "korean_name": "라트비아",
+        "english_name": "Latvia",
+        "country_code_3": "LVA",
+        "country_code_2": "LV"
+    },
+    "Latvia": {
+        "korean_name": "라트비아",
+        "english_name": "Latvia",
+        "country_code_3": "LVA",
+        "country_code_2": "LV"
+    },
+    "LVA": {
+        "korean_name": "라트비아",
+        "english_name": "Latvia",
+        "country_code_3": "LVA",
+        "country_code_2": "LV"
+    },
+    "LV": {
+        "korean_name": "라트비아",
+        "english_name": "Latvia",
+        "country_code_3": "LVA",
+        "country_code_2": "LV"
+    },
+    "리투아니아": {
+        "korean_name": "리투아니아",
+        "english_name": "Lithuania",
+        "country_code_3": "LTU",
+        "country_code_2": "LT"
+    },
+    "Lithuania": {
+        "korean_name": "리투아니아",
+        "english_name": "Lithuania",
+        "country_code_3": "LTU",
+        "country_code_2": "LT"
+    },
+    "LTU": {
+        "korean_name": "리투아니아",
+        "english_name": "Lithuania",
+        "country_code_3": "LTU",
+        "country_code_2": "LT"
+    },
+    "LT": {
+        "korean_name": "리투아니아",
+        "english_name": "Lithuania",
+        "country_code_3": "LTU",
+        "country_code_2": "LT"
+    },
+    "말레이시아": {
+        "korean_name": "말레이시아",
+        "english_name": "Malaysia",
+        "country_code_3": "MYS",
+        "country_code_2": "MY"
+    },
+    "Malaysia": {
+        "korean_name": "말레이시아",
+        "english_name": "Malaysia",
+        "country_code_3": "MYS",
+        "country_code_2": "MY"
+    },
+    "MYS": {
+        "korean_name": "말레이시아",
+        "english_name": "Malaysia",
+        "country_code_3": "MYS",
+        "country_code_2": "MY"
+    },
+    "MY": {
+        "korean_name": "말레이시아",
+        "english_name": "Malaysia",
+        "country_code_3": "MYS",
+        "country_code_2": "MY"
+    },
+    "멕시코": {
+        "korean_name": "멕시코",
+        "english_name": "Mexico",
+        "country_code_3": "MEX",
+        "country_code_2": "MX"
+    },
+    "Mexico": {
+        "korean_name": "멕시코",
+        "english_name": "Mexico",
+        "country_code_3": "MEX",
+        "country_code_2": "MX"
+    },
+    "MEX": {
+        "korean_name": "멕시코",
+        "english_name": "Mexico",
+        "country_code_3": "MEX",
+        "country_code_2": "MX"
+    },
+    "MX": {
+        "korean_name": "멕시코",
+        "english_name": "Mexico",
+        "country_code_3": "MEX",
+        "country_code_2": "MX"
+    },
+    "몽골": {
+        "korean_name": "몽골",
+        "english_name": "Mongolia",
+        "country_code_3": "MNG",
+        "country_code_2": "MN"
+    },
+    "Mongolia": {
+        "korean_name": "몽골",
+        "english_name": "Mongolia",
+        "country_code_3": "MNG",
+        "country_code_2": "MN"
+    },
+    "MNG": {
+        "korean_name": "몽골",
+        "english_name": "Mongolia",
+        "country_code_3": "MNG",
+        "country_code_2": "MN"
+    },
+    "MN": {
+        "korean_name": "몽골",
+        "english_name": "Mongolia",
+        "country_code_3": "MNG",
+        "country_code_2": "MN"
+    },
+    "모로코": {
+        "korean_name": "모로코",
+        "english_name": "Morocco",
+        "country_code_3": "MAR",
+        "country_code_2": "MA"
+    },
+    "Morocco": {
+        "korean_name": "모로코",
+        "english_name": "Morocco",
+        "country_code_3": "MAR",
+        "country_code_2": "MA"
+    },
+    "MAR": {
+        "korean_name": "모로코",
+        "english_name": "Morocco",
+        "country_code_3": "MAR",
+        "country_code_2": "MA"
+    },
+    "MA": {
+        "korean_name": "모로코",
+        "english_name": "Morocco",
+        "country_code_3": "MAR",
+        "country_code_2": "MA"
+    },
+    "네덜란드": {
+        "korean_name": "네덜란드",
+        "english_name": "Netherlands",
+        "country_code_3": "NLD",
+        "country_code_2": "NL"
+    },
+    "Netherlands": {
+        "korean_name": "네덜란드",
+        "english_name": "Netherlands",
+        "country_code_3": "NLD",
+        "country_code_2": "NL"
+    },
+    "NLD": {
+        "korean_name": "네덜란드",
+        "english_name": "Netherlands",
+        "country_code_3": "NLD",
+        "country_code_2": "NL"
+    },
+    "NL": {
+        "korean_name": "네덜란드",
+        "english_name": "Netherlands",
+        "country_code_3": "NLD",
+        "country_code_2": "NL"
+    },
+    "뉴질랜드": {
+        "korean_name": "뉴질랜드",
+        "english_name": "New Zealand",
+        "country_code_3": "NZL",
+        "country_code_2": "NZ"
+    },
+    "New Zealand": {
+        "korean_name": "뉴질랜드",
+        "english_name": "New Zealand",
+        "country_code_3": "NZL",
+        "country_code_2": "NZ"
+    },
+    "NZL": {
+        "korean_name": "뉴질랜드",
+        "english_name": "New Zealand",
+        "country_code_3": "NZL",
+        "country_code_2": "NZ"
+    },
+    "NZ": {
+        "korean_name": "뉴질랜드",
+        "english_name": "New Zealand",
+        "country_code_3": "NZL",
+        "country_code_2": "NZ"
+    },
+    "노르웨이": {
+        "korean_name": "노르웨이",
+        "english_name": "Norway",
+        "country_code_3": "NOR",
+        "country_code_2": "NO"
+    },
+    "Norway": {
+        "korean_name": "노르웨이",
+        "english_name": "Norway",
+        "country_code_3": "NOR",
+        "country_code_2": "NO"
+    },
+    "NOR": {
+        "korean_name": "노르웨이",
+        "english_name": "Norway",
+        "country_code_3": "NOR",
+        "country_code_2": "NO"
+    },
+    "NO": {
+        "korean_name": "노르웨이",
+        "english_name": "Norway",
+        "country_code_3": "NOR",
+        "country_code_2": "NO"
+    },
+    "페루": {
+        "korean_name": "페루",
+        "english_name": "Peru",
+        "country_code_3": "PER",
+        "country_code_2": "PE"
+    },
+    "Peru": {
+        "korean_name": "페루",
+        "english_name": "Peru",
+        "country_code_3": "PER",
+        "country_code_2": "PE"
+    },
+    "PER": {
+        "korean_name": "페루",
+        "english_name": "Peru",
+        "country_code_3": "PER",
+        "country_code_2": "PE"
+    },
+    "PE": {
+        "korean_name": "페루",
+        "english_name": "Peru",
+        "country_code_3": "PER",
+        "country_code_2": "PE"
+    },
+    "필리핀": {
+        "korean_name": "필리핀",
+        "english_name": "Philippines",
+        "country_code_3": "PHL",
+        "country_code_2": "PH"
+    },
+    "Philippines": {
+        "korean_name": "필리핀",
+        "english_name": "Philippines",
+        "country_code_3": "PHL",
+        "country_code_2": "PH"
+    },
+    "PHL": {
+        "korean_name": "필리핀",
+        "english_name": "Philippines",
+        "country_code_3": "PHL",
+        "country_code_2": "PH"
+    },
+    "PH": {
+        "korean_name": "필리핀",
+        "english_name": "Philippines",
+        "country_code_3": "PHL",
+        "country_code_2": "PH"
+    },
+    "폴란드": {
+        "korean_name": "폴란드",
+        "english_name": "Poland",
+        "country_code_3": "POL",
+        "country_code_2": "PL"
+    },
+    "Poland": {
+        "korean_name": "폴란드",
+        "english_name": "Poland",
+        "country_code_3": "POL",
+        "country_code_2": "PL"
+    },
+    "POL": {
+        "korean_name": "폴란드",
+        "english_name": "Poland",
+        "country_code_3": "POL",
+        "country_code_2": "PL"
+    },
+    "PL": {
+        "korean_name": "폴란드",
+        "english_name": "Poland",
+        "country_code_3": "POL",
+        "country_code_2": "PL"
+    },
+    "포르투갈": {
+        "korean_name": "포르투갈",
+        "english_name": "Portugal",
+        "country_code_3": "PRT",
+        "country_code_2": "PT"
+    },
+    "Portugal": {
+        "korean_name": "포르투갈",
+        "english_name": "Portugal",
+        "country_code_3": "PRT",
+        "country_code_2": "PT"
+    },
+    "PRT": {
+        "korean_name": "포르투갈",
+        "english_name": "Portugal",
+        "country_code_3": "PRT",
+        "country_code_2": "PT"
+    },
+    "PT": {
+        "korean_name": "포르투갈",
+        "english_name": "Portugal",
+        "country_code_3": "PRT",
+        "country_code_2": "PT"
+    },
+    "카타르": {
+        "korean_name": "카타르",
+        "english_name": "Qatar",
+        "country_code_3": "QAT",
+        "country_code_2": "QA"
+    },
+    "Qatar": {
+        "korean_name": "카타르",
+        "english_name": "Qatar",
+        "country_code_3": "QAT",
+        "country_code_2": "QA"
+    },
+    "QAT": {
+        "korean_name": "카타르",
+        "english_name": "Qatar",
+        "country_code_3": "QAT",
+        "country_code_2": "QA"
+    },
+    "QA": {
+        "korean_name": "카타르",
+        "english_name": "Qatar",
+        "country_code_3": "QAT",
+        "country_code_2": "QA"
+    },
+    "러시아": {
+        "korean_name": "러시아",
+        "english_name": "Russia",
+        "country_code_3": "RUS",
+        "country_code_2": "RU"
+    },
+    "Russia": {
+        "korean_name": "러시아",
+        "english_name": "Russia",
+        "country_code_3": "RUS",
+        "country_code_2": "RU"
+    },
+    "RUS": {
+        "korean_name": "러시아",
+        "english_name": "Russia",
+        "country_code_3": "RUS",
+        "country_code_2": "RU"
+    },
+    "RU": {
+        "korean_name": "러시아",
+        "english_name": "Russia",
+        "country_code_3": "RUS",
+        "country_code_2": "RU"
+    },
+    "세르비아": {
+        "korean_name": "세르비아",
+        "english_name": "Serbia",
+        "country_code_3": "SRB",
+        "country_code_2": "RS"
+    },
+    "Serbia": {
+        "korean_name": "세르비아",
+        "english_name": "Serbia",
+        "country_code_3": "SRB",
+        "country_code_2": "RS"
+    },
+    "SRB": {
+        "korean_name": "세르비아",
+        "english_name": "Serbia",
+        "country_code_3": "SRB",
+        "country_code_2": "RS"
+    },
+    "RS": {
+        "korean_name": "세르비아",
+        "english_name": "Serbia",
+        "country_code_3": "SRB",
+        "country_code_2": "RS"
+    },
+    "슬로바키아": {
+        "korean_name": "슬로바키아",
+        "english_name": "Slovakia",
+        "country_code_3": "SVK",
+        "country_code_2": "SK"
+    },
+    "Slovakia": {
+        "korean_name": "슬로바키아",
+        "english_name": "Slovakia",
+        "country_code_3": "SVK",
+        "country_code_2": "SK"
+    },
+    "SVK": {
+        "korean_name": "슬로바키아",
+        "english_name": "Slovakia",
+        "country_code_3": "SVK",
+        "country_code_2": "SK"
+    },
+    "SK": {
+        "korean_name": "슬로바키아",
+        "english_name": "Slovakia",
+        "country_code_3": "SVK",
+        "country_code_2": "SK"
+    },
+    "슬로베니아": {
+        "korean_name": "슬로베니아",
+        "english_name": "Slovenia",
+        "country_code_3": "SVN",
+        "country_code_2": "SI"
+    },
+    "Slovenia": {
+        "korean_name": "슬로베니아",
+        "english_name": "Slovenia",
+        "country_code_3": "SVN",
+        "country_code_2": "SI"
+    },
+    "SVN": {
+        "korean_name": "슬로베니아",
+        "english_name": "Slovenia",
+        "country_code_3": "SVN",
+        "country_code_2": "SI"
+    },
+    "SI": {
+        "korean_name": "슬로베니아",
+        "english_name": "Slovenia",
+        "country_code_3": "SVN",
+        "country_code_2": "SI"
+    },
+    "스페인": {
+        "korean_name": "스페인",
+        "english_name": "Spain",
+        "country_code_3": "ESP",
+        "country_code_2": "ES"
+    },
+    "Spain": {
+        "korean_name": "스페인",
+        "english_name": "Spain",
+        "country_code_3": "ESP",
+        "country_code_2": "ES"
+    },
+    "ESP": {
+        "korean_name": "스페인",
+        "english_name": "Spain",
+        "country_code_3": "ESP",
+        "country_code_2": "ES"
+    },
+    "ES": {
+        "korean_name": "스페인",
+        "english_name": "Spain",
+        "country_code_3": "ESP",
+        "country_code_2": "ES"
+    },
+    "스위스": {
+        "korean_name": "스위스",
+        "english_name": "Switzerland",
+        "country_code_3": "CHE",
+        "country_code_2": "CH"
+    },
+    "Swiss": {
+        "korean_name": "스위스",
+        "english_name": "Switzerland",
+        "country_code_3": "CHE",
+        "country_code_2": "CH"
+    },
+    "Switzerland": {
+        "korean_name": "스위스",
+        "english_name": "Switzerland",
+        "country_code_3": "CHE",
+        "country_code_2": "CH"
+    },
+    "CHE": {
+        "korean_name": "스위스",
+        "english_name": "Switzerland",
+        "country_code_3": "CHE",
+        "country_code_2": "CH"
+    },
+    "CH": {
+        "korean_name": "스위스",
+        "english_name": "Switzerland",
+        "country_code_3": "CHE",
+        "country_code_2": "CH"
+    },
+    "대만": {
+        "korean_name": "대만",
+        "english_name": "Taiwan",
+        "country_code_3": "TWN",
+        "country_code_2": "TW"
+    },
+    "Taiwan": {
+        "korean_name": "대만",
+        "english_name": "Taiwan",
+        "country_code_3": "TWN",
+        "country_code_2": "TW"
+    },
+    "TWN": {
+        "korean_name": "대만",
+        "english_name": "Taiwan",
+        "country_code_3": "TWN",
+        "country_code_2": "TW"
+    },
+    "TW": {
+        "korean_name": "대만",
+        "english_name": "Taiwan",
+        "country_code_3": "TWN",
+        "country_code_2": "TW"
+    },
+    "태국": {
+        "korean_name": "태국",
+        "english_name": "Thailand",
+        "country_code_3": "THA",
+        "country_code_2": "TH"
+    },
+    "Thailand": {
+        "korean_name": "태국",
+        "english_name": "Thailand",
+        "country_code_3": "THA",
+        "country_code_2": "TH"
+    },
+    "THA": {
+        "korean_name": "태국",
+        "english_name": "Thailand",
+        "country_code_3": "THA",
+        "country_code_2": "TH"
+    },
+    "TH": {
+        "korean_name": "태국",
+        "english_name": "Thailand",
+        "country_code_3": "THA",
+        "country_code_2": "TH"
+    },
+    "튀르키예": {
+        "korean_name": "튀르키예",
+        "english_name": "Turkey",
+        "country_code_3": "TUR",
+        "country_code_2": "TR"
+    },
+    "Republic of Turkiye": {
+        "korean_name": "튀르키예",
+        "english_name": "Turkey",
+        "country_code_3": "TUR",
+        "country_code_2": "TR"
+    },
+    "Turkey": {
+        "korean_name": "튀르키예",
+        "english_name": "Turkey",
+        "country_code_3": "TUR",
+        "country_code_2": "TR"
+    },
+    "TUR": {
+        "korean_name": "튀르키예",
+        "english_name": "Turkey",
+        "country_code_3": "TUR",
+        "country_code_2": "TR"
+    },
+    "TR": {
+        "korean_name": "튀르키예",
+        "english_name": "Turkey",
+        "country_code_3": "TUR",
+        "country_code_2": "TR"
+    },
+    "우크라이나": {
+        "korean_name": "우크라이나",
+        "english_name": "Ukraine",
+        "country_code_3": "UKR",
+        "country_code_2": "UA"
+    },
+    "Ukraine": {
+        "korean_name": "우크라이나",
+        "english_name": "Ukraine",
+        "country_code_3": "UKR",
+        "country_code_2": "UA"
+    },
+    "UKR": {
+        "korean_name": "우크라이나",
+        "english_name": "Ukraine",
+        "country_code_3": "UKR",
+        "country_code_2": "UA"
+    },
+    "UA": {
+        "korean_name": "우크라이나",
+        "english_name": "Ukraine",
+        "country_code_3": "UKR",
+        "country_code_2": "UA"
+    },
+    "아랍에미리트": {
+        "korean_name": "아랍에미리트",
+        "english_name": "United Arab Emirates",
+        "country_code_3": "ARE",
+        "country_code_2": "AE"
+    },
+    "United Arab Emirates": {
+        "korean_name": "아랍에미리트",
+        "english_name": "United Arab Emirates",
+        "country_code_3": "ARE",
+        "country_code_2": "AE"
+    },
+    "ARE": {
+        "korean_name": "아랍에미리트",
+        "english_name": "United Arab Emirates",
+        "country_code_3": "ARE",
+        "country_code_2": "AE"
+    },
+    "AE": {
+        "korean_name": "아랍에미리트",
+        "english_name": "United Arab Emirates",
+        "country_code_3": "ARE",
+        "country_code_2": "AE"
+    },
+    "영국": {
+        "korean_name": "영국",
+        "english_name": "United Kingdom",
+        "country_code_3": "GBR",
+        "country_code_2": "GB"
+    },
+    "United Kingdom": {
+        "korean_name": "영국",
+        "english_name": "United Kingdom",
+        "country_code_3": "GBR",
+        "country_code_2": "GB"
+    },
+    "GBR": {
+        "korean_name": "영국",
+        "english_name": "United Kingdom",
+        "country_code_3": "GBR",
+        "country_code_2": "GB"
+    },
+    "GB": {
+        "korean_name": "영국",
+        "english_name": "United Kingdom",
+        "country_code_3": "GBR",
+        "country_code_2": "GB"
+    },
+    "UK": {
+        "korean_name": "영국",
+        "english_name": "United Kingdom",
+        "country_code_3": "GBR",
+        "country_code_2": "GB"
+    },
+    "미국": {
+        "korean_name": "미국",
+        "english_name": "United States",
+        "country_code_3": "USA",
+        "country_code_2": "US"
+    },
+    "United States of America": {
+        "korean_name": "미국",
+        "english_name": "United States",
+        "country_code_3": "USA",
+        "country_code_2": "US"
+    },
+    "US": {
+        "korean_name": "미국",
+        "english_name": "United States",
+        "country_code_3": "USA",
+        "country_code_2": "US"
+    },
+    "USA": {
+        "korean_name": "미국",
+        "english_name": "United States",
+        "country_code_3": "USA",
+        "country_code_2": "US"
+    },
+    "베트남": {
+        "korean_name": "베트남",
+        "english_name": "Vietnam",
+        "country_code_3": "VNM",
+        "country_code_2": "VN"
+    },
+    "Vietnam": {
+        "korean_name": "베트남",
+        "english_name": "Vietnam",
+        "country_code_3": "VNM",
+        "country_code_2": "VN"
+    },
+    "VNM": {
+        "korean_name": "베트남",
+        "english_name": "Vietnam",
+        "country_code_3": "VNM",
+        "country_code_2": "VN"
+    },
+    "VN": {
+        "korean_name": "베트남",
+        "english_name": "Vietnam",
+        "country_code_3": "VNM",
+        "country_code_2": "VN"
+    },
+    "마카오": {
+        "korean_name": "마카오",
+        "english_name": "Macao",
+        "country_code_3": "MAC",
+        "country_code_2": "MO"
+    },
+    "Macao": {
+        "korean_name": "마카오",
+        "english_name": "Macao",
+        "country_code_3": "MAC",
+        "country_code_2": "MO"
+    },
+    "MAC": {
+        "korean_name": "마카오",
+        "english_name": "Macao",
+        "country_code_3": "MAC",
+        "country_code_2": "MO"
+    },
+    "MO": {
+        "korean_name": "마카오",
+        "english_name": "Macao",
+        "country_code_3": "MAC",
+        "country_code_2": "MO"
+    },
+    "모나코": {
+        "korean_name": "모나코",
+        "english_name": "Monaco",
+        "country_code_3": "MCO",
+        "country_code_2": "MC"
+    },
+    "Monaco": {
+        "korean_name": "모나코",
+        "english_name": "Monaco",
+        "country_code_3": "MCO",
+        "country_code_2": "MC"
+    },
+    "MCO": {
+        "korean_name": "모나코",
+        "english_name": "Monaco",
+        "country_code_3": "MCO",
+        "country_code_2": "MC"
+    },
+    "MC": {
+        "korean_name": "모나코",
+        "english_name": "Monaco",
+        "country_code_3": "MCO",
+        "country_code_2": "MC"
+    },
+    "대한민국": {
+        "korean_name": "대한민국",
+        "english_name": "South Korea",
+        "country_code_3": "KOR",
+        "country_code_2": "KR"
+    },
+    "KR": {
+        "korean_name": "대한민국",
+        "english_name": "South Korea",
+        "country_code_3": "KOR",
+        "country_code_2": "KR"
+    },
+    "KOR": {
+        "korean_name": "대한민국",
+        "english_name": "South Korea",
+        "country_code_3": "KOR",
+        "country_code_2": "KR"
+    },
+    "해외여행": {
+        "korean_name": "해외여행_전체",
+        "english_name": "Global Travel",
+        "country_code_3": "GLOBAL",
+        "country_code_2": "XX"
+    },
+    "해외여행_전체": {
+        "korean_name": "해외여행_전체",
+        "english_name": "Global Travel",
+        "country_code_3": "GLOBAL",
+        "country_code_2": "XX"
+    },
+    "GLOBAL": {
+        "korean_name": "해외여행_전체",
+        "english_name": "Global Travel",
+        "country_code_3": "GLOBAL",
+        "country_code_2": "XX"
+    },
+    "홍콩": {
+        "korean_name": "홍콩",
+        "english_name": "Hong Kong",
+        "country_code_3": "HKG",
+        "country_code_2": "HK"
+    },
+    "HK": {
+        "korean_name": "홍콩",
+        "english_name": "Hong Kong",
+        "country_code_3": "HKG",
+        "country_code_2": "HK"
+    },
+    "HKG": {
+        "korean_name": "홍콩",
+        "english_name": "Hong Kong",
+        "country_code_3": "HKG",
+        "country_code_2": "HK"
+    },
+    "싱가포르": {
+        "korean_name": "싱가포르",
+        "english_name": "Singapore",
+        "country_code_3": "SGP",
+        "country_code_2": "SG"
+    },
+    "SG": {
+        "korean_name": "싱가포르",
+        "english_name": "Singapore",
+        "country_code_3": "SGP",
+        "country_code_2": "SG"
+    },
+    "SGP": {
+        "korean_name": "싱가포르",
+        "english_name": "Singapore",
+        "country_code_3": "SGP",
+        "country_code_2": "SG"
+    },
+    "남아프리카공화국": {
+        "korean_name": "남아프리카공화국",
+        "english_name": "South Africa",
+        "country_code_3": "ZAF",
+        "country_code_2": "ZA"
+    },
+    "ZA": {
+        "korean_name": "남아프리카공화국",
+        "english_name": "South Africa",
+        "country_code_3": "ZAF",
+        "country_code_2": "ZA"
+    },
+    "ZAF": {
+        "korean_name": "남아프리카공화국",
+        "english_name": "South Africa",
+        "country_code_3": "ZAF",
+        "country_code_2": "ZA"
+    },
+    "카자흐스탄": {
+        "korean_name": "카자흐스탄",
+        "english_name": "Kazakhstan",
+        "country_code_3": "KAZ",
+        "country_code_2": "KZ"
+    },
+    "KZ": {
+        "korean_name": "카자흐스탄",
+        "english_name": "Kazakhstan",
+        "country_code_3": "KAZ",
+        "country_code_2": "KZ"
+    },
+    "KAZ": {
+        "korean_name": "카자흐스탄",
+        "english_name": "Kazakhstan",
+        "country_code_3": "KAZ",
+        "country_code_2": "KZ"
+    },
+    "파키스탄": {
+        "korean_name": "파키스탄",
+        "english_name": "Pakistan",
+        "country_code_3": "PAK",
+        "country_code_2": "PK"
+    },
+    "PK": {
+        "korean_name": "파키스탄",
+        "english_name": "Pakistan",
+        "country_code_3": "PAK",
+        "country_code_2": "PK"
+    },
+    "PAK": {
+        "korean_name": "파키스탄",
+        "english_name": "Pakistan",
+        "country_code_3": "PAK",
+        "country_code_2": "PK"
+    },
+    "방글라데시": {
+        "korean_name": "방글라데시",
+        "english_name": "Bangladesh",
+        "country_code_3": "BGD",
+        "country_code_2": "BD"
+    },
+    "BD": {
+        "korean_name": "방글라데시",
+        "english_name": "Bangladesh",
+        "country_code_3": "BGD",
+        "country_code_2": "BD"
+    },
+    "BGD": {
+        "korean_name": "방글라데시",
+        "english_name": "Bangladesh",
+        "country_code_3": "BGD",
+        "country_code_2": "BD"
+    },
+    "네팔": {
+        "korean_name": "네팔",
+        "english_name": "Nepal",
+        "country_code_3": "NPL",
+        "country_code_2": "NP"
+    },
+    "NP": {
+        "korean_name": "네팔",
+        "english_name": "Nepal",
+        "country_code_3": "NPL",
+        "country_code_2": "NP"
+    },
+    "NPL": {
+        "korean_name": "네팔",
+        "english_name": "Nepal",
+        "country_code_3": "NPL",
+        "country_code_2": "NP"
+    },
+    "스리랑카": {
+        "korean_name": "스리랑카",
+        "english_name": "Sri Lanka",
+        "country_code_3": "LKA",
+        "country_code_2": "LK"
+    },
+    "LK": {
+        "korean_name": "스리랑카",
+        "english_name": "Sri Lanka",
+        "country_code_3": "LKA",
+        "country_code_2": "LK"
+    },
+    "LKA": {
+        "korean_name": "스리랑카",
+        "english_name": "Sri Lanka",
+        "country_code_3": "LKA",
+        "country_code_2": "LK"
+    },
+    "쿠웨이트": {
+        "korean_name": "쿠웨이트",
+        "english_name": "Kuwait",
+        "country_code_3": "KWT",
+        "country_code_2": "KW"
+    },
+    "KW": {
+        "korean_name": "쿠웨이트",
+        "english_name": "Kuwait",
+        "country_code_3": "KWT",
+        "country_code_2": "KW"
+    },
+    "KWT": {
+        "korean_name": "쿠웨이트",
+        "english_name": "Kuwait",
+        "country_code_3": "KWT",
+        "country_code_2": "KW"
+    },
+    "바레인": {
+        "korean_name": "바레인",
+        "english_name": "Bahrain",
+        "country_code_3": "BHR",
+        "country_code_2": "BH"
+    },
+    "BH": {
+        "korean_name": "바레인",
+        "english_name": "Bahrain",
+        "country_code_3": "BHR",
+        "country_code_2": "BH"
+    },
+    "BHR": {
+        "korean_name": "바레인",
+        "english_name": "Bahrain",
+        "country_code_3": "BHR",
+        "country_code_2": "BH"
+    },
+    "레바논": {
+        "korean_name": "레바논",
+        "english_name": "Lebanon",
+        "country_code_3": "LBN",
+        "country_code_2": "LB"
+    },
+    "LB": {
+        "korean_name": "레바논",
+        "english_name": "Lebanon",
+        "country_code_3": "LBN",
+        "country_code_2": "LB"
+    },
+    "LBN": {
+        "korean_name": "레바논",
+        "english_name": "Lebanon",
+        "country_code_3": "LBN",
+        "country_code_2": "LB"
+    },
+    "오만": {
+        "korean_name": "오만",
+        "english_name": "Oman",
+        "country_code_3": "OMN",
+        "country_code_2": "OM"
+    },
+    "OM": {
+        "korean_name": "오만",
+        "english_name": "Oman",
+        "country_code_3": "OMN",
+        "country_code_2": "OM"
+    },
+    "OMN": {
+        "korean_name": "오만",
+        "english_name": "Oman",
+        "country_code_3": "OMN",
+        "country_code_2": "OM"
+    },
+    "요르단": {
+        "korean_name": "요르단",
+        "english_name": "Jordan",
+        "country_code_3": "JOR",
+        "country_code_2": "JO"
+    },
+    "JO": {
+        "korean_name": "요르단",
+        "english_name": "Jordan",
+        "country_code_3": "JOR",
+        "country_code_2": "JO"
+    },
+    "JOR": {
+        "korean_name": "요르단",
+        "english_name": "Jordan",
+        "country_code_3": "JOR",
+        "country_code_2": "JO"
+    },
+    "미얀마": {
+        "korean_name": "미얀마",
+        "english_name": "Myanmar",
+        "country_code_3": "MMR",
+        "country_code_2": "MM"
+    },
+    "MM": {
+        "korean_name": "미얀마",
+        "english_name": "Myanmar",
+        "country_code_3": "MMR",
+        "country_code_2": "MM"
+    },
+    "MMR": {
+        "korean_name": "미얀마",
+        "english_name": "Myanmar",
+        "country_code_3": "MMR",
+        "country_code_2": "MM"
+    },
+    "몰디브": {
+        "korean_name": "몰디브",
+        "english_name": "Maldives",
+        "country_code_3": "MDV",
+        "country_code_2": "MV"
+    },
+    "MV": {
+        "korean_name": "몰디브",
+        "english_name": "Maldives",
+        "country_code_3": "MDV",
+        "country_code_2": "MV"
+    },
+    "MDV": {
+        "korean_name": "몰디브",
+        "english_name": "Maldives",
+        "country_code_3": "MDV",
+        "country_code_2": "MV"
+    },
+    "파나마": {
+        "korean_name": "파나마",
+        "english_name": "Panama",
+        "country_code_3": "PAN",
+        "country_code_2": "PA"
+    },
+    "PA": {
+        "korean_name": "파나마",
+        "english_name": "Panama",
+        "country_code_3": "PAN",
+        "country_code_2": "PA"
+    },
+    "PAN": {
+        "korean_name": "파나마",
+        "english_name": "Panama",
+        "country_code_3": "PAN",
+        "country_code_2": "PA"
+    },
+    "루마니아": {
+        "korean_name": "루마니아",
+        "english_name": "Romania",
+        "country_code_3": "ROU",
+        "country_code_2": "RO"
+    },
+    "RO": {
+        "korean_name": "루마니아",
+        "english_name": "Romania",
+        "country_code_3": "ROU",
+        "country_code_2": "RO"
+    },
+    "ROU": {
+        "korean_name": "루마니아",
+        "english_name": "Romania",
+        "country_code_3": "ROU",
+        "country_code_2": "RO"
+    },
+    "수단": {
+        "korean_name": "수단",
+        "english_name": "Sudan",
+        "country_code_3": "SDN",
+        "country_code_2": "SD"
+    },
+    "SD": {
+        "korean_name": "수단",
+        "english_name": "Sudan",
+        "country_code_3": "SDN",
+        "country_code_2": "SD"
+    },
+    "SDN": {
+        "korean_name": "수단",
+        "english_name": "Sudan",
+        "country_code_3": "SDN",
+        "country_code_2": "SD"
+    },
+    "우간다": {
+        "korean_name": "우간다",
+        "english_name": "Uganda",
+        "country_code_3": "UGA",
+        "country_code_2": "UG"
+    },
+    "UG": {
+        "korean_name": "우간다",
+        "english_name": "Uganda",
+        "country_code_3": "UGA",
+        "country_code_2": "UG"
+    },
+    "UGA": {
+        "korean_name": "우간다",
+        "english_name": "Uganda",
+        "country_code_3": "UGA",
+        "country_code_2": "UG"
+    },
+    "우즈베키스탄": {
+        "korean_name": "우즈베키스탄",
+        "english_name": "Uzbekistan",
+        "country_code_3": "UZB",
+        "country_code_2": "UZ"
+    },
+    "UZ": {
+        "korean_name": "우즈베키스탄",
+        "english_name": "Uzbekistan",
+        "country_code_3": "UZB",
+        "country_code_2": "UZ"
+    },
+    "UZB": {
+        "korean_name": "우즈베키스탄",
+        "english_name": "Uzbekistan",
+        "country_code_3": "UZB",
+        "country_code_2": "UZ"
+    },
+    "베네수엘라": {
+        "korean_name": "베네수엘라",
+        "english_name": "Venezuela",
+        "country_code_3": "VEN",
+        "country_code_2": "VE"
+    },
+    "VE": {
+        "korean_name": "베네수엘라",
+        "english_name": "Venezuela",
+        "country_code_3": "VEN",
+        "country_code_2": "VE"
+    },
+    "VEN": {
+        "korean_name": "베네수엘라",
+        "english_name": "Venezuela",
+        "country_code_3": "VEN",
+        "country_code_2": "VE"
+    },
+    "중앙아프리카 CFA 프랑": {
+        "korean_name": "중앙아프리카 CFA 프랑",
+        "english_name": "Central African CFA franc",
+        "country_code_3": "XAF",
+        "country_code_2": "XA"
+    },
+    "XAF": {
+        "korean_name": "중앙아프리카 CFA 프랑",
+        "english_name": "Central African CFA franc",
+        "country_code_3": "XAF",
+        "country_code_2": "XA"
+    },
+    "서아프리카 CFA 프랑": {
+        "korean_name": "서아프리카 CFA 프랑",
+        "english_name": "West African CFA franc",
+        "country_code_3": "XOF",
+        "country_code_2": "XW"
+    },
+    "XOF": {
+        "korean_name": "서아프리카 CFA 프랑",
+        "english_name": "West African CFA franc",
+        "country_code_3": "XOF",
+        "country_code_2": "XW"
+    },
+    "잠비아": {
+        "korean_name": "잠비아",
+        "english_name": "Zambia",
+        "country_code_3": "ZMB",
+        "country_code_2": "ZM"
+    },
+    "ZM": {
+        "korean_name": "잠비아",
+        "english_name": "Zambia",
+        "country_code_3": "ZMB",
+        "country_code_2": "ZM"
+    },
+    "ZMB": {
+        "korean_name": "잠비아",
+        "english_name": "Zambia",
+        "country_code_3": "ZMB",
+        "country_code_2": "ZM"
+    },
+    "케냐": {
+        "korean_name": "케냐",
+        "english_name": "Kenya",
+        "country_code_3": "KEN",
+        "country_code_2": "KE"
+    },
+    "KE": {
+        "korean_name": "케냐",
+        "english_name": "Kenya",
+        "country_code_3": "KEN",
+        "country_code_2": "KE"
+    },
+    "KEN": {
+        "korean_name": "케냐",
+        "english_name": "Kenya",
+        "country_code_3": "KEN",
+        "country_code_2": "KE"
+    },
+    "탄자니아": {
+        "korean_name": "탄자니아",
+        "english_name": "Tanzania",
+        "country_code_3": "TZA",
+        "country_code_2": "TZ"
+    },
+    "TZ": {
+        "korean_name": "탄자니아",
+        "english_name": "Tanzania",
+        "country_code_3": "TZA",
+        "country_code_2": "TZ"
+    },
+    "TZA": {
+        "korean_name": "탄자니아",
+        "english_name": "Tanzania",
+        "country_code_3": "TZA",
+        "country_code_2": "TZ"
+    },
+    "피지": {
+        "korean_name": "피지",
+        "english_name": "Fiji",
+        "country_code_3": "FJI",
+        "country_code_2": "FJ"
+    },
+    "FJ": {
+        "korean_name": "피지",
+        "english_name": "Fiji",
+        "country_code_3": "FJI",
+        "country_code_2": "FJ"
+    },
+    "FJI": {
+        "korean_name": "피지",
+        "english_name": "Fiji",
+        "country_code_3": "FJI",
+        "country_code_2": "FJ"
+    },
+    "리비아": {
+        "korean_name": "리비아",
+        "english_name": "Libya",
+        "country_code_3": "LBY",
+        "country_code_2": "LY"
+    },
+    "LY": {
+        "korean_name": "리비아",
+        "english_name": "Libya",
+        "country_code_3": "LBY",
+        "country_code_2": "LY"
+    },
+    "LBY": {
+        "korean_name": "리비아",
+        "english_name": "Libya",
+        "country_code_3": "LBY",
+        "country_code_2": "LY"
+    },
+    "에티오피아": {
+        "korean_name": "에티오피아",
+        "english_name": "Ethiopia",
+        "country_code_3": "ETH",
+        "country_code_2": "ET"
+    },
+    "ET": {
+        "korean_name": "에티오피아",
+        "english_name": "Ethiopia",
+        "country_code_3": "ETH",
+        "country_code_2": "ET"
+    },
+    "ETH": {
+        "korean_name": "에티오피아",
+        "english_name": "Ethiopia",
+        "country_code_3": "ETH",
+        "country_code_2": "ET"
+    },
+    "키프로스": {
+        "korean_name": "키프로스",
+        "english_name": "Cyprus",
+        "country_code_3": "CYP",
+        "country_code_2": "CY"
+    },
+    "CY": {
+        "korean_name": "키프로스",
+        "english_name": "Cyprus",
+        "country_code_3": "CYP",
+        "country_code_2": "CY"
+    },
+    "CYP": {
+        "korean_name": "키프로스",
+        "english_name": "Cyprus",
+        "country_code_3": "CYP",
+        "country_code_2": "CY"
+    },
+    "룩셈부르크": {
+        "korean_name": "룩셈부르크",
+        "english_name": "Luxembourg",
+        "country_code_3": "LUX",
+        "country_code_2": "LU"
+    },
+    "LU": {
+        "korean_name": "룩셈부르크",
+        "english_name": "Luxembourg",
+        "country_code_3": "LUX",
+        "country_code_2": "LU"
+    },
+    "LUX": {
+        "korean_name": "룩셈부르크",
+        "english_name": "Luxembourg",
+        "country_code_3": "LUX",
+        "country_code_2": "LU"
+    },
+    "몰타": {
+        "korean_name": "몰타",
+        "english_name": "Malta",
+        "country_code_3": "MLT",
+        "country_code_2": "MT"
+    },
+    "MT": {
+        "korean_name": "몰타",
+        "english_name": "Malta",
+        "country_code_3": "MLT",
+        "country_code_2": "MT"
+    },
+    "MLT": {
+        "korean_name": "몰타",
+        "english_name": "Malta",
+        "country_code_3": "MLT",
+        "country_code_2": "MT"
+    },
+    "알바니아": {
+        "korean_name": "알바니아",
+        "english_name": "Albania",
+        "country_code_3": "ALB",
+        "country_code_2": "AL"
+    },
+    "AL": {
+        "korean_name": "알바니아",
+        "english_name": "Albania",
+        "country_code_3": "ALB",
+        "country_code_2": "AL"
+    },
+    "ALB": {
+        "korean_name": "알바니아",
+        "english_name": "Albania",
+        "country_code_3": "ALB",
+        "country_code_2": "AL"
+    },
+    "아제르바이잔": {
+        "korean_name": "아제르바이잔",
+        "english_name": "Azerbaijan",
+        "country_code_3": "AZE",
+        "country_code_2": "AZ"
+    },
+    "AZ": {
+        "korean_name": "아제르바이잔",
+        "english_name": "Azerbaijan",
+        "country_code_3": "AZE",
+        "country_code_2": "AZ"
+    },
+    "AZE": {
+        "korean_name": "아제르바이잔",
+        "english_name": "Azerbaijan",
+        "country_code_3": "AZE",
+        "country_code_2": "AZ"
+    },
+    "벨라루스": {
+        "korean_name": "벨라루스",
+        "english_name": "Belarus",
+        "country_code_3": "BLR",
+        "country_code_2": "BY"
+    },
+    "BY": {
+        "korean_name": "벨라루스",
+        "english_name": "Belarus",
+        "country_code_3": "BLR",
+        "country_code_2": "BY"
+    },
+    "BLR": {
+        "korean_name": "벨라루스",
+        "english_name": "Belarus",
+        "country_code_3": "BLR",
+        "country_code_2": "BY"
+    },
+    "보스니아 헤르체고비나": {
+        "korean_name": "보스니아 헤르체고비나",
+        "english_name": "Bosnia and Herzegovina",
+        "country_code_3": "BIH",
+        "country_code_2": "BA"
+    },
+    "BA": {
+        "korean_name": "보스니아 헤르체고비나",
+        "english_name": "Bosnia and Herzegovina",
+        "country_code_3": "BIH",
+        "country_code_2": "BA"
+    },
+    "BIH": {
+        "korean_name": "보스니아 헤르체고비나",
+        "english_name": "Bosnia and Herzegovina",
+        "country_code_3": "BIH",
+        "country_code_2": "BA"
+    },
+    "알제리": {
+        "korean_name": "알제리",
+        "english_name": "Algeria",
+        "country_code_3": "DZA",
+        "country_code_2": "DZ"
+    },
+    "DZ": {
+        "korean_name": "알제리",
+        "english_name": "Algeria",
+        "country_code_3": "DZA",
+        "country_code_2": "DZ"
+    },
+    "DZA": {
+        "korean_name": "알제리",
+        "english_name": "Algeria",
+        "country_code_3": "DZA",
+        "country_code_2": "DZ"
+    },
+    "키르기스스탄": {
+        "korean_name": "키르기스스탄",
+        "english_name": "Kyrgyzstan",
+        "country_code_3": "KGZ",
+        "country_code_2": "KG"
+    },
+    "KG": {
+        "korean_name": "키르기스스탄",
+        "english_name": "Kyrgyzstan",
+        "country_code_3": "KGZ",
+        "country_code_2": "KG"
+    },
+    "KGZ": {
+        "korean_name": "키르기스스탄",
+        "english_name": "Kyrgyzstan",
+        "country_code_3": "KGZ",
+        "country_code_2": "KG"
+    },
+    "몰도바": {
+        "korean_name": "몰도바",
+        "english_name": "Moldova",
+        "country_code_3": "MDA",
+        "country_code_2": "MD"
+    },
+    "MD": {
+        "korean_name": "몰도바",
+        "english_name": "Moldova",
+        "country_code_3": "MDA",
+        "country_code_2": "MD"
+    },
+    "MDA": {
+        "korean_name": "몰도바",
+        "english_name": "Moldova",
+        "country_code_3": "MDA",
+        "country_code_2": "MD"
+    },
+    "몬테네그로": {
+        "korean_name": "몬테네그로",
+        "english_name": "Montenegro",
+        "country_code_3": "MNE",
+        "country_code_2": "ME"
+    },
+    "ME": {
+        "korean_name": "몬테네그로",
+        "english_name": "Montenegro",
+        "country_code_3": "MNE",
+        "country_code_2": "ME"
+    },
+    "MNE": {
+        "korean_name": "몬테네그로",
+        "english_name": "Montenegro",
+        "country_code_3": "MNE",
+        "country_code_2": "ME"
+    },
+    "북마케도니아": {
+        "korean_name": "북마케도니아",
+        "english_name": "North Macedonia",
+        "country_code_3": "MKD",
+        "country_code_2": "MK"
+    },
+    "MK": {
+        "korean_name": "북마케도니아",
+        "english_name": "North Macedonia",
+        "country_code_3": "MKD",
+        "country_code_2": "MK"
+    },
+    "MKD": {
+        "korean_name": "북마케도니아",
+        "english_name": "North Macedonia",
+        "country_code_3": "MKD",
+        "country_code_2": "MK"
+    },
+    "팔레스타인": {
+        "korean_name": "팔레스타인",
+        "english_name": "Palestine, State of",
+        "country_code_3": "PSE",
+        "country_code_2": "PS"
+    },
+    "PS": {
+        "korean_name": "팔레스타인",
+        "english_name": "Palestine, State of",
+        "country_code_3": "PSE",
+        "country_code_2": "PS"
+    },
+    "PSE": {
+        "korean_name": "팔레스타인",
+        "english_name": "Palestine, State of",
+        "country_code_3": "PSE",
+        "country_code_2": "PS"
+    },
+    "산마리노": {
+        "korean_name": "산마리노",
+        "english_name": "San Marino",
+        "country_code_3": "SMR",
+        "country_code_2": "SM"
+    },
+    "SM": {
+        "korean_name": "산마리노",
+        "english_name": "San Marino",
+        "country_code_3": "SMR",
+        "country_code_2": "SM"
+    },
+    "SMR": {
+        "korean_name": "산마리노",
+        "english_name": "San Marino",
+        "country_code_3": "SMR",
+        "country_code_2": "SM"
+    },
+    "타지키스탄": {
+        "korean_name": "타지키스탄",
+        "english_name": "Tajikistan",
+        "country_code_3": "TJK",
+        "country_code_2": "TJ"
+    },
+    "TJ": {
+        "korean_name": "타지키스탄",
+        "english_name": "Tajikistan",
+        "country_code_3": "TJK",
+        "country_code_2": "TJ"
+    },
+    "TJK": {
+        "korean_name": "타지키스탄",
+        "english_name": "Tajikistan",
+        "country_code_3": "TJK",
+        "country_code_2": "TJ"
+    },
+    "투르크메니스탄": {
+        "korean_name": "투르크메니스탄",
+        "english_name": "Turkmenistan",
+        "country_code_3": "TKM",
+        "country_code_2": "TM"
+    },
+    "TM": {
+        "korean_name": "투르크메니스탄",
+        "english_name": "Turkmenistan",
+        "country_code_3": "TKM",
+        "country_code_2": "TM"
+    },
+    "TKM": {
+        "korean_name": "투르크메니스탄",
+        "english_name": "Turkmenistan",
+        "country_code_3": "TKM",
+        "country_code_2": "TM"
+    },
+    "미국령 군소 제도": {
+        "korean_name": "미국령 군소 제도",
+        "english_name": "United States Minor Outlying Islands",
+        "country_code_3": "UMI",
+        "country_code_2": "UM"
+    },
+    "UM": {
+        "korean_name": "미국령 군소 제도",
+        "english_name": "United States Minor Outlying Islands",
+        "country_code_3": "UMI",
+        "country_code_2": "UM"
+    },
+    "UMI": {
+        "korean_name": "미국령 군소 제도",
+        "english_name": "United States Minor Outlying Islands",
+        "country_code_3": "UMI",
+        "country_code_2": "UM"
+    },
+    "바티칸 시국": {
+        "korean_name": "바티칸 시국",
+        "english_name": "Vatican City",
+        "country_code_3": "VAT",
+        "country_code_2": "VA"
+    },
+    "VA": {
+        "korean_name": "바티칸 시국",
+        "english_name": "Vatican City",
+        "country_code_3": "VAT",
+        "country_code_2": "VA"
+    },
+    "VAT": {
+        "korean_name": "바티칸 시국",
+        "english_name": "Vatican City",
+        "country_code_3": "VAT",
+        "country_code_2": "VA"
+    },
+    "코소보": {
+        "korean_name": "코소보",
+        "english_name": "Kosovo",
+        "country_code_3": "XKX",
+        "country_code_2": "XK"
+    },
+    "XK": {
+        "korean_name": "코소보",
+        "english_name": "Kosovo",
+        "country_code_3": "XKX",
+        "country_code_2": "XK"
+    },
+    "XKX": {
+        "korean_name": "코소보",
+        "english_name": "Kosovo",
+        "country_code_3": "XKX",
+        "country_code_2": "XK"
+    },
+    "예멘": {
+        "korean_name": "예멘",
+        "english_name": "Yemen",
+        "country_code_3": "YEM",
+        "country_code_2": "YE"
+    },
+    "YE": {
+        "korean_name": "예멘",
+        "english_name": "Yemen",
+        "country_code_3": "YEM",
+        "country_code_2": "YE"
+    },
+    "YEM": {
+        "korean_name": "예멘",
+        "english_name": "Yemen",
+        "country_code_3": "YEM",
+        "country_code_2": "YE"
+    },
+    "안도라": {
+        "korean_name": "안도라",
+        "english_name": "Andorra",
+        "country_code_3": "AND",
+        "country_code_2": "AD"
+    },
+    "AD": {
+        "korean_name": "안도라",
+        "english_name": "Andorra",
+        "country_code_3": "AND",
+        "country_code_2": "AD"
+    },
+    "AND": {
+        "korean_name": "안도라",
+        "english_name": "Andorra",
+        "country_code_3": "AND",
+        "country_code_2": "AD"
+    },
+    "부베섬": {
+        "korean_name": "부베섬",
+        "english_name": "Bouvet Island",
+        "country_code_3": "BVT",
+        "country_code_2": "BV"
+    },
+    "BV": {
+        "korean_name": "부베섬",
+        "english_name": "Bouvet Island",
+        "country_code_3": "BVT",
+        "country_code_2": "BV"
+    },
+    "BVT": {
+        "korean_name": "부베섬",
+        "english_name": "Bouvet Island",
+        "country_code_3": "BVT",
+        "country_code_2": "BV"
+    },
+    "크리스마스섬": {
+        "korean_name": "크리스마스섬",
+        "english_name": "Christmas Island",
+        "country_code_3": "CXR",
+        "country_code_2": "CX"
+    },
+    "CX": {
+        "korean_name": "크리스마스섬",
+        "english_name": "Christmas Island",
+        "country_code_3": "CXR",
+        "country_code_2": "CX"
+    },
+    "CXR": {
+        "korean_name": "크리스마스섬",
+        "english_name": "Christmas Island",
+        "country_code_3": "CXR",
+        "country_code_2": "CX"
+    },
+    "코코스 제도": {
+        "korean_name": "코코스 제도",
+        "english_name": "Cocos (Keeling) Islands",
+        "country_code_3": "CCK",
+        "country_code_2": "CC"
+    },
+    "CC": {
+        "korean_name": "코코스 제도",
+        "english_name": "Cocos (Keeling) Islands",
+        "country_code_3": "CCK",
+        "country_code_2": "CC"
+    },
+    "CCK": {
+        "korean_name": "코코스 제도",
+        "english_name": "Cocos (Keeling) Islands",
+        "country_code_3": "CCK",
+        "country_code_2": "CC"
+    },
+    "쿡 제도": {
+        "korean_name": "쿡 제도",
+        "english_name": "Cook Islands",
+        "country_code_3": "COK",
+        "country_code_2": "CK"
+    },
+    "CK": {
+        "korean_name": "쿡 제도",
+        "english_name": "Cook Islands",
+        "country_code_3": "COK",
+        "country_code_2": "CK"
+    },
+    "COK": {
+        "korean_name": "쿡 제도",
+        "english_name": "Cook Islands",
+        "country_code_3": "COK",
+        "country_code_2": "CK"
+    },
+    "페로 제도": {
+        "korean_name": "페로 제도",
+        "english_name": "Faroe Islands",
+        "country_code_3": "FRO",
+        "country_code_2": "FO"
+    },
+    "FO": {
+        "korean_name": "페로 제도",
+        "english_name": "Faroe Islands",
+        "country_code_3": "FRO",
+        "country_code_2": "FO"
+    },
+    "FRO": {
+        "korean_name": "페로 제도",
+        "english_name": "Faroe Islands",
+        "country_code_3": "FRO",
+        "country_code_2": "FO"
+    },
+    "지브롤터": {
+        "korean_name": "지브롤터",
+        "english_name": "Gibraltar",
+        "country_code_3": "GIB",
+        "country_code_2": "GI"
+    },
+    "GI": {
+        "korean_name": "지브롤터",
+        "english_name": "Gibraltar",
+        "country_code_3": "GIB",
+        "country_code_2": "GI"
+    },
+    "GIB": {
+        "korean_name": "지브롤터",
+        "english_name": "Gibraltar",
+        "country_code_3": "GIB",
+        "country_code_2": "GI"
+    },
+    "그린란드": {
+        "korean_name": "그린란드",
+        "english_name": "Greenland",
+        "country_code_3": "GRL",
+        "country_code_2": "GL"
+    },
+    "GL": {
+        "korean_name": "그린란드",
+        "english_name": "Greenland",
+        "country_code_3": "GRL",
+        "country_code_2": "GL"
+    },
+    "GRL": {
+        "korean_name": "그린란드",
+        "english_name": "Greenland",
+        "country_code_3": "GRL",
+        "country_code_2": "GL"
+    },
+    "사우스조지아 사우스샌드위치 제도": {
+        "korean_name": "사우스조지아 사우스샌드위치 제도",
+        "english_name": "South Georgia and the South Sandwich Islands",
+        "country_code_3": "SGS",
+        "country_code_2": "GS"
+    },
+    "GS": {
+        "korean_name": "사우스조지아 사우스샌드위치 제도",
+        "english_name": "South Georgia and the South Sandwich Islands",
+        "country_code_3": "SGS",
+        "country_code_2": "GS"
+    },
+    "SGS": {
+        "korean_name": "사우스조지아 사우스샌드위치 제도",
+        "english_name": "South Georgia and the South Sandwich Islands",
+        "country_code_3": "SGS",
+        "country_code_2": "GS"
+    },
+    "괌": {
+        "korean_name": "괌",
+        "english_name": "Guam",
+        "country_code_3": "GUM",
+        "country_code_2": "GU"
+    },
+    "GU": {
+        "korean_name": "괌",
+        "english_name": "Guam",
+        "country_code_3": "GUM",
+        "country_code_2": "GU"
+    },
+    "GUM": {
+        "korean_name": "괌",
+        "english_name": "Guam",
+        "country_code_3": "GUM",
+        "country_code_2": "GU"
+    },
+    "허드 맥도널드 제도": {
+        "korean_name": "허드 맥도널드 제도",
+        "english_name": "Heard Island and McDonald Islands",
+        "country_code_3": "HMD",
+        "country_code_2": "HM"
+    },
+    "HM": {
+        "korean_name": "허드 맥도널드 제도",
+        "english_name": "Heard Island and McDonald Islands",
+        "country_code_3": "HMD",
+        "country_code_2": "HM"
+    },
+    "HMD": {
+        "korean_name": "허드 맥도널드 제도",
+        "english_name": "Heard Island and McDonald Islands",
+        "country_code_3": "HMD",
+        "country_code_2": "HM"
+    },
+    "영국령 인도양 지역": {
+        "korean_name": "영국령 인도양 지역",
+        "english_name": "British Indian Ocean Territory",
+        "country_code_3": "IOT",
+        "country_code_2": "IO"
+    },
+    "IO": {
+        "korean_name": "영국령 인도양 지역",
+        "english_name": "British Indian Ocean Territory",
+        "country_code_3": "IOT",
+        "country_code_2": "IO"
+    },
+    "IOT": {
+        "korean_name": "영국령 인도양 지역",
+        "english_name": "British Indian Ocean Territory",
+        "country_code_3": "IOT",
+        "country_code_2": "IO"
+    },
+    "키리바시": {
+        "korean_name": "키리바시",
+        "english_name": "Kiribati",
+        "country_code_3": "KIR",
+        "country_code_2": "KI"
+    },
+    "KI": {
+        "korean_name": "키리바시",
+        "english_name": "Kiribati",
+        "country_code_3": "KIR",
+        "country_code_2": "KI"
+    },
+    "KIR": {
+        "korean_name": "키리바시",
+        "english_name": "Kiribati",
+        "country_code_3": "KIR",
+        "country_code_2": "KI"
+    },
+    "생마르탱": {
+        "korean_name": "생마르탱",
+        "english_name": "Saint Martin (French part)",
+        "country_code_3": "MAF",
+        "country_code_2": "MF"
+    },
+    "MF": {
+        "korean_name": "생마르탱",
+        "english_name": "Saint Martin (French part)",
+        "country_code_3": "MAF",
+        "country_code_2": "MF"
+    },
+    "MAF": {
+        "korean_name": "생마르탱",
+        "english_name": "Saint Martin (French part)",
+        "country_code_3": "MAF",
+        "country_code_2": "MF"
+    },
+    "마셜 제도": {
+        "korean_name": "마셜 제도",
+        "english_name": "Marshall Islands",
+        "country_code_3": "MHL",
+        "country_code_2": "MH"
+    },
+    "MH": {
+        "korean_name": "마셜 제도",
+        "english_name": "Marshall Islands",
+        "country_code_3": "MHL",
+        "country_code_2": "MH"
+    },
+    "MHL": {
+        "korean_name": "마셜 제도",
+        "english_name": "Marshall Islands",
+        "country_code_3": "MHL",
+        "country_code_2": "MH"
+    },
+    "북마리아나 제도": {
+        "korean_name": "북마리아나 제도",
+        "english_name": "Northern Mariana Islands",
+        "country_code_3": "MNP",
+        "country_code_2": "MP"
+    },
+    "MP": {
+        "korean_name": "북마리아나 제도",
+        "english_name": "Northern Mariana Islands",
+        "country_code_3": "MNP",
+        "country_code_2": "MP"
+    },
+    "MNP": {
+        "korean_name": "북마리아나 제도",
+        "english_name": "Northern Mariana Islands",
+        "country_code_3": "MNP",
+        "country_code_2": "MP"
+    },
+    "노퍽섬": {
+        "korean_name": "노퍽섬",
+        "english_name": "Norfolk Island",
+        "country_code_3": "NFK",
+        "country_code_2": "NF"
+    },
+    "NF": {
+        "korean_name": "노퍽섬",
+        "english_name": "Norfolk Island",
+        "country_code_3": "NFK",
+        "country_code_2": "NF"
+    },
+    "NFK": {
+        "korean_name": "노퍽섬",
+        "english_name": "Norfolk Island",
+        "country_code_3": "NFK",
+        "country_code_2": "NF"
+    },
+    "나우루": {
+        "korean_name": "나우루",
+        "english_name": "Nauru",
+        "country_code_3": "NRU",
+        "country_code_2": "NR"
+    },
+    "NR": {
+        "korean_name": "나우루",
+        "english_name": "Nauru",
+        "country_code_3": "NRU",
+        "country_code_2": "NR"
+    },
+    "NRU": {
+        "korean_name": "나우루",
+        "english_name": "Nauru",
+        "country_code_3": "NRU",
+        "country_code_2": "NR"
+    },
+    "니우에": {
+        "korean_name": "니우에",
+        "english_name": "Niue",
+        "country_code_3": "NIU",
+        "country_code_2": "NU"
+    },
+    "NU": {
+        "korean_name": "니우에",
+        "english_name": "Niue",
+        "country_code_3": "NIU",
+        "country_code_2": "NU"
+    },
+    "NIU": {
+        "korean_name": "니우에",
+        "english_name": "Niue",
+        "country_code_3": "NIU",
+        "country_code_2": "NU"
+    },
+    "프랑스령 폴리네시아": {
+        "korean_name": "프랑스령 폴리네시아",
+        "english_name": "French Polynesia",
+        "country_code_3": "PYF",
+        "country_code_2": "PF"
+    },
+    "PF": {
+        "korean_name": "프랑스령 폴리네시아",
+        "english_name": "French Polynesia",
+        "country_code_3": "PYF",
+        "country_code_2": "PF"
+    },
+    "PYF": {
+        "korean_name": "프랑스령 폴리네시아",
+        "english_name": "French Polynesia",
+        "country_code_3": "PYF",
+        "country_code_2": "PF"
+    },
+    "핏케언 제도": {
+        "korean_name": "핏케언 제도",
+        "english_name": "Pitcairn",
+        "country_code_3": "PCN",
+        "country_code_2": "PN"
+    },
+    "PN": {
+        "korean_name": "핏케언 제도",
+        "english_name": "Pitcairn",
+        "country_code_3": "PCN",
+        "country_code_2": "PN"
+    },
+    "PCN": {
+        "korean_name": "핏케언 제도",
+        "english_name": "Pitcairn",
+        "country_code_3": "PCN",
+        "country_code_2": "PN"
+    },
+    "푸에르토리코": {
+        "korean_name": "푸에르토리코",
+        "english_name": "Puerto Rico",
+        "country_code_3": "PRI",
+        "country_code_2": "PR"
+    },
+    "PR": {
+        "korean_name": "푸에르토리코",
+        "english_name": "Puerto Rico",
+        "country_code_3": "PRI",
+        "country_code_2": "PR"
+    },
+    "PRI": {
+        "korean_name": "푸에르토리코",
+        "english_name": "Puerto Rico",
+        "country_code_3": "PRI",
+        "country_code_2": "PR"
+    },
+    "팔라우": {
+        "korean_name": "팔라우",
+        "english_name": "Palau",
+        "country_code_3": "PLW",
+        "country_code_2": "PW"
+    },
+    "PW": {
+        "korean_name": "팔라우",
+        "english_name": "Palau",
+        "country_code_3": "PLW",
+        "country_code_2": "PW"
+    },
+    "PLW": {
+        "korean_name": "팔라우",
+        "english_name": "Palau",
+        "country_code_3": "PLW",
+        "country_code_2": "PW"
+    },
+    "솔로몬 제도": {
+        "korean_name": "솔로몬 제도",
+        "english_name": "Solomon Islands",
+        "country_code_3": "SLB",
+        "country_code_2": "SB"
+    },
+    "SB": {
+        "korean_name": "솔로몬 제도",
+        "english_name": "Solomon Islands",
+        "country_code_3": "SLB",
+        "country_code_2": "SB"
+    },
+    "SLB": {
+        "korean_name": "솔로몬 제도",
+        "english_name": "Solomon Islands",
+        "country_code_3": "SLB",
+        "country_code_2": "SB"
+    },
+    "세이셸": {
+        "korean_name": "세이셸",
+        "english_name": "Seychelles",
+        "country_code_3": "SYC",
+        "country_code_2": "SC"
+    },
+    "SC": {
+        "korean_name": "세이셸",
+        "english_name": "Seychelles",
+        "country_code_3": "SYC",
+        "country_code_2": "SC"
+    },
+    "SYC": {
+        "korean_name": "세이셸",
+        "english_name": "Seychelles",
+        "country_code_3": "SYC",
+        "country_code_2": "SC"
+    },
+    "세인트헬레나": {
+        "korean_name": "세인트헬레나",
+        "english_name": "Saint Helena, Ascension and Tristan da Cunha",
+        "country_code_3": "SHN",
+        "country_code_2": "SH"
+    },
+    "SH": {
+        "korean_name": "세인트헬레나",
+        "english_name": "Saint Helena, Ascension and Tristan da Cunha",
+        "country_code_3": "SHN",
+        "country_code_2": "SH"
+    },
+    "SHN": {
+        "korean_name": "세인트헬레나",
+        "english_name": "Saint Helena, Ascension and Tristan da Cunha",
+        "country_code_3": "SHN",
+        "country_code_2": "SH"
+    },
+    "스발바르 얀마옌 제도": {
+        "korean_name": "스발바르 얀마옌 제도",
+        "english_name": "Svalbard and Jan Mayen",
+        "country_code_3": "SJM",
+        "country_code_2": "SJ"
+    },
+    "SJ": {
+        "korean_name": "스발바르 얀마옌 제도",
+        "english_name": "Svalbard and Jan Mayen",
+        "country_code_3": "SJM",
+        "country_code_2": "SJ"
+    },
+    "SJM": {
+        "korean_name": "스발바르 얀마옌 제도",
+        "english_name": "Svalbard and Jan Mayen",
+        "country_code_3": "SJM",
+        "country_code_2": "SJ"
+    },
+    "남수단": {
+        "korean_name": "남수단",
+        "english_name": "South Sudan",
+        "country_code_3": "SSD",
+        "country_code_2": "SS"
+    },
+    "SS": {
+        "korean_name": "남수단",
+        "english_name": "South Sudan",
+        "country_code_3": "SSD",
+        "country_code_2": "SS"
+    },
+    "SSD": {
+        "korean_name": "남수단",
+        "english_name": "South Sudan",
+        "country_code_3": "SSD",
+        "country_code_2": "SS"
+    },
+    "상투메 프린시페": {
+        "korean_name": "상투메 프린시페",
+        "english_name": "Sao Tome and Principe",
+        "country_code_3": "STP",
+        "country_code_2": "ST"
+    },
+    "ST": {
+        "korean_name": "상투메 프린시페",
+        "english_name": "Sao Tome and Principe",
+        "country_code_3": "STP",
+        "country_code_2": "ST"
+    },
+    "STP": {
+        "korean_name": "상투메 프린시페",
+        "english_name": "Sao Tome and Principe",
+        "country_code_3": "STP",
+        "country_code_2": "ST"
+    },
+    "신트마르턴": {
+        "korean_name": "신트마르턴",
+        "english_name": "Sint Maarten (Dutch part)",
+        "country_code_3": "SXM",
+        "country_code_2": "SX"
+    },
+    "SX": {
+        "korean_name": "신트마르턴",
+        "english_name": "Sint Maarten (Dutch part)",
+        "country_code_3": "SXM",
+        "country_code_2": "SX"
+    },
+    "SXM": {
+        "korean_name": "신트마르턴",
+        "english_name": "Sint Maarten (Dutch part)",
+        "country_code_3": "SXM",
+        "country_code_2": "SX"
+    },
+    "터크스 케이커스 제도": {
+        "korean_name": "터크스 케이커스 제도",
+        "english_name": "Turks and Caicos Islands",
+        "country_code_3": "TCA",
+        "country_code_2": "TC"
+    },
+    "TC": {
+        "korean_name": "터크스 케이커스 제도",
+        "english_name": "Turks and Caicos Islands",
+        "country_code_3": "TCA",
+        "country_code_2": "TC"
+    },
+    "TCA": {
+        "korean_name": "터크스 케이커스 제도",
+        "english_name": "Turks and Caicos Islands",
+        "country_code_3": "TCA",
+        "country_code_2": "TC"
+    },
+    "프랑스령 남부 지역": {
+        "korean_name": "프랑스령 남부 지역",
+        "english_name": "French Southern Territories",
+        "country_code_3": "ATF",
+        "country_code_2": "TF"
+    },
+    "TF": {
+        "korean_name": "프랑스령 남부 지역",
+        "english_name": "French Southern Territories",
+        "country_code_3": "ATF",
+        "country_code_2": "TF"
+    },
+    "ATF": {
+        "korean_name": "프랑스령 남부 지역",
+        "english_name": "French Southern Territories",
+        "country_code_3": "ATF",
+        "country_code_2": "TF"
+    },
+    "토켈라우": {
+        "korean_name": "토켈라우",
+        "english_name": "Tokelau",
+        "country_code_3": "TKL",
+        "country_code_2": "TK"
+    },
+    "TK": {
+        "korean_name": "토켈라우",
+        "english_name": "Tokelau",
+        "country_code_3": "TKL",
+        "country_code_2": "TK"
+    },
+    "TKL": {
+        "korean_name": "토켈라우",
+        "english_name": "Tokelau",
+        "country_code_3": "TKL",
+        "country_code_2": "TK"
+    },
+    "동티모르": {
+        "korean_name": "동티모르",
+        "english_name": "Timor-Leste",
+        "country_code_3": "TLS",
+        "country_code_2": "TL"
+    },
+    "TL": {
+        "korean_name": "동티모르",
+        "english_name": "Timor-Leste",
+        "country_code_3": "TLS",
+        "country_code_2": "TL"
+    },
+    "TLS": {
+        "korean_name": "동티모르",
+        "english_name": "Timor-Leste",
+        "country_code_3": "TLS",
+        "country_code_2": "TL"
+    },
+    "통가": {
+        "korean_name": "통가",
+        "english_name": "Tonga",
+        "country_code_3": "TON",
+        "country_code_2": "TO"
+    },
+    "TO": {
+        "korean_name": "통가",
+        "english_name": "Tonga",
+        "country_code_3": "TON",
+        "country_code_2": "TO"
+    },
+    "TON": {
+        "korean_name": "통가",
+        "english_name": "Tonga",
+        "country_code_3": "TON",
+        "country_code_2": "TO"
+    },
+    "투발루": {
+        "korean_name": "투발루",
+        "english_name": "Tuvalu",
+        "country_code_3": "TUV",
+        "country_code_2": "TV"
+    },
+    "TV": {
+        "korean_name": "투발루",
+        "english_name": "Tuval",
+        "country_code_3": "TUV",
+        "country_code_2": "TV"
+    },
+    "TUV": {
+        "korean_name": "투발루",
+        "english_name": "Tuvalu",
+        "country_code_3": "TUV",
+        "country_code_2": "TV"
+    },
+    "바누아투": {
+        "korean_name": "바누아투",
+        "english_name": "Vanuatu",
+        "country_code_3": "VUT",
+        "country_code_2": "VU"
+    },
+    "VU": {
+        "korean_name": "바누아투",
+        "english_name": "Vanuatu",
+        "country_code_3": "VUT",
+        "country_code_2": "VU"
+    },
+    "VUT": {
+        "korean_name": "바누아투",
+        "english_name": "Vanuatu",
+        "country_code_3": "VUT",
+        "country_code_2": "VU"
+    },
+    "왈리스 푸투나": {
+        "korean_name": "왈리스 푸투나",
+        "english_name": "Wallis and Futuna",
+        "country_code_3": "WLF",
+        "country_code_2": "WF"
+    },
+    "WF": {
+        "korean_name": "왈리스 푸투나",
+        "english_name": "Wallis and Futuna",
+        "country_code_3": "WLF",
+        "country_code_2": "WF"
+    },
+    "WLF": {
+        "korean_name": "왈리스 푸투나",
+        "english_name": "Wallis and Futuna",
+        "country_code_3": "WLF",
+        "country_code_2": "WF"
+    },
+    "사모아": {
+        "korean_name": "사모아",
+        "english_name": "Samoa",
+        "country_code_3": "WSM",
+        "country_code_2": "WS"
+    },
+    "WS": {
+        "korean_name": "사모아",
+        "english_name": "Samoa",
+        "country_code_3": "WSM",
+        "country_code_2": "WS"
+    },
+    "WSM": {
+        "korean_name": "사모아",
+        "english_name": "Samoa",
+        "country_code_3": "WSM",
+        "country_code_2": "WS"
+    },
+    "서사하라": {
+        "korean_name": "서사하라",
+        "english_name": "Western Sahara",
+        "country_code_3": "ESH",
+        "country_code_2": "EH"
+    },
+    "EH": {
+        "korean_name": "서사하라",
+        "english_name": "Western Sahara",
+        "country_code_3": "ESH",
+        "country_code_2": "EH"
+    },
+    "ESH": {
+        "korean_name": "서사하라",
+        "english_name": "Western Sahara",
+        "country_code_3": "ESH",
+        "country_code_2": "EH"
+    },
+    "가봉": {
+        "korean_name": "가봉",
+        "english_name": "Gabon",
+        "country_code_3": "GAB",
+        "country_code_2": "GA"
+    },
+    "GA": {
+        "korean_name": "가봉",
+        "english_name": "Gabon",
+        "country_code_3": "GAB",
+        "country_code_2": "GA"
+    },
+    "GAB": {
+        "korean_name": "가봉",
+        "english_name": "Gabon",
+        "country_code_3": "GAB",
+        "country_code_2": "GA"
+    },
+    "기니": {
+        "korean_name": "기니",
+        "english_name": "Guinea",
+        "country_code_3": "GIN",
+        "country_code_2": "GN"
+    },
+    "GN": {
+        "korean_name": "기니",
+        "english_name": "Guinea",
+        "country_code_3": "GIN",
+        "country_code_2": "GN"
+    },
+    "GIN": {
+        "korean_name": "기니",
+        "english_name": "Guinea",
+        "country_code_3": "GIN",
+        "country_code_2": "GN"
+    },
+    "기니비사우": {
+        "korean_name": "기니비사우",
+        "english_name": "Guinea-Bissau",
+        "country_code_3": "GNB",
+        "country_code_2": "GW"
+    },
+    "GW": {
+        "korean_name": "기니비사우",
+        "english_name": "Guinea-Bissau",
+        "country_code_3": "GNB",
+        "country_code_2": "GW"
+    },
+    "GNB": {
+        "korean_name": "기니비사우",
+        "english_name": "Guinea-Bissau",
+        "country_code_3": "GNB",
+        "country_code_2": "GW"
+    },
+    "가이아나": {
+        "korean_name": "가이아나",
+        "english_name": "Guyana",
+        "country_code_3": "GUY",
+        "country_code_2": "GY"
+    },
+    "GY": {
+        "korean_name": "가이아나",
+        "english_name": "Guyana",
+        "country_code_3": "GUY",
+        "country_code_2": "GY"
+    },
+    "GUY": {
+        "korean_name": "가이아나",
+        "english_name": "Guyana",
+        "country_code_3": "GUY",
+        "country_code_2": "GY"
+    },
+    "아이티": {
+        "korean_name": "아이티",
+        "english_name": "Haiti",
+        "country_code_3": "HTI",
+        "country_code_2": "HT"
+    },
+    "HT": {
+        "korean_name": "아이티",
+        "english_name": "Haiti",
+        "country_code_3": "HTI",
+        "country_code_2": "HT"
+    },
+    "HTI": {
+        "korean_name": "아이티",
+        "english_name": "Haiti",
+        "country_code_3": "HTI",
+        "country_code_2": "HT"
+    },
+    "코트디부아르": {
+        "korean_name": "코트디부아르",
+        "english_name": "Cote d'Ivoire",
+        "country_code_3": "CIV",
+        "country_code_2": "CI"
+    },
+    "CI": {
+        "korean_name": "코트디부아르",
+        "english_name": "Cote d'Ivoire",
+        "country_code_3": "CIV",
+        "country_code_2": "CI"
+    },
+    "CIV": {
+        "korean_name": "코트디부아르",
+        "english_name": "Cote d'Ivoire",
+        "country_code_3": "CIV",
+        "country_code_2": "CI"
+    },
+    "카메룬": {
+        "korean_name": "카메룬",
+        "english_name": "Cameroon",
+        "country_code_3": "CMR",
+        "country_code_2": "CM"
+    },
+    "CM": {
+        "korean_name": "카메룬",
+        "english_name": "Cameroon",
+        "country_code_3": "CMR",
+        "country_code_2": "CM"
+    },
+    "CMR": {
+        "korean_name": "카메룬",
+        "english_name": "Cameroon",
+        "country_code_3": "CMR",
+        "country_code_2": "CM"
+    },
+    "콩고": {
+        "korean_name": "콩고",
+        "english_name": "Congo",
+        "country_code_3": "COG",
+        "country_code_2": "CG"
+    },
+    "CG": {
+        "korean_name": "콩고",
+        "english_name": "Congo",
+        "country_code_3": "COG",
+        "country_code_2": "CG"
+    },
+    "COG": {
+        "korean_name": "콩고",
+        "english_name": "Congo",
+        "country_code_3": "COG",
+        "country_code_2": "CG"
+    },
+    "콩고 민주 공화국": {
+        "korean_name": "콩고 민주 공화국",
+        "english_name": "Congo, The Democratic Republic of the",
+        "country_code_3": "COD",
+        "country_code_2": "CD"
+    },
+    "CD": {
+        "korean_name": "콩고 민주 공화국",
+        "english_name": "Congo, The Democratic Republic of the",
+        "country_code_3": "COD",
+        "country_code_2": "CD"
+    },
+    "COD": {
+        "korean_name": "콩고 민주 공화국",
+        "english_name": "Congo, The Democratic Republic of the",
+        "country_code_3": "COD",
+        "country_code_2": "CD"
+    },
+    "코모로": {
+        "korean_name": "코모로",
+        "english_name": "Comoros",
+        "country_code_3": "COM",
+        "country_code_2": "KM"
+    },
+    "KM": {
+        "korean_name": "코모로",
+        "english_name": "Comoros",
+        "country_code_3": "COM",
+        "country_code_2": "KM"
+    },
+    "COM": {
+        "korean_name": "코모로",
+        "english_name": "Comoros",
+        "country_code_3": "COM",
+        "country_code_2": "KM"
+    },
+    "지부티": {
+        "korean_name": "지부티",
+        "english_name": "Djibouti",
+        "country_code_3": "DJI",
+        "country_code_2": "DJ"
+    },
+    "DJ": {
+        "korean_name": "지부티",
+        "english_name": "Djibouti",
+        "country_code_3": "DJI",
+        "country_code_2": "DJ"
+    },
+    "DJI": {
+        "korean_name": "지부티",
+        "english_name": "Djibouti",
+        "country_code_3": "DJI",
+        "country_code_2": "DJ"
+    },
+    "도미니카": {
+        "korean_name": "도미니카",
+        "english_name": "Dominica",
+        "country_code_3": "DMA",
+        "country_code_2": "DM"
+    },
+    "DM": {
+        "korean_name": "도미니카",
+        "english_name": "Dominica",
+        "country_code_3": "DMA",
+        "country_code_2": "DM"
+    },
+    "DMA": {
+        "korean_name": "도미니카",
+        "english_name": "Dominica",
+        "country_code_3": "DMA",
+        "country_code_2": "DM"
+    },
+    "도미니카 공화국": {
+        "korean_name": "도미니카 공화국",
+        "english_name": "Dominican Republic",
+        "country_code_3": "DOM",
+        "country_code_2": "DO"
+    },
+    "DO": {
+        "korean_name": "도미니카 공화국",
+        "english_name": "Dominican Republic",
+        "country_code_3": "DOM",
+        "country_code_2": "DO"
+    },
+    "DOM": {
+        "korean_name": "도미니카 공화국",
+        "english_name": "Dominican Republic",
+        "country_code_3": "DOM",
+        "country_code_2": "DO"
+    },
+    "에콰도르": {
+        "korean_name": "에콰도르",
+        "english_name": "Ecuador",
+        "country_code_3": "ECU",
+        "country_code_2": "EC"
+    },
+    "EC": {
+        "korean_name": "에콰도르",
+        "english_name": "Ecuador",
+        "country_code_3": "ECU",
+        "country_code_2": "EC"
+    },
+    "ECU": {
+        "korean_name": "에콰도르",
+        "english_name": "Ecuador",
+        "country_code_3": "ECU",
+        "country_code_2": "EC"
+    },
+    "적도 기니": {
+        "korean_name": "적도 기니",
+        "english_name": "Equatorial Guinea",
+        "country_code_3": "GNQ",
+        "country_code_2": "GQ"
+    },
+    "GQ": {
+        "korean_name": "적도 기니",
+        "english_name": "Equatorial Guinea",
+        "country_code_3": "GNQ",
+        "country_code_2": "GQ"
+    },
+    "GNQ": {
+        "korean_name": "적도 기니",
+        "english_name": "Equatorial Guinea",
+        "country_code_3": "GNQ",
+        "country_code_2": "GQ"
+    },
+    "에리트레아": {
+        "korean_name": "에리트레아",
+        "english_name": "Eritrea",
+        "country_code_3": "ERI",
+        "country_code_2": "ER"
+    },
+    "ER": {
+        "korean_name": "에리트레아",
+        "english_name": "Eritrea",
+        "country_code_3": "ERI",
+        "country_code_2": "ER"
+    },
+    "ERI": {
+        "korean_name": "에리트레아",
+        "english_name": "Eritrea",
+        "country_code_3": "ERI",
+        "country_code_2": "ER"
+    },
+    "에스와티니": {
+        "korean_name": "에스와티니",
+        "english_name": "Eswatini",
+        "country_code_3": "SWZ",
+        "country_code_2": "SZ"
+    },
+    "SZ": {
+        "korean_name": "에스와티니",
+        "english_name": "Eswatini",
+        "country_code_3": "SWZ",
+        "country_code_2": "SZ"
+    },
+    "SWZ": {
+        "korean_name": "에스와티니",
+        "english_name": "Eswatini",
+        "country_code_3": "SWZ",
+        "country_code_2": "SZ"
+    },
+    "포클랜드 제도": {
+        "korean_name": "포클랜드 제도",
+        "english_name": "Falkland Islands (Malvinas)",
+        "country_code_3": "FLK",
+        "country_code_2": "FK"
+    },
+    "FK": {
+        "korean_name": "포클랜드 제도",
+        "english_name": "Falkland Islands (Malvinas)",
+        "country_code_3": "FLK",
+        "country_code_2": "FK"
+    },
+    "FLK": {
+        "korean_name": "포클랜드 제도",
+        "english_name": "Falkland Islands (Malvinas)",
+        "country_code_3": "FLK",
+        "country_code_2": "FK"
+    },
+    "미크로네시아": {
+        "korean_name": "미크로네시아",
+        "english_name": "Micronesia, Federated States of",
+        "country_code_3": "FSM",
+        "country_code_2": "FM"
+    },
+    "FM": {
+        "korean_name": "미크로네시아",
+        "english_name": "Micronesia, Federated States of",
+        "country_code_3": "FSM",
+        "country_code_2": "FM"
+    },
+    "FSM": {
+        "korean_name": "미크로네시아",
+        "english_name": "Micronesia, Federated States of",
+        "country_code_3": "FSM",
+        "country_code_2": "FM"
+    },
+    "그레나다": {
+        "korean_name": "그레나다",
+        "english_name": "Grenada",
+        "country_code_3": "GRD",
+        "country_code_2": "GD"
+    },
+    "GD": {
+        "korean_name": "그레나다",
+        "english_name": "Grenada",
+        "country_code_3": "GRD",
+        "country_code_2": "GD"
+    },
+    "GRD": {
+        "korean_name": "그레나다",
+        "english_name": "Grenada",
+        "country_code_3": "GRD",
+        "country_code_2": "GD"
+    },
+    "프랑스령 기아나": {
+        "korean_name": "프랑스령 기아나",
+        "english_name": "French Guiana",
+        "country_code_3": "GUF",
+        "country_code_2": "GF"
+    },
+    "GF": {
+        "korean_name": "프랑스령 기아나",
+        "english_name": "French Guiana",
+        "country_code_3": "GUF",
+        "country_code_2": "GF"
+    },
+    "GUF": {
+        "korean_name": "프랑스령 기아나",
+        "english_name": "French Guiana",
+        "country_code_3": "GUF",
+        "country_code_2": "GF"
+    },
+    "가나": {
+        "korean_name": "가나",
+        "english_name": "Ghana",
+        "country_code_3": "GHA",
+        "country_code_2": "GH"
+    },
+    "GH": {
+        "korean_name": "가나",
+        "english_name": "Ghana",
+        "country_code_3": "GHA",
+        "country_code_2": "GH"
+    },
+    "GHA": {
+        "korean_name": "가나",
+        "english_name": "Ghana",
+        "country_code_3": "GHA",
+        "country_code_2": "GH"
+    },
+    "감비아": {
+        "korean_name": "감비아",
+        "english_name": "Gambia, The",
+        "country_code_3": "GMB",
+        "country_code_2": "GM"
+    },
+    "GM": {
+        "korean_name": "감비아",
+        "english_name": "Gambia, The",
+        "country_code_3": "GMB",
+        "country_code_2": "GM"
+    },
+    "GMB": {
+        "korean_name": "감비아",
+        "english_name": "Gambia, The",
+        "country_code_3": "GMB",
+        "country_code_2": "GM"
+    },
+    "과들루프": {
+        "korean_name": "과들루프",
+        "english_name": "Guadeloupe",
+        "country_code_3": "GLP",
+        "country_code_2": "GP"
+    },
+    "GP": {
+        "korean_name": "과들루프",
+        "english_name": "Guadeloupe",
+        "country_code_3": "GLP",
+        "country_code_2": "GP"
+    },
+    "GLP": {
+        "korean_name": "과들루프",
+        "english_name": "Guadeloupe",
+        "country_code_3": "GLP",
+        "country_code_2": "GP"
+    },
+    "과테말라": {
+        "korean_name": "과테말라",
+        "english_name": "Guatemala",
+        "country_code_3": "GTM",
+        "country_code_2": "GT"
+    },
+    "GT": {
+        "korean_name": "과테말라",
+        "english_name": "Guatemala",
+        "country_code_3": "GTM",
+        "country_code_2": "GT"
+    },
+    "GTM": {
+        "korean_name": "과테말라",
+        "english_name": "Guatemala",
+        "country_code_3": "GTM",
+        "country_code_2": "GT"
+    },
+    "온두라스": {
+        "korean_name": "온두라스",
+        "english_name": "Honduras",
+        "country_code_3": "HND",
+        "country_code_2": "HN"
+    },
+    "HN": {
+        "korean_name": "온두라스",
+        "english_name": "Honduras",
+        "country_code_3": "HND",
+        "country_code_2": "HN"
+    },
+    "HND": {
+        "korean_name": "온두라스",
+        "english_name": "Honduras",
+        "country_code_3": "HND",
+        "country_code_2": "HN"
+    },
+    "맨섬": {
+        "korean_name": "맨섬",
+        "english_name": "Isle of Man",
+        "country_code_3": "IMN",
+        "country_code_2": "IM"
+    },
+    "IM": {
+        "korean_name": "맨섬",
+        "english_name": "Isle of Man",
+        "country_code_3": "IMN",
+        "country_code_2": "IM"
+    },
+    "IMN": {
+        "korean_name": "맨섬",
+        "english_name": "Isle of Man",
+        "country_code_3": "IMN",
+        "country_code_2": "IM"
+    },
+    "이라크": {
+        "korean_name": "이라크",
+        "english_name": "Iraq",
+        "country_code_3": "IRQ",
+        "country_code_2": "IQ"
+    },
+    "IQ": {
+        "korean_name": "이라크",
+        "english_name": "Iraq",
+        "country_code_3": "IRQ",
+        "country_code_2": "IQ"
+    },
+    "IRQ": {
+        "korean_name": "이라크",
+        "english_name": "Iraq",
+        "country_code_3": "IRQ",
+        "country_code_2": "IQ"
+    },
+    "자메이카": {
+        "korean_name": "자메이카",
+        "english_name": "Jamaica",
+        "country_code_3": "JAM",
+        "country_code_2": "JM"
+    },
+    "JM": {
+        "korean_name": "자메이카",
+        "english_name": "Jamaica",
+        "country_code_3": "JAM",
+        "country_code_2": "JM"
+    },
+    "JAM": {
+        "korean_name": "자메이카",
+        "english_name": "Jamaica",
+        "country_code_3": "JAM",
+        "country_code_2": "JM"
+    },
+    "세인트키츠 네비스": {
+        "korean_name": "세인트키츠 네비스",
+        "english_name": "Saint Kitts and Nevis",
+        "country_code_3": "KNA",
+        "country_code_2": "KN"
+    },
+    "KN": {
+        "korean_name": "세인트키츠 네비스",
+        "english_name": "Saint Kitts and Nevis",
+        "country_code_3": "KNA",
+        "country_code_2": "KN"
+    },
+    "KNA": {
+        "korean_name": "세인트키츠 네비스",
+        "english_name": "Saint Kitts and Nevis",
+        "country_code_3": "KNA",
+        "country_code_2": "KN"
+    },
+    "북한": {
+        "korean_name": "북한",
+        "english_name": "Korea (Democratic People's Republic of)",
+        "country_code_3": "PRK",
+        "country_code_2": "KP"
+    },
+    "KP": {
+        "korean_name": "북한",
+        "english_name": "Korea (Democratic People's Republic of)",
+        "country_code_3": "PRK",
+        "country_code_2": "KP"
+    },
+    "PRK": {
+        "korean_name": "북한",
+        "english_name": "Korea (Democratic People's Republic of)",
+        "country_code_3": "PRK",
+        "country_code_2": "KP"
+    },
+    "케이맨 제도": {
+        "korean_name": "케이맨 제도",
+        "english_name": "Cayman Islands",
+        "country_code_3": "CYM",
+        "country_code_2": "KY"
+    },
+    "KY": {
+        "korean_name": "케이맨 제도",
+        "english_name": "Cayman Islands",
+        "country_code_3": "CYM",
+        "country_code_2": "KY"
+    },
+    "CYM": {
+        "korean_name": "케이맨 제도",
+        "english_name": "Cayman Islands",
+        "country_code_3": "CYM",
+        "country_code_2": "KY"
+    },
+    "세인트루시아": {
+        "korean_name": "세인트루시아",
+        "english_name": "Saint Lucia",
+        "country_code_3": "LCA",
+        "country_code_2": "LC"
+    },
+    "LC": {
+        "korean_name": "세인트루시아",
+        "english_name": "Saint Lucia",
+        "country_code_3": "LCA",
+        "country_code_2": "LC"
+    },
+    "LCA": {
+        "korean_name": "세인트루시아",
+        "english_name": "Saint Lucia",
+        "country_code_3": "LCA",
+        "country_code_2": "LC"
+    },
+    "리히텐슈타인": {
+        "korean_name": "리히텐슈타인",
+        "english_name": "Liechtenstein",
+        "country_code_3": "LIE",
+        "country_code_2": "LI"
+    },
+    "LI": {
+        "korean_name": "리히텐슈타인",
+        "english_name": "Liechtenstein",
+        "country_code_3": "LIE",
+        "country_code_2": "LI"
+    },
+    "LIE": {
+        "korean_name": "리히텐슈타인",
+        "english_name": "Liechtenstein",
+        "country_code_3": "LIE",
+        "country_code_2": "LI"
+    },
+    "라이베리아": {
+        "korean_name": "라이베리아",
+        "english_name": "Liberia",
+        "country_code_3": "LBR",
+        "country_code_2": "LR"
+    },
+    "LR": {
+        "korean_name": "라이베리아",
+        "english_name": "Liberia",
+        "country_code_3": "LBR",
+        "country_code_2": "LR"
+    },
+    "LBR": {
+        "korean_name": "라이베리아",
+        "english_name": "Liberia",
+        "country_code_3": "LBR",
+        "country_code_2": "LR"
+    },
+    "레소토": {
+        "korean_name": "레소토",
+        "english_name": "Lesotho",
+        "country_code_3": "LSO",
+        "country_code_2": "LS"
+    },
+    "LS": {
+        "korean_name": "레소토",
+        "english_name": "Lesotho",
+        "country_code_3": "LSO",
+        "country_code_2": "LS"
+    },
+    "LSO": {
+        "korean_name": "레소토",
+        "english_name": "Lesotho",
+        "country_code_3": "LSO",
+        "country_code_2": "LS"
+    },
+    "말리": {
+        "korean_name": "말리",
+        "english_name": "Mali",
+        "country_code_3": "MLI",
+        "country_code_2": "ML"
+    },
+    "ML": {
+        "korean_name": "말리",
+        "english_name": "Mali",
+        "country_code_3": "MLI",
+        "country_code_2": "ML"
+    },
+    "MLI": {
+        "korean_name": "말리",
+        "english_name": "Mali",
+        "country_code_3": "MLI",
+        "country_code_2": "ML"
+    },
+    "마르티니크": {
+        "korean_name": "마르티니크",
+        "english_name": "Martinique",
+        "country_code_3": "MTQ",
+        "country_code_2": "MQ"
+    },
+    "MQ": {
+        "korean_name": "마르티니크",
+        "english_name": "Martinique",
+        "country_code_3": "MTQ",
+        "country_code_2": "MQ"
+    },
+    "MTQ": {
+        "korean_name": "마르티니크",
+        "english_name": "Martinique",
+        "country_code_3": "MTQ",
+        "country_code_2": "MQ"
+    },
+    "모리타니": {
+        "korean_name": "모리타니",
+        "english_name": "Mauritania",
+        "country_code_3": "MRT",
+        "country_code_2": "MR"
+    },
+    "MR": {
+        "korean_name": "모리타니",
+        "english_name": "Mauritania",
+        "country_code_3": "MRT",
+        "country_code_2": "MR"
+    },
+    "MRT": {
+        "korean_name": "모리타니",
+        "english_name": "Mauritania",
+        "country_code_3": "MRT",
+        "country_code_2": "MR"
+    },
+    "몬트세랫": {
+        "korean_name": "몬트세랫",
+        "english_name": "Montserrat",
+        "country_code_3": "MSR",
+        "country_code_2": "MS"
+    },
+    "MS": {
+        "korean_name": "몬트세랫",
+        "english_name": "Montserrat",
+        "country_code_3": "MSR",
+        "country_code_2": "MS"
+    },
+    "MSR": {
+        "korean_name": "몬트세랫",
+        "english_name": "Montserrat",
+        "country_code_3": "MSR",
+        "country_code_2": "MS"
+    },
+    "모리셔스": {
+        "korean_name": "모리셔스",
+        "english_name": "Mauritius",
+        "country_code_3": "MUS",
+        "country_code_2": "MU"
+    },
+    "MU": {
+        "korean_name": "모리셔스",
+        "english_name": "Mauritius",
+        "country_code_3": "MUS",
+        "country_code_2": "MU"
+    },
+    "MUS": {
+        "korean_name": "모리셔스",
+        "english_name": "Mauritius",
+        "country_code_3": "MUS",
+        "country_code_2": "MU"
+    },
+    "말라위": {
+        "korean_name": "말라위",
+        "english_name": "Malawi",
+        "country_code_3": "MWI",
+        "country_code_2": "MW"
+    },
+    "MW": {
+        "korean_name": "말라위",
+        "english_name": "Malawi",
+        "country_code_3": "MWI",
+        "country_code_2": "MW"
+    },
+    "MWI": {
+        "korean_name": "말라위",
+        "english_name": "Malawi",
+        "country_code_3": "MWI",
+        "country_code_2": "MW"
+    },
+    "모잠비크": {
+        "korean_name": "모잠비크",
+        "english_name": "Mozambique",
+        "country_code_3": "MOZ",
+        "country_code_2": "MZ"
+    },
+    "MZ": {
+        "korean_name": "모잠비크",
+        "english_name": "Mozambique",
+        "country_code_3": "MOZ",
+        "country_code_2": "MZ"
+    },
+    "MOZ": {
+        "korean_name": "모잠비크",
+        "english_name": "Mozambique",
+        "country_code_3": "MOZ",
+        "country_code_2": "MZ"
+    },
+    "나미비아": {
+        "korean_name": "나미비아",
+        "english_name": "Namibia",
+        "country_code_3": "NAM",
+        "country_code_2": "NA"
+    },
+    "NA": {
+        "korean_name": "나미비아",
+        "english_name": "Namibia",
+        "country_code_3": "NAM",
+        "country_code_2": "NA"
+    },
+    "NAM": {
+        "korean_name": "나미비아",
+        "english_name": "Namibia",
+        "country_code_3": "NAM",
+        "country_code_2": "NA"
+    },
+    "누벨칼레도니": {
+        "korean_name": "누벨칼레도니",
+        "english_name": "New Caledonia",
+        "country_code_3": "NCL",
+        "country_code_2": "NC"
+    },
+    "NC": {
+        "korean_name": "누벨칼레도니",
+        "english_name": "New Caledonia",
+        "country_code_3": "NCL",
+        "country_code_2": "NC"
+    },
+    "NCL": {
+        "korean_name": "누벨칼레도니",
+        "english_name": "New Caledonia",
+        "country_code_3": "NCL",
+        "country_code_2": "NC"
+    },
+    "니제르": {
+        "korean_name": "니제르",
+        "english_name": "Niger",
+        "country_code_3": "NER",
+        "country_code_2": "NE"
+    },
+    "NE": {
+        "korean_name": "니제르",
+        "english_name": "Niger",
+        "country_code_3": "NER",
+        "country_code_2": "NE"
+    },
+    "NER": {
+        "korean_name": "니제르",
+        "english_name": "Niger",
+        "country_code_3": "NER",
+        "country_code_2": "NE"
+    },
+    "나이지리아": {
+        "korean_name": "나이지리아",
+        "english_name": "Nigeria",
+        "country_code_3": "NGA",
+        "country_code_2": "NG"
+    },
+    "NG": {
+        "korean_name": "나이지리아",
+        "english_name": "Nigeria",
+        "country_code_3": "NGA",
+        "country_code_2": "NG"
+    },
+    "NGA": {
+        "korean_name": "나이지리아",
+        "english_name": "Nigeria",
+        "country_code_3": "NGA",
+        "country_code_2": "NG"
+    },
+    "니카라과": {
+        "korean_name": "니카라과",
+        "english_name": "Nicaragua",
+        "country_code_3": "NIC",
+        "country_code_2": "NI"
+    },
+    "NI": {
+        "korean_name": "니카라과",
+        "english_name": "Nicaragua",
+        "country_code_3": "NIC",
+        "country_code_2": "NI"
+    },
+    "NIC": {
+        "korean_name": "니카라과",
+        "english_name": "Nicaragua",
+        "country_code_3": "NIC",
+        "country_code_2": "NI"
+    },
+    "파푸아뉴기니": {
+        "korean_name": "파푸아뉴기니",
+        "english_name": "Papua New Guinea",
+        "country_code_3": "PNG",
+        "country_code_2": "PG"
+    },
+    "PG": {
+        "korean_name": "파푸아뉴기니",
+        "english_name": "Papua New Guinea",
+        "country_code_3": "PNG",
+        "country_code_2": "PG"
+    },
+    "PNG": {
+        "korean_name": "파푸아뉴기니",
+        "english_name": "Papua New Guinea",
+        "country_code_3": "PNG",
+        "country_code_2": "PG"
+    },
+    "생피에르 미클롱": {
+        "korean_name": "생피에르 미클롱",
+        "english_name": "Saint Pierre and Miquelon",
+        "country_code_3": "SPM",
+        "country_code_2": "PM"
+    },
+    "PM": {
+        "korean_name": "생피에르 미클롱",
+        "english_name": "Saint Pierre and Miquelon",
+        "country_code_3": "SPM",
+        "country_code_2": "PM"
+    },
+    "SPM": {
+        "korean_name": "생피에르 미클롱",
+        "english_name": "Saint Pierre and Miquelon",
+        "country_code_3": "SPM",
+        "country_code_2": "PM"
+    },
+    "파라과이": {
+        "korean_name": "파라과이",
+        "english_name": "Paraguay",
+        "country_code_3": "PRY",
+        "country_code_2": "PY"
+    },
+    "PY": {
+        "korean_name": "파라과이",
+        "english_name": "Paraguay",
+        "country_code_3": "PRY",
+        "country_code_2": "PY"
+    },
+    "PRY": {
+        "korean_name": "파라과이",
+        "english_name": "Paraguay",
+        "country_code_3": "PRY",
+        "country_code_2": "PY"
+    },
+    "레위니옹": {
+        "korean_name": "레위니옹",
+        "english_name": "Reunion",
+        "country_code_3": "REU",
+        "country_code_2": "RE"
+    },
+    "RE": {
+        "korean_name": "레위니옹",
+        "english_name": "Reunion",
+        "country_code_3": "REU",
+        "country_code_2": "RE"
+    },
+    "REU": {
+        "korean_name": "레위니옹",
+        "english_name": "Reunion",
+        "country_code_3": "REU",
+        "country_code_2": "RE"
+    },
+    "르완다": {
+        "korean_name": "르완다",
+        "english_name": "Rwanda",
+        "country_code_3": "RWA",
+        "country_code_2": "RW"
+    },
+    "RW": {
+        "korean_name": "르완다",
+        "english_name": "Rwanda",
+        "country_code_3": "RWA",
+        "country_code_2": "RW"
+    },
+    "RWA": {
+        "korean_name": "르완다",
+        "english_name": "Rwanda",
+        "country_code_3": "RWA",
+        "country_code_2": "RW"
+    },
+    "사우디아라비아": {
+        "korean_name": "사우디아라비아",
+        "english_name": "Saudi Arabia",
+        "country_code_3": "SAU",
+        "country_code_2": "SA"
+    },
+    "SA": {
+        "korean_name": "사우디아라비아",
+        "english_name": "Saudi Arabia",
+        "country_code_3": "SAU",
+        "country_code_2": "SA"
+    },
+    "SAU": {
+        "korean_name": "사우디아라비아",
+        "english_name": "Saudi Arabia",
+        "country_code_3": "SAU",
+        "country_code_2": "SA"
+    },
+    "스웨덴": {
+        "korean_name": "스웨덴",
+        "english_name": "Sweden",
+        "country_code_3": "SWE",
+        "country_code_2": "SE"
+    },
+    "SE": {
+        "korean_name": "스웨덴",
+        "english_name": "Sweden",
+        "country_code_3": "SWE",
+        "country_code_2": "SE"
+    },
+    "SWE": {
+        "korean_name": "스웨덴",
+        "english_name": "Sweden",
+        "country_code_3": "SWE",
+        "country_code_2": "SE"
+    },
+    "시에라리온": {
+        "korean_name": "시에라리온",
+        "english_name": "Sierra Leone",
+        "country_code_3": "SLE",
+        "country_code_2": "SL"
+    },
+    "SL": {
+        "korean_name": "시에라리온",
+        "english_name": "Sierra Leone",
+        "country_code_3": "SLE",
+        "country_code_2": "SL"
+    },
+    "SLE": {
+        "korean_name": "시에라리온",
+        "english_name": "Sierra Leone",
+        "country_code_3": "SLE",
+        "country_code_2": "SL"
+    },
+    "세네갈": {
+        "korean_name": "세네갈",
+        "english_name": "Senegal",
+        "country_code_3": "SEN",
+        "country_code_2": "SN"
+    },
+    "SN": {
+        "korean_name": "세네갈",
+        "english_name": "Senegal",
+        "country_code_3": "SEN",
+        "country_code_2": "SN"
+    },
+    "SEN": {
+        "korean_name": "세네갈",
+        "english_name": "Senegal",
+        "country_code_3": "SEN",
+        "country_code_2": "SN"
+    },
+    "소말리아": {
+        "korean_name": "소말리아",
+        "english_name": "Somalia",
+        "country_code_3": "SOM",
+        "country_code_2": "SO"
+    },
+    "SO": {
+        "korean_name": "소말리아",
+        "english_name": "Somalia",
+        "country_code_3": "SOM",
+        "country_code_2": "SO"
+    },
+    "SOM": {
+        "korean_name": "소말리아",
+        "english_name": "Somalia",
+        "country_code_3": "SOM",
+        "country_code_2": "SO"
+    },
+    "수리남": {
+        "korean_name": "수리남",
+        "english_name": "Suriname",
+        "country_code_3": "SUR",
+        "country_code_2": "SR"
+    },
+    "SR": {
+        "korean_name": "수리남",
+        "english_name": "Suriname",
+        "country_code_3": "SUR",
+        "country_code_2": "SR"
+    },
+    "SUR": {
+        "korean_name": "수리남",
+        "english_name": "Suriname",
+        "country_code_3": "SUR",
+        "country_code_2": "SR"
+    },
+    "엘살바도르": {
+        "korean_name": "엘살바도르",
+        "english_name": "El Salvador",
+        "country_code_3": "SLV",
+        "country_code_2": "SV"
+    },
+    "SV": {
+        "korean_name": "엘살바도르",
+        "english_name": "El Salvador",
+        "country_code_3": "SLV",
+        "country_code_2": "SV"
+    },
+    "SLV": {
+        "korean_name": "엘살바도르",
+        "english_name": "El Salvador",
+        "country_code_3": "SLV",
+        "country_code_2": "SV"
+    },
+    "시리아": {
+        "korean_name": "시리아",
+        "english_name": "Syrian Arab Republic",
+        "country_code_3": "SYR",
+        "country_code_2": "SY"
+    },
+    "SY": {
+        "korean_name": "시리아",
+        "english_name": "Syrian Arab Republic",
+        "country_code_3": "SYR",
+        "country_code_2": "SY"
+    },
+    "SYR": {
+        "korean_name": "시리아",
+        "english_name": "Syrian Arab Republic",
+        "country_code_3": "SYR",
+        "country_code_2": "SY"
+    },
+    "차드": {
+        "korean_name": "차드",
+        "english_name": "Chad",
+        "country_code_3": "TCD",
+        "country_code_2": "TD"
+    },
+    "TD": {
+        "korean_name": "차드",
+        "english_name": "Chad",
+        "country_code_3": "TCD",
+        "country_code_2": "TD"
+    },
+    "TCD": {
+        "korean_name": "차드",
+        "english_name": "Chad",
+        "country_code_3": "TCD",
+        "country_code_2": "TD"
+    },
+    "토고": {
+        "korean_name": "토고",
+        "english_name": "Togo",
+        "country_code_3": "TGO",
+        "country_code_2": "TG"
+    },
+    "TG": {
+        "korean_name": "토고",
+        "english_name": "Togo",
+        "country_code_3": "TGO",
+        "country_code_2": "TG"
+    },
+    "TGO": {
+        "korean_name": "토고",
+        "english_name": "Togo",
+        "country_code_3": "TGO",
+        "country_code_2": "TG"
+    },
+    "튀니지": {
+        "korean_name": "튀니지",
+        "english_name": "Tunisia",
+        "country_code_3": "TUN",
+        "country_code_2": "TN"
+    },
+    "TN": {
+        "korean_name": "튀니지",
+        "english_name": "Tunisia",
+        "country_code_3": "TUN",
+        "country_code_2": "TN"
+    },
+    "TUN": {
+        "korean_name": "튀니지",
+        "english_name": "Tunisia",
+        "country_code_3": "TUN",
+        "country_code_2": "TN"
+    },
+    "트리니다드 토바고": {
+        "korean_name": "트리니다드 토바고",
+        "english_name": "Trinidad and Tobago",
+        "country_code_3": "TTO",
+        "country_code_2": "TT"
+    },
+    "TT": {
+        "korean_name": "트리니다드 토바고",
+        "english_name": "Trinidad and Tobago",
+        "country_code_3": "TTO",
+        "country_code_2": "TT"
+    },
+    "TTO": {
+        "korean_name": "트리니다드 토바고",
+        "english_name": "Trinidad and Tobago",
+        "country_code_3": "TTO",
+        "country_code_2": "TT"
+    },
+    "우루과이": {
+        "korean_name": "우루과이",
+        "english_name": "Uruguay",
+        "country_code_3": "URY",
+        "country_code_2": "UY"
+    },
+    "UY": {
+        "korean_name": "우루과이",
+        "english_name": "Uruguay",
+        "country_code_3": "URY",
+        "country_code_2": "UY"
+    },
+    "URY": {
+        "korean_name": "우루과이",
+        "english_name": "Uruguay",
+        "country_code_3": "URY",
+        "country_code_2": "UY"
+    },
+    "세인트빈센트 그레나딘": {
+        "korean_name": "세인트빈센트 그레나딘",
+        "english_name": "Saint Vincent and the Grenadines",
+        "country_code_3": "VCT",
+        "country_code_2": "VC"
+    },
+    "VC": {
+        "korean_name": "세인트빈센트 그레나딘",
+        "english_name": "Saint Vincent and the Grenadines",
+        "country_code_3": "VCT",
+        "country_code_2": "VC"
+    },
+    "VCT": {
+        "korean_name": "세인트빈센트 그레나딘",
+        "english_name": "Saint Vincent and the Grenadines",
+        "country_code_3": "VCT",
+        "country_code_2": "VC"
+    },
+    "영국령 버진아일랜드": {
+        "korean_name": "영국령 버진아일랜드",
+        "english_name": "Virgin Islands (British)",
+        "country_code_3": "VGB",
+        "country_code_2": "VG"
+    },
+    "VG": {
+        "korean_name": "영국령 버진아일랜드",
+        "english_name": "Virgin Islands (British)",
+        "country_code_3": "VGB",
+        "country_code_2": "VG"
+    },
+    "VGB": {
+        "korean_name": "영국령 버진아일랜드",
+        "english_name": "Virgin Islands (British)",
+        "country_code_3": "VGB",
+        "country_code_2": "VG"
+    },
+    "미국령 버진아일랜드": {
+        "korean_name": "미국령 버진아일랜드",
+        "english_name": "Virgin Islands (U.S.)",
+        "country_code_3": "VIR",
+        "country_code_2": "VI"
+    },
+    "VI": {
+        "korean_name": "미국령 버진아일랜드",
+        "english_name": "Virgin Islands (U.S.)",
+        "country_code_3": "VIR",
+        "country_code_2": "VI"
+    },
+    "VIR": {
+        "korean_name": "미국령 버진아일랜드",
+        "english_name": "Virgin Islands (U.S.)",
+        "country_code_3": "VIR",
+        "country_code_2": "VI"
+    },
+    "마요트": {
+        "korean_name": "마요트",
+        "english_name": "Mayotte",
+        "country_code_3": "MYT",
+        "country_code_2": "YT"
+    },
+    "YT": {
+        "korean_name": "마요트",
+        "english_name": "Mayotte",
+        "country_code_3": "MYT",
+        "country_code_2": "YT"
+    },
+    "MYT": {
+        "korean_name": "마요트",
+        "english_name": "Mayotte",
+        "country_code_3": "MYT",
+        "country_code_2": "YT"
+    },
+    "짐바브웨": {
+        "korean_name": "짐바브웨",
+        "english_name": "Zimbabwe",
+        "country_code_3": "ZWE",
+        "country_code_2": "ZW"
+    },
+    "ZW": {
+        "korean_name": "짐바브웨",
+        "english_name": "Zimbabwe",
+        "country_code_3": "ZWE",
+        "country_code_2": "ZW"
+    },
+    "ZWE": {
+        "korean_name": "짐바브웨",
+        "english_name": "Zimbabwe",
+        "country_code_3": "ZWE",
+        "country_code_2": "ZW"
+    }
+}
