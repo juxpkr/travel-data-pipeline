@@ -4,6 +4,7 @@ import os
 import datetime
 import pytz
 import pandas as pd
+import numpy as np
 import time
 import random
 
@@ -71,6 +72,11 @@ def register_google_trends_processor(app_instance):
             events_to_send = []
             for item in processed_trend_data_list:
                 keyword = item.get("keyword")
+                raw_growth_val = (
+                    float(item.get("trend_score_raw_growth"))
+                    if pd.notna(item.get("trend_score_raw_growth"))
+                    else 0.0
+                )
                 raw_growth = (
                     float(item.get("trend_score_raw_growth"))
                     if pd.notna(item.get("trend_score_raw_growth"))
@@ -90,18 +96,54 @@ def register_google_trends_processor(app_instance):
                     int(item.get("anchor_interest"))
                     if pd.notna(item.get("anchor_interest"))
                     else None
-                )  # int 또는 float으로 명시적 변환
-                # Producer에서 이미 country_name 정보를 메시지에 포함시켰다면, 여기서 사용.
-                # 아니라면, keyword_to_country_name 딕셔너리를 Consumer에서도 유지해야 한다.
-                # 여기서는 키워드를 기준으로 Event Hub에 보낸다.
+                )
+                if raw_growth_val > 0:
+                    scaled_raw_growth = np.log10(1 + raw_growth_val)
+                elif raw_growth_val < 0:
+                    # 음수 성장은 원본 값을 유지. 음수값이 크지 않기에
+                    scaled_raw_growth = raw_growth_val
+                else:
+                    # raw_growth가 0인 경우
+                    scaled_raw_growth = 0.0
+
+                # final_trend_score 계산
+                W_growth = 0.7
+                W_interest = 0.3
+
+                max_log_growth_scale = 10.0
+                normalized_scaled_raw_growth = 0.0
+
+                if scaled_raw_growth > 0:
+                    # 양수 성장률을 0-100 스케일로 변환
+                    normalized_scaled_raw_growth = (
+                        scaled_raw_growth / max_log_growth_scale
+                    ) * 100.0
+                    # 최대 100을 넘지 않도록
+                    normalized_scaled_raw_growth = min(
+                        normalized_scaled_raw_growth, 100.0
+                    )
+                elif scaled_raw_growth < 0:
+                    # 음수 성장률에 대한 처리
+                    normalized_scaled_raw_growth = 0.0
+                else:
+                    # 0인 경우
+                    normalized_scaled_raw_growth = 0.0
+
+                final_trend_score = (normalized_scaled_raw_growth * W_growth) + (
+                    current_interest * W_interest
+                )
+                # 최종 스코어가 0-100을 벗어나지 않도록 설정
+                final_trend_score = max(0.0, min(final_trend_score, 100.0))
+
                 final_data_to_send = {
                     "dataType": "googleTrend",
                     "keyword": keyword,
-                    "trend_score_raw_growth": raw_growth,
+                    "final_trend_score": final_trend_score,
+                    "trend_score_raw_growth": raw_growth_val,
+                    "scaled_raw_growth": scaled_raw_growth,
                     "trend_score_current_interest": current_interest,
                     "anchor_growth": anchor_growth,
                     "anchor_interest": anchor_interest,
-                    "crawled_at_utc": current_crawl_time_utc,
                     "crawled_at_kst": current_crawl_time_kst,
                 }
                 events_to_send.append(
