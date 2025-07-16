@@ -7,7 +7,9 @@ import os
 import pytz
 import time
 import random
+import sys
 from data_sources.retry_utils import exchange_rate_api_retry
+
 
 # 평균 환율 (일평균, 월평균, 연평균) 조회용 URL
 AVERAGE_EXCHANGE_CRAWL_URL = "https://www.kebhana.com/cms/rate/wpfxd651_06i_01.do"
@@ -22,7 +24,6 @@ REFERER_REALTIME_EXCHANGE_URL = (
     "https://www.kebhana.com/cms/rate/index.do?contentUrl=/cms/rate/wpfxd651_01i.do"
 )
 
-
 # HTTP 요청 헤더
 REQUEST_HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
@@ -31,10 +32,28 @@ REQUEST_HEADERS = {
     "X-Requested-With": "XMLHttpRequest",
 }
 
-EUROZONE_COUNTRIES = [
-    "오스트리아",
-]
+# --- STANDARD_COUNTRY_MAP 로딩 ---
+STANDARD_COUNTRY_MAP = {}
 
+# 맵 파일 경로
+MAP_FILE_PATH = os.path.join(
+    os.path.dirname(os.path.dirname(__file__)), "config", "standard_country_map.json"
+)
+
+try:
+    with open(MAP_FILE_PATH, "r", encoding="utf-8") as f:
+        STANDARD_COUNTRY_MAP = json.load(f)
+    logging.info(
+        f"Standard country mapping data loaded successfully from {MAP_FILE_PATH}."
+    )
+except FileNotFoundError:
+    logging.error(f"Mapping file not found at {MAP_FILE_PATH}. Using fallback map.")
+
+except json.JSONDecodeError as e:
+    logging.error(f"Error decoding JSON mapping file: {e}. Using fallback map.")
+
+except Exception as e:
+    logging.error(f"Unexpected error loading mapping file: {e}. Using fallback map.")
 
 # 통화 코드와 국가명 매핑 딕셔너리
 currency_code_to_country_name_map = {
@@ -376,8 +395,7 @@ def get_exchange_rate_data() -> list:
     combined_currency_data = {}
 
     # ------------------------------------------------------------------------------------------------------
-    # 실시간 환율 데이터 크롤링 (REALTIME_EXCHANGE_CRAWL_URL: wpfxd651_01i_01.do)
-    # Payload: inqKindCd: 1, pbldDvCd: 3
+    # 실시간 환율 데이터 크롤링
     # ------------------------------------------------------------------------------------------------------
     logging.info("Starting realtime exchange rate crawling...")
     realtime_request_data = {
@@ -401,24 +419,67 @@ def get_exchange_rate_data() -> list:
     time.sleep(random.uniform(1, 3))
 
     for entry in realtime_rates:
-        currency_code = entry["currency_code"]
-        combined_currency_data[currency_code] = {
-            "dataType": "exchangeRate",
-            "currency_code": currency_code,
-            "country_name": currency_code_to_country_name_map.get(currency_code, None),
-            "realtime_rate": entry["standard_rate"],
-            "realtime_crawled_at_utc": entry["crawled_at_utc"],
-            "realtime_crawled_at_kst": entry["crawled_at_kst"],
-            "daily_avg_rate": None,
-            "monthly_avg_rates": {},
-            "yearly_avg_rate": None,
-        }
+        currency_code = entry["currency_code"]  # USD, JPY, EUR 등
+        rate_value = entry["standard_rate"]
+
+        # currency_code를 국가명으로 매핑 (currency_code_to_country_name_map 사용)
+        country_or_countries_for_code = currency_code_to_country_name_map.get(
+            currency_code, []
+        )
+
+        if isinstance(country_or_countries_for_code, list):  # EUR처럼 리스트인 경우
+            # '유럽연합'에 대한 리스트의 각 국가에 대해 데이터 복제
+            for country_name in country_or_countries_for_code:
+                # combined_currency_data의 키를 '국가명'으로 사용
+                if country_name not in combined_currency_data:
+                    combined_currency_data[country_name] = (
+                        {  # <--- '국가명'을 키로 사용
+                            "dataType": "exchangeRate",
+                            "currency_code": currency_code,  # 통화 코드는 그대로 "EUR"
+                            "country_name": country_name,  # <--- 해당 유로존 개별 국가명
+                            "realtime_rate": None,
+                            "realtime_crawled_at_utc": None,
+                            "realtime_crawled_at_kst": None,
+                            "daily_avg_rate": None,
+                            "monthly_avg_rates": {},
+                            "yearly_avg_rate": None,
+                        }
+                    )
+                combined_currency_data[country_name]["realtime_rate"] = rate_value
+                combined_currency_data[country_name]["realtime_crawled_at_utc"] = entry[
+                    "crawled_at_utc"
+                ]
+                combined_currency_data[country_name]["realtime_crawled_at_kst"] = entry[
+                    "crawled_at_kst"
+                ]
+        else:  # USD, JPY 등 단일 국가명인 경우
+            country_name = country_or_countries_for_code  # "미국", "일본" 등
+            if country_name not in combined_currency_data:
+                combined_currency_data[country_name] = {  # <--- '국가명'을 키로 사용
+                    "dataType": "exchangeRate",
+                    "currency_code": currency_code,
+                    "country_name": country_name,
+                    "realtime_rate": None,
+                    "realtime_crawled_at_utc": None,
+                    "realtime_crawled_at_kst": None,
+                    "daily_avg_rate": None,
+                    "monthly_avg_rates": {},
+                    "yearly_avg_rate": None,
+                }
+            combined_currency_data[country_name]["realtime_rate"] = rate_value
+            combined_currency_data[country_name]["realtime_crawled_at_utc"] = entry[
+                "crawled_at_utc"
+            ]
+            combined_currency_data[country_name]["realtime_crawled_at_kst"] = entry[
+                "crawled_at_kst"
+            ]
+
     logging.info(
         f"Completed realtime exchange rate crawling. {len(realtime_rates)} records processed."
     )
 
     # ------------------------------------------------------------------------------------------------------
-    # 당일 일평균 환율 데이터 크롤링 (AVERAGE_EXCHANGE_CRAWL_URL: wpfxd651_06i_01.do, Payload: inqDvCd: 1)
+    # 당일 일평균 환율 데이터 크롤링
     # ------------------------------------------------------------------------------------------------------
     logging.info("Starting daily average exchange rate crawling...")
     daily_request_data = {
@@ -446,42 +507,64 @@ def get_exchange_rate_data() -> list:
 
     for entry in daily_avg_rates:
         currency_code = entry["currency_code"]
-        if currency_code not in combined_currency_data:
-            combined_currency_data[currency_code] = {
-                "dataType": "exchangeRate",
-                "currency_code": currency_code,
-                "country_name": currency_code_to_country_name_map.get(
-                    currency_code, None
-                ),
-                "realtime_rate": None,
-                "realtime_crawled_at_utc": None,
-                "realtime_crawled_at_kst": None,
-                "daily_avg_rate": None,
-                "monthly_avg_rates": {},
-                "yearly_avg_rate": None,
-            }
-        combined_currency_data[currency_code]["daily_avg_rate"] = entry["standard_rate"]
+        rate_value = entry["standard_rate"]
+
+        country_or_countries_for_code = currency_code_to_country_name_map.get(
+            currency_code, []
+        )
+
+        if isinstance(country_or_countries_for_code, list):
+            for country_name in currency_code_to_country_name_map[
+                "EUR"
+            ]:  # euro_countries는 실시간 루프에서 정의, 여기서는 다시 가져와야 함.
+                # 또는 직접 currency_code_to_country_name_map["EUR"] 사용
+                if country_name not in combined_currency_data:
+                    combined_currency_data[country_name] = {
+                        "dataType": "exchangeRate",
+                        "currency_code": currency_code,
+                        "country_name": country_name,
+                        "realtime_rate": None,
+                        "realtime_crawled_at_utc": None,
+                        "realtime_crawled_at_kst": None,
+                        "daily_avg_rate": None,
+                        "monthly_avg_rates": {},
+                        "yearly_avg_rate": None,
+                    }
+                combined_currency_data[country_name]["daily_avg_rate"] = rate_value
+        else:
+            country_name = country_or_countries_for_code
+            if country_name not in combined_currency_data:
+                combined_currency_data[country_name] = {
+                    "dataType": "exchangeRate",
+                    "currency_code": currency_code,
+                    "country_name": country_name,
+                    "realtime_rate": None,
+                    "realtime_crawled_at_utc": None,
+                    "realtime_crawled_at_kst": None,
+                    "daily_avg_rate": None,
+                    "monthly_avg_rates": {},
+                    "yearly_avg_rate": None,
+                }
+            combined_currency_data[country_name]["daily_avg_rate"] = rate_value
     logging.info(
         f"Completed daily average exchange rate crawling. {len(daily_avg_rates)} records processed."
     )
 
     # ------------------------------------------------------------------------------------------------------
-    # 월평균 환율 데이터 크롤링 (AVERAGE_EXCHANGE_CRAWL_URL: wpfxd651_06i_01.do, Payload: inqDvCd: 2) - 최근 3개월
+    # 월평균 환율 데이터 크롤링
     # ------------------------------------------------------------------------------------------------------
     logging.info("Starting monthly average exchange rate crawling (last 3 months)...")
-    monthly_avg_rates_map = {}
+    monthly_avg_rates_temp = {}
     for i in range(3):
         target_month = current_month - i
         target_year = current_year
         if target_month <= 0:
             target_month += 12
             target_year -= 1
-
         month_first_day_yyyymmdd = get_first_day_of_month_yyyymmdd(
             target_year, target_month
         )
         month_end_day_yyyymmdd_for_inqEndDt = today_yyyymmdd
-
         monthly_request_data = {
             "ajax": "true",
             "curCd": "",
@@ -510,19 +593,42 @@ def get_exchange_rate_data() -> list:
 
         for entry in monthly_avg_result:
             currency_code = entry["currency_code"]
-            if currency_code not in monthly_avg_rates_map:
-                monthly_avg_rates_map[currency_code] = {}
-            monthly_avg_rates_map[currency_code][f"{target_year}{target_month:02d}"] = (
-                entry["standard_rate"]
+            rate_value = entry["standard_rate"]
+            country_or_countries_for_code = currency_code_to_country_name_map.get(
+                currency_code, []
             )
 
-    for currency_code, monthly_data in monthly_avg_rates_map.items():
-        if currency_code not in combined_currency_data:
-            combined_currency_data[currency_code] = {
+            if isinstance(country_or_countries_for_code, list):
+                for country_name in currency_code_to_country_name_map[
+                    "EUR"
+                ]:  # 여기도 euro_countries를 다시 가져와야 함.
+                    if country_name not in monthly_avg_rates_temp:
+                        monthly_avg_rates_temp[country_name] = {}
+                    monthly_avg_rates_temp[country_name][
+                        f"{target_year}{target_month:02d}"
+                    ] = rate_value
+            else:
+                country_name = country_or_countries_for_code
+                if country_name not in monthly_avg_rates_temp:
+                    monthly_avg_rates_temp[country_name] = {}
+                monthly_avg_rates_temp[country_name][
+                    f"{target_year}{target_month:02d}"
+                ] = rate_value
+
+    for (
+        combined_key,
+        monthly_data,
+    ) in monthly_avg_rates_temp.items():  # combined_key는 통화코드 또는 국가명
+        if combined_key not in combined_currency_data:
+            combined_currency_data[combined_key] = {
                 "dataType": "exchangeRate",
-                "currency_code": currency_code,
+                "currency_code": (
+                    combined_key
+                    if len(combined_key) == 3 and combined_key.isupper()
+                    else None
+                ),  # 통화코드는 3글자 대문자로 가정
                 "country_name": currency_code_to_country_name_map.get(
-                    currency_code, None
+                    combined_key, None
                 ),
                 "realtime_rate": None,
                 "realtime_crawled_at_utc": None,
@@ -531,13 +637,13 @@ def get_exchange_rate_data() -> list:
                 "monthly_avg_rates": {},
                 "yearly_avg_rate": None,
             }
-        combined_currency_data[currency_code]["monthly_avg_rates"] = monthly_data
+        combined_currency_data[combined_key]["monthly_avg_rates"] = monthly_data
     logging.info(
-        f"Completed monthly average exchange rate crawling. {len(monthly_avg_rates_map)} currency maps processed."
+        f"Completed monthly average exchange rate crawling. {len(monthly_avg_rates_temp)} currency maps processed."
     )
 
     # ------------------------------------------------------------------------------------------------------
-    # 연평균 환율 데이터 크롤링 (AVERAGE_EXCHANGE_CRAWL_URL: wpfxd651_06i_01.do, Payload: inqDvCd: 3) - 현재 연도
+    # 연평균 환율 데이터 크롤링
     # ------------------------------------------------------------------------------------------------------
     logging.info("Starting yearly average exchange rate crawling...")
     yearly_request_data = {
@@ -565,29 +671,125 @@ def get_exchange_rate_data() -> list:
 
     for entry in yearly_avg_rates:
         currency_code = entry["currency_code"]
-        if currency_code not in combined_currency_data:
-            combined_currency_data[currency_code] = {
-                "dataType": "exchangeRate",
-                "currency_code": currency_code,
-                "country_name": currency_code_to_country_name_map.get(
-                    currency_code, None
-                ),
-                "realtime_rate": None,
-                "realtime_crawled_at_utc": None,
-                "realtime_crawled_at_kst": None,
-                "daily_avg_rate": None,
-                "monthly_avg_rates": {},
-                "yearly_avg_rate": None,
-            }
-        combined_currency_data[currency_code]["yearly_avg_rate"] = entry[
-            "standard_rate"
-        ]
+        rate_value = entry["standard_rate"]
+        country_or_countries_for_code = currency_code_to_country_name_map.get(
+            currency_code, []
+        )
+
+        if isinstance(country_or_countries_for_code, list):
+            for country_name in currency_code_to_country_name_map[
+                "EUR"
+            ]:  # 여기도 euro_countries를 다시 가져와야 함.
+                if country_name not in combined_currency_data:
+                    combined_currency_data[country_name] = {
+                        "dataType": "exchangeRate",
+                        "currency_code": currency_code,
+                        "country_name": country_name,
+                        "realtime_rate": None,
+                        "realtime_crawled_at_utc": None,
+                        "realtime_crawled_at_kst": None,
+                        "daily_avg_rate": None,
+                        "monthly_avg_rates": {},
+                        "yearly_avg_rate": None,
+                    }
+                combined_currency_data[country_name]["yearly_avg_rate"] = rate_value
+        else:
+            country_name = country_or_countries_for_code
+            if country_name not in combined_currency_data:
+                combined_currency_data[country_name] = {
+                    "dataType": "exchangeRate",
+                    "currency_code": currency_code,
+                    "country_name": country_name,
+                    "realtime_rate": None,
+                    "realtime_crawled_at_utc": None,
+                    "realtime_crawled_at_kst": None,
+                    "daily_avg_rate": None,
+                    "monthly_avg_rates": {},
+                    "yearly_avg_rate": None,
+                }
+            combined_currency_data[country_name][
+                "yearly_avg_rate"
+            ] = rate_value  # <--- 여기 오류! combined_currency_data[currency_code] 대신 [country_name] 사용해야 함.
     logging.info(
         f"Completed yearly average exchange rate crawling. {len(yearly_avg_rates)} records processed."
     )
 
-    final_exchange_rate_data = list(combined_currency_data.values())
     logging.info(
-        f"Total {len(final_exchange_rate_data)} combined currency records prepared for Event Hub."
+        f"Starting country standardization for {len(combined_currency_data)} currency records."
     )
-    return final_exchange_rate_data
+    final_exchange_rate_data_with_country_info = []
+
+    for (
+        original_key,
+        rate_details,
+    ) in combined_currency_data.items():  # original_key는 통화코드 또는 유로존 국가명
+        country_info = STANDARD_COUNTRY_MAP.get(
+            original_key, {}
+        )  # 먼저 original_key로 STANDARD_COUNTRY_MAP에서 찾음
+
+        # 만약 original_key가 STANDARD_COUNTRY_MAP에 직접 매핑되지 않았다면,
+        # rate_details에 있는 currency_code를 사용하여 다시 시도합니다.
+        # (예: combined_currency_data의 키가 유로존 국가명이고, 맵에는 통화코드만 매핑되어 있는 경우)
+        if (
+            not country_info
+            and "currency_code" in rate_details
+            and rate_details["currency_code"] in STANDARD_COUNTRY_MAP
+        ):
+            country_info = STANDARD_COUNTRY_MAP.get(rate_details["currency_code"], {})
+
+        # 맵에서 정보를 찾지 못하면 original_key 또는 "Unknown_..."으로 대체
+        country_korean_name = country_info.get("korean_name", original_key)
+        country_english_name = country_info.get("english_name", "Unknown_English")
+        country_code_3 = country_info.get("country_code_3", "N/A")
+        country_code_2 = country_info.get("country_code_2", "N/A")
+
+        rate_details["country_korean_name"] = country_korean_name
+        rate_details["country_english_name"] = country_english_name
+        rate_details["country_code_3"] = country_code_3
+        rate_details["country_code_2"] = country_code_2
+
+        if "country_name" in rate_details:
+            del rate_details["country_name"]
+
+        exchange_rate_score = 0.0
+        exchange_rate_change_percent = None
+
+        realtime_rate = rate_details.get("realtime_rate")
+        yearly_avg_rate = rate_details.get("yearly_avg_rate")
+
+        # 실시간 환율과 연평균 환율이 모두 유효하고 연평균이 0보다 큰 경우에만 점수 계산
+        if (
+            realtime_rate is not None
+            and yearly_avg_rate is not None
+            and yearly_avg_rate > 0
+        ):
+            # 변동률 계산 : (실시간 환율 - 연평균 환율) / 연평균 환율 * 100
+            exchange_rate_change_percent = (
+                (realtime_rate - yearly_avg_rate) / yearly_avg_rate
+            ) * 100
+
+            # 점수 변환 (환율이 내리면 가점, 오르면 감점)
+            max_change_percent = 10.0  # 최대 허용 상승 변동률
+            min_change_percent = -10.0
+            range_of_change = max_change_percent - min_change_percent
+
+            if range_of_change > 0:
+                # 점수 계산 : (최대 좋은 값 - 현재 변동률) / (총 범위) * 100
+                # 환율은 낮을수록 좋으므로, 변동률이 낮을수록(마이너스값) 점수가 높아지도록 계산
+                calculated_score = (
+                    (max_change_percent - exchange_rate_change_percent)
+                    / range_of_change
+                ) * 100.0
+                exchange_rate_score = max(0.0, min(calculated_score, 100.0))
+            else:
+                # 연 평균이 0 이거나 범위설정이 잘못 된 경우
+                exchange_rate_score = 50.0  # 기본값
+
+        rate_details["exchange_rate_score"] = round(exchange_rate_score, 2)
+
+        final_exchange_rate_data_with_country_info.append(rate_details)
+
+    logging.info(
+        f"Total {len(final_exchange_rate_data_with_country_info)} combined currency records prepared with standardized country info."
+    )
+    return final_exchange_rate_data_with_country_info
