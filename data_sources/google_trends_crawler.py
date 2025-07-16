@@ -52,8 +52,8 @@ def get_trends_data_for_group(
         pytrends_connector.build_payload(
             keywords_in_group, cat=0, timeframe=timeframe, geo=geo, gprop=""
         )
+        time.sleep(random.uniform(30, 60))
         time_series_data = pytrends_connector.interest_over_time()
-        time.sleep(random.uniform(30, 60))  # API 호출 후 짧은 휴식 (tenacity와 병행)
         return time_series_data
 
     try:
@@ -86,7 +86,10 @@ def get_trends_data_for_group(
                         - previous_15_days_data[keyword_in_group].mean()
                     ) / previous_15_days_data[keyword_in_group].mean()
                 elif last_15_days_data[keyword_in_group].mean() > 0:
-                    raw_growth = 1.0
+                    # 이전 평균이 0에 가깝지만, 최근 평균이 유의미하게 증가한 경우
+                    # 아주 작은값(epsilon)을 사용하여 분모 0이 되는 오류를 방지하고, 실제 성장 규모를 반영
+                    epsilon = 1e-6
+                    raw_growth = last_15_days_data[keyword_in_group].mean() / epsilon
 
                 current_interest = time_series_data[keyword_in_group].iloc[-1]
                 if pd.isna(current_interest):
