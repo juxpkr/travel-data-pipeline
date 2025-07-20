@@ -6,79 +6,65 @@ import azure.functions as func
 from azure.storage.queue import QueueClient, BinaryBase64EncodePolicy
 import time
 import random
+import sys  # sys 모듈 추가: 파일 로딩 실패 시 종료 위함
+
+# --- MASTER_COUNTRY_CRAWLER_MAP 로딩 ---
+MASTER_COUNTRY_CRAWLER_MAP = {}
+
+# 맵 파일 경로: 현재 스크립트의 두 단계 상위 디렉토리의 config 폴더 안의 JSON 파일을 참조합니다.
+MASTER_MAP_FILE_PATH = os.path.join(
+    os.path.dirname(os.path.dirname(__file__)), "config", "master_country_crawler.json"
+)
+
+try:
+    with open(MASTER_MAP_FILE_PATH, "r", encoding="utf-8") as f:
+        MASTER_COUNTRY_CRAWLER_MAP = json.load(f)
+    logging.info(
+        f"Master country mapping data loaded successfully from {MASTER_MAP_FILE_PATH}."
+    )
+except FileNotFoundError:
+    logging.critical(
+        f"Master country mapping file not found at {MASTER_MAP_FILE_PATH}. Exiting."
+    )
+    sys.exit(1)  # 중요한 파일이 없으므로 프로그램 종료
+
+except json.JSONDecodeError as e:
+    logging.critical(f"Error decoding JSON master country mapping file: {e}. Exiting.")
+    sys.exit(1)  # JSON 파일 손상이므로 프로그램 종료
+
+except Exception as e:
+    logging.critical(
+        f"Unexpected error loading master country mapping file: {e}. Exiting."
+    )
+    sys.exit(1)  # 기타 심각한 오류이므로 프로그램 종료
+
+# '해외여행' 앵커 키워드는 유지합니다.
+anchor_keyword = "해외여행"
 
 
 def register_google_trends_crawler(app_instance):
 
-    # 해외 국가들과 그에 해당하는 Google Trends 검색 키워드 목록
-    country_search_keywords_list = {
-        "Argentina": "아르헨티나 여행",
-        "Australia": "호주 여행",
-        "Austria": "오스트리아 여행",
-        "Belgium": "벨기에 여행",
-        "Brazil": "브라질 여행",
-        "Bulgaria": "불가리아 여행",
-        "Cambodia": "캄보디아 여행",
-        "Canada": "캐나다 여행",
-        "Chile": "칠레 여행",
-        "China": "중국 여행",
-        "Colombia": "콜롬비아 여행",
-        "Costa Rica": "코스타리카 여행",
-        "Croatia": "크로아티아 여행",
-        "Cuba": "쿠바 여행",
-        "Czech Republic": "체코 여행",
-        "Denmark": "덴마크 여행",
-        "Egypt": "이집트 여행",
-        "Estonia": "에스토니아 여행",
-        "Finland": "핀란드 여행",
-        "France": "프랑스 여행",
-        "Georgia": "조지아 여행",
-        "Germany": "독일 여행",
-        "Greece": "그리스 여행",
-        "Hungary": "헝가리 여행",
-        "Iceland": "아이슬란드 여행",
-        "India": "인도 여행",
-        "Indonesia": "인도네시아 여행",
-        "Iran": "이란 여행",
-        "Ireland": "아일랜드 여행",
-        "Israel": "이스라엘 여행",
-        "Italia": "이탈리아 여행",
-        "Japan": "일본 여행",
-        "Laos": "라오스 여행",
-        "Latvia": "라트비아 여행",
-        "Lithuania": "리투아니아 여행",
-        "Malaysia": "말레이시아 여행",
-        "Mexico": "멕시코 여행",
-        "Mongolia": "몽골 여행",
-        "Morocco": "모로코 여행",
-        "Netherlands": "네덜란드 여행",
-        "New Zealand": "뉴질랜드 여행",
-        "Norway": "노르웨이 여행",
-        "Peru": "페루 여행",
-        "Philippines": "필리핀 여행",
-        "Poland": "폴란드 여행",
-        "Portugal": "포르투갈 여행",
-        "Qatar": "카타르 여행",
-        "Russia": "러시아 여행",
-        "Serbia": "세르비아 여행",
-        "Slovakia": "슬로바키아 여행",
-        "Slovenia": "슬로베니아 여행",
-        "Spain": "스페인 여행",
-        "Swiss": "스위스 여행",
-        "Taiwan": "대만 여행",
-        "Thailand": "태국 여행",
-        "Republic of Turkiye": "튀르키예 여행",
-        "Ukraine": "우크라이나 여행",
-        "United Arab Emirates": "아랍에미리트 여행",
-        "United Kingdom": "영국 여행",
-        "United States of America": "미국 여행",
-        "Vietnam": "베트남 여행",
-    }
-    anchor_keyword = "해외여행"
+    # Google Trends 검색 키워드 목록을 MASTER_COUNTRY_CRAWLER_MAP에서 동적으로 생성
+    # 모든 국가 정보를 순회하며 google_trend_keyword_kor 필드의 값을 추출합니다.
+    all_search_keywords_values = []
+    for country_code_3, country_info in MASTER_COUNTRY_CRAWLER_MAP.items():
+        keyword = country_info.get("google_trend_keyword_kor")
+        if keyword:  # 키워드가 유효한 경우에만 추가
+            all_search_keywords_values.append(keyword)
+        else:
+            logging.warning(
+                f"Country '{country_info.get('country_name_kor', country_code_3)}' (Code: {country_code_3}) "
+                f"is missing 'google_trend_keyword_kor' in MASTER_COUNTRY_CRAWLER_MAP. Skipping for Google Trends."
+            )
+
+    total_keyword_count = len(all_search_keywords_values)
+    logging.info(
+        f"Dynamically loaded {total_keyword_count} Google Trends keywords from MASTER_COUNTRY_CRAWLER_MAP."
+    )
 
     # Google Trends 데이터를 수집하는 Azure Function
     @app_instance.timer_trigger(
-        schedule="0 0 0 1 1 *",
+        schedule="0 0 13,19 * * *",  # 매일 13시 19시에 실행
         run_on_startup=False,
         use_monitor=False,
         arg_name="myTimer",
@@ -93,15 +79,32 @@ def register_google_trends_crawler(app_instance):
         queue_connection_string = os.environ.get("AzureWebJobsStorage")
         queue_name = os.environ.get("GoogleTrendsQueueName")
 
-        queue_client = QueueClient.from_connection_string(
-            conn_str=queue_connection_string,
-            queue_name=queue_name,
-            message_encode_policy=BinaryBase64EncodePolicy(),
-        )
+        if not queue_connection_string:
+            logging.error(
+                "AzureWebJobsStorage connection string is not set. Cannot proceed with queue operations."
+            )
+            return
+        if not queue_name:
+            logging.error(
+                "GoogleTrendsQueueName is not set. Cannot proceed with queue operations."
+            )
+            return
 
-        all_search_keywords_values = list(country_search_keywords_list.values())
-        total_keyword_count = len(all_search_keywords_values)
-        # Google Trends API에 보낼 키워드 묶음 4개
+        try:
+            queue_client = QueueClient.from_connection_string(
+                conn_str=queue_connection_string,
+                queue_name=queue_name,
+                message_encode_policy=BinaryBase64EncodePolicy(),
+            )
+            logging.info(f"Successfully connected to queue '{queue_name}'.")
+        except Exception as e:
+            # 큐 연결 자체에 실패한 경우만 심각한 오류로 처리하고 종료합니다.
+            logging.critical(
+                f"Failed to connect to Azure Queue Storage '{queue_name}': {e}. Exiting Google Trends crawler."
+            )
+            return  # 큐 연결 실패 시 더 이상 진행하지 않음
+
+        # Google Trends API에 보낼 키워드 묶음 4개 (앵커 키워드 포함 시 총 5개)
         batch_size_for_trends_api = 4
 
         messages_to_send_in_batches = []
@@ -117,7 +120,7 @@ def register_google_trends_crawler(app_instance):
                 # 키워드 리스트 자체를 보냄
                 "keywords": keywords_for_api_request,
                 "timeframe": "today 3-m",
-                "geo": "KR",
+                "geo": "KR",  # 한국 지역에서 검색하는 것을 유지
                 "request_time": datetime.datetime.utcnow().isoformat(),
             }
             messages_to_send_in_batches.append(
@@ -127,15 +130,20 @@ def register_google_trends_crawler(app_instance):
         total_messages_sent = 0
 
         try:
-            # Azure Queue Storage Batching으로 메시지를 보낸다.
+            # Azure Queue Storage Batching 대신 개별 메시지를 보내되, 지연을 줘서 과도한 요청 방지
             for message_content in messages_to_send_in_batches:
-                # 큐 클라이언트의 send_message 메서드를 사용하여 개별 메시지 전송
                 queue_client.send_message(message_content)
-                logging.info(f"큐에 메시지 전송 완료: {message_content[:100]}...")
+                # UTF-8 디코딩하여 로깅 시 가독성 확보
+                logging.info(
+                    f"큐에 메시지 전송 완료: {message_content.decode('utf-8')[:100]}..."
+                )
                 total_messages_sent += 1
+                # 요청 사이에 랜덤 지연을 줘서 API 부하를 줄임
                 time.sleep(random.uniform(1, 3))
         except Exception as e:
-            logging.error(f"Error sending messages batch to queue: {e}")
+            logging.error(
+                f"Error sending messages to queue: {e}", exc_info=True
+            )  # 예외 정보도 함께 로깅
 
         logging.info(
             f"Python googleTrendsCrawler (Producer) function completed. Total {total_messages_sent} batches sent to '{queue_name}'"
