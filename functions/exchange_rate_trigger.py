@@ -12,7 +12,7 @@ from data_sources.exchage_rate_crawler import get_exchange_rate_data
 # 그 인스턴스에 실제 트리거 함수를 등록하는 역할을 함
 def register_exchange_rate_crawler(app_instance):  # app 객체를 인자로 받는다
     @app_instance.timer_trigger(
-        schedule="0 0 0 1 1 *",
+        schedule="0 */5 * * * *",
         run_on_startup=False,
         use_monitor=False,
         arg_name="myTimer",
