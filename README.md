@@ -22,32 +22,7 @@ TRAVEL-DATA-PIPELINE/
 ├── .gitignore                     # Git 버전 관리 시 제외할 파일/폴더 지정
 └── README.md                      # 프로젝트 설명
 ```
-1. venv 통일 : python 3.11.9 
 
-2. local.settings.json 파일 생성
-```
-{
-  "IsEncrypted": false,
-  "Values": {
-    "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;AccountName=traveldatastorage;AccountKey=BO5JiqcPzLc09q4xIEg7Tf64xk66LlYyTgmcRw6Yvphn2i5ewjUClGJRtdkt958ioh4wooxd9Fv1+AStn6gaFg==;EndpointSuffix=core.windows.net",
-    "FUNCTIONS_WORKER_RUNTIME": "python",
-    "EventHubConnectionString": "Endpoint=sb://travel-data-pipeline-eventhubs-ns.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=Ofzlz5Oc/gZUHNv0lQAIEq7u3xuLYIJpD+AEhPGbp48=",
-    "GoogleTrendsEventHubName": "google-trends-events",
-    "ExchangeRateEventHubName": "exchange-rate-events",
-    "GoogleTrendsQueueName": "google-trends-crawling-queue",
-    "BlobStorageConnectionString": ""
-  }
-}
-```
-3. Timre Trigger 설정 -> 로컬 수동 실행(함수 자동 시작 방지)
-schedule="0 0 0 1 1 *", run_on_startup=False
 
-예시)
-```
-@app_instance.timer_trigger(
-        schedule="0 0 0 1 1 *",
-        run_on_startup=False,
-        use_monitor=False,
-        arg_name="myTimer",
-    )
-```
+## 1. 프로젝트 개요 
+
