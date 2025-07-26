@@ -20,7 +20,6 @@ def retry_log(retry_state):
 
 
 # 웹 크롤링/API 호출을 위한 재시도 함수
-# 각 크롤러에서 이 함수를 호출하여 필요한 설정으로 재시도 로직을 적용할 수 있음
 def create_retry_decorator(
     min_wait_seconds: int = 120,
     max_wait_seconds: int = 600,

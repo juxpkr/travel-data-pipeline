@@ -8,11 +8,6 @@ import pytz
 import time
 import random
 import sys
-
-# data_sources.retry_utils는 외부 모듈이므로, 현재 환경에 맞게 경로 설정이 필요할 수 있습니다.
-# 예를 들어, 같은 디렉토리에 retry_utils.py가 있다면 'from .retry_utils import exchange_rate_api_retry'
-# 아니면 sys.path.append를 통해 경로를 추가해야 합니다.
-# 여기서는 원본 코드의 import를 존중하여 그대로 두었습니다.
 from data_sources.retry_utils import exchange_rate_api_retry
 
 
@@ -38,12 +33,11 @@ REQUEST_HEADERS = {
 }
 
 # --- MASTER_COUNTRY_CRAWLER_MAP 로딩 ---
-# 기존 STANDARD_COUNTRY_MAP 대신 MASTER_COUNTRY_CRAWLER_MAP 사용
 MASTER_COUNTRY_CRAWLER_MAP = {}
-EUROZONE_COUNTRIES_INFO = []  # 유로존 국가 정보 리스트 (EUR 통화에 매핑될 국가들)
+# 유로존 국가 정보 리스트 (EUR 통화에 매핑될 국가들)
+EUROZONE_COUNTRIES_INFO = []  
 
 # 맵 파일 경로
-# 부모 디렉토리의 config 폴더 안의 master_country_crawler.json을 참조합니다.
 MASTER_MAP_FILE_PATH = os.path.join(
     os.path.dirname(os.path.dirname(__file__)), "config", "master_country_crawler.json"
 )
@@ -108,10 +102,7 @@ def get_kst_date_yyyymmdd(dt: datetime.date) -> str:
 def get_kst_date_yyyy_mm_dd(dt: datetime.date) -> str:
     return dt.strftime("%Y-%m-%d")
 
-
-# -------------------------------------------------------------
 # 내부 헬퍼 함수: 실제 웹 요청 및 HTML 파싱
-# -------------------------------------------------------------
 @exchange_rate_api_retry
 def _fetch_and_parse_exchange_rate(
     target_url: str, headers: dict, data: dict, kst_timezone: pytz.timezone
@@ -174,7 +165,6 @@ def _fetch_and_parse_exchange_rate(
                 send_rate_idx = 5
                 receive_rate_idx = 6
                 standard_rate_idx = 8
-                # Referer는 위에서 이미 설정했으므로 여기서 중복 설정 제거
 
             elif target_url == AVERAGE_EXCHANGE_CRAWL_URL:
                 logging.info(
@@ -187,7 +177,6 @@ def _fetch_and_parse_exchange_rate(
                 send_rate_idx = 3
                 receive_rate_idx = 4
                 standard_rate_idx = 6
-                # Referer는 위에서 이미 설정했으므로 여기서 중복 설정 제거
 
             else:
                 logging.error(
@@ -205,7 +194,6 @@ def _fetch_and_parse_exchange_rate(
                         f"Skipping row due to insufficient cells for URL {target_url}, Inquiry Code: {log_inquiry_code}: Expected {expected_min_cells} cells, but found {len(cells)}. Raw row: {row.get_text(strip=True)}"
                     )
                     continue
-
                 try:
                     currency_full_text = cells[currency_full_text_idx].get_text(
                         strip=True
@@ -276,8 +264,6 @@ def _fetch_and_parse_exchange_rate(
 
                     rate_entry = {
                         "currency_code": currency_code,
-                        # 여기서는 country_name을 직접 매핑하지 않고,
-                        # get_exchange_rate_data에서 MASTER_COUNTRY_CRAWLER_MAP을 통해 최종 매핑
                         "buy_rate": buy_rate,
                         "sell_rate": sell_rate,
                         "send_rate": send_rate,
@@ -335,10 +321,7 @@ def _fetch_and_parse_exchange_rate(
     return all_extracted_rates
 
 
-# -------------------------------------------------------------
 # get_exchange_rate_data 함수 (모든 유형 환율 통합 함수)
-# 이 함수는 Azure Functions 트리거 파일에서 호출
-# -------------------------------------------------------------
 def get_exchange_rate_data() -> list:
     kst_timezone = pytz.timezone("Asia/Seoul")
     current_kst_dt = get_current_kst_datetime(kst_timezone)
@@ -351,8 +334,7 @@ def get_exchange_rate_data() -> list:
     # combined_currency_data의 키는 country_code_3 (CAN, USA 등) 또는 country_name_kor (유로존 국가의 경우)
     combined_currency_data = {}
 
-    # MASTER_COUNTRY_CRAWLER_MAP에서 통화 코드를 키로 하여 국가 정보를 빠르게 찾을 수 있는 맵 생성
-    # EUR처럼 여러 국가가 동일한 통화 코드를 사용하는 경우를 대비하여 리스트로 저장
+    # MASTER_COUNTRY_CRAWLER_MAP에서 통화 코드를 키로 하여 국가 정보를 찾을 수 있는 맵 생성
     currency_code_to_country_map_for_processing = {}
     for country_code_3, country_info in MASTER_COUNTRY_CRAWLER_MAP.items():
         currency_code = country_info.get("currency_code")
@@ -362,9 +344,6 @@ def get_exchange_rate_data() -> list:
             currency_code_to_country_map_for_processing[currency_code].append(
                 country_info
             )
-
-    # 예외적으로 EUR만 따로 처리할 것이므로, 유로존 국가 리스트를 직접 참조
-    # EUROZONE_COUNTRIES_INFO는 이미 전역으로 로딩 시점에 준비되어 있습니다.
 
     # 헬퍼 함수: 환율 데이터를 combined_currency_data에 추가하는 로직
     def _add_rate_to_combined_data(
@@ -379,8 +358,7 @@ def get_exchange_rate_data() -> list:
         if entry_currency_code == "EUR":
             target_countries = EUROZONE_COUNTRIES_INFO
         else:
-            # 단일 통화 코드에 매핑되는 국가를 찾음 (대부분의 경우 리스트에 하나만 있을 것임)
-            # 만약 해당 통화 코드가 마스터 맵에 없다면 건너뛴다.
+            # 단일 통화 코드에 매핑되는 국가를 찾음
             if entry_currency_code not in currency_code_to_country_map_for_processing:
                 logging.warning(
                     f"Currency code '{entry_currency_code}' not found in MASTER_COUNTRY_CRAWLER_MAP. Skipping."
@@ -532,8 +510,7 @@ def get_exchange_rate_data() -> list:
             target_year, target_month
         )
 
-        # 월평균의 경우, 해당 월의 마지막 날짜까지 조회하는 것이 일반적이나,
-        # 현재 코드에서는 `today_yyyymmdd`를 사용하고 있어 이 부분은 기존 로직을 따름
+        # 현재 코드에서는 `today_yyyymmdd`를 사용하고 있어 기존 로직을 따름
         month_end_day_yyyymmdd_for_inqEndDt = today_yyyymmdd
 
         monthly_request_data = {
@@ -623,10 +600,6 @@ def get_exchange_rate_data() -> list:
             )
             continue  # 매핑 정보가 없으면 해당 데이터는 건너뜀
 
-        # rate_details에 이미 올바른 country_korean_name, country_english_name, country_code_2, country_code_3이
-        # _add_rate_to_combined_data 함수에서 채워졌을 것이므로, 여기서는 그대로 사용하거나 재확인합니다.
-        # 기존 필드 이름을 유지하면서 데이터를 추가하는 방향으로 코드를 개선했습니다.
-
         exchange_rate_score = 0.0
         exchange_rate_change_percent = None
 
@@ -665,7 +638,7 @@ def get_exchange_rate_data() -> list:
                 f"Cannot calculate exchange rate score for {country_info.get('country_name_kor', country_key)} "
                 f"due to missing or zero realtime_rate ({realtime_rate}) or yearly_avg_rate ({yearly_avg_rate}). Setting score to 0."
             )
-            exchange_rate_score = 0.0  # 점수 계산 불가 시 0점으로 설정 (필요에 따라 50.0 등 기본값 설정 가능)
+            exchange_rate_score = 0.0  # 점수 계산 불가 시 0점으로 설정
 
         rate_details["exchange_rate_change_percent"] = (
             round(exchange_rate_change_percent, 2)
