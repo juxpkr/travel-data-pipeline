@@ -3,33 +3,33 @@
 개인화된 데이터와 준실시간 분석을 통해 여행의 패러다임을 바꾸는 End-to-End 데이터 파이프라인 구축 프로젝트
 ```
 TRAVEL-DATA-PIPELINE/
-├── .venv/                             # 파이썬 가상 환경 
-├── .vscode/                           # VS Code 설정 
+├── .venv/                                # 파이썬 가상 환경 
+├── .vscode/                              # VS Code 설정 
 ├── config/
-│   └── master_country_crawler.json    # 국가, 도시를 매핑하기 위한 JSON파일
-├── data_sources/                      # 핵심 비즈니스 로직: 데이터 수집/처리/변환 함수들
-│   ├── __init__.py                    # 파이썬 패키지임을 알리는 빈 파일
-│   ├── exchange_rate_crawler.py       # 환율 크롤링 로직
-│	├──	flight_avg_merge.py            # 항공권 평균 가격 데이터 병합 로직(팀원 담당)
-│	├──	flight_price_preprocessing.py  # 항곤권가격 전처리 로직(팀원 담당) 
-│	├──	google_trend_crawler.py        # Google Trends 크롤링 로직
-│	└──	retry_utils.py                 # API 재시도 유틸리티 로직
-├── functions/                         # 각 Azure Function의 트리거 및 바인딩 정의
-│   ├── __init__.py                    # 파이썬 패키지임을 알리는 빈 파일
-│   ├──exchange_rate_trigger.py        # 환율 데이터 수집을 위한 Timer Trigger 함수
-│   ├──google_trends_processor.py      # Queue에도착한 메시지를 처리하는 Consumer 함수 
-│   └──google_trends_trigger.py        # Google Trends 데이터 수집을 위한 Producer 함수
-├── local_output/                  # 로컬 테스트에서 생성되는 결과물 저장 디렉토리
-│                                  # gitignore에 추가되어 Git에 커밋되지 않음
-├── function_app.py                # Azure Functions 앱의 중심
-│                                  # 모든 개별 함수들을 여기에 등록
+│   └── master_country_crawler.json       # 국가, 도시를 매핑하기 위한 JSON파일
+├── data_sources/                         # 핵심 비즈니스 로직: 데이터 수집/처리/변환 함수들
+│   ├── __init__.py                       # 파이썬 패키지임을 알리는 빈 파일
+│   ├── exchange_rate_crawler.py          # 환율 크롤링 로직
+│	├──	flight_avg_merge.py               # 항공권 평균 가격 데이터 병합 로직(팀원 담당)
+│	├──	flight_price_preprocessing.py     # 항곤권가격 전처리 로직(팀원 담당) 
+│	├──	google_trend_crawler.py           # Google Trends 크롤링 로직
+│	└──	retry_utils.py                    # API 재시도 유틸리티 로직
+├── functions/                            # 각 Azure Function의 트리거 및 바인딩 정의
+│   ├── __init__.py                       # 파이썬 패키지임을 알리는 빈 파일
+│   ├──exchange_rate_trigger.py           # 환율 데이터 수집을 위한 Timer Trigger 함수
+│   ├──google_trends_processor.py         # Queue에도착한 메시지를 처리하는 Consumer 함수 
+│   └──google_trends_trigger.py           # Google Trends 데이터 수집을 위한 Producer 함수
+├── local_output/                         # 로컬 테스트에서 생성되는 결과물 저장 디렉토리
+│                                         # gitignore에 추가되어 Git에 커밋되지 않음
+├── function_app.py                      # Azure Functions 앱의 중심
+│                                        # 모든 개별 함수들을 여기에 등록
 │                                  
-├── host.json                      # Functions Host 전역 설정
-├── local.settings.json            # 로컬 환경 변수 설정 
-├── requirements.txt               # 프로젝트 의존성 목록
-├── .funcignore                    # Azure 배포 시 제외할 파일/폴더 지정
-├── .gitignore                     # Git 버전 관리 시 제외할 파일/폴더 지정
-└── README.md                      # 프로젝트 설명
+├── host.json                            # Functions Host 전역 설정
+├── local.settings.json                  # 로컬 환경 변수 설정 
+├── requirements.txt                     # 프로젝트 의존성 목록
+├── .funcignore                          # Azure 배포 시 제외할 파일/폴더 지정
+├── .gitignore                           # Git 버전 관리 시 제외할 파일/폴더 지정
+└── README.md                            # 프로젝트 설명
 ```
 
 
