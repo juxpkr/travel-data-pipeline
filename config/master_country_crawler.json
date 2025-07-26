@@ -1,0 +1,533 @@
+{
+    "ARG": {
+        "country_name_eng": "Argentina",
+        "country_name_kor": "아르헨티나",
+        "country_code_2": "AR",
+        "country_code_3": "ARG",
+        "currency_code": "ARS",
+        "is_euro_zone": false,
+        "google_trend_keyword_kor": "아르헨티나 여행"
+    },
+    "BRA": {
+        "country_name_eng": "Brazil",
+        "country_name_kor": "브라질",
+        "country_code_2": "BR",
+        "country_code_3": "BRA",
+        "currency_code": "BRL",
+        "is_euro_zone": false,
+        "google_trend_keyword_kor": "브라질 여행"
+    },
+    "QAT": {
+        "country_name_eng": "Qatar",
+        "country_name_kor": "카타르",
+        "country_code_2": "QA",
+        "country_code_3": "QAT",
+        "currency_code": "QAR",
+        "is_euro_zone": false,
+        "google_trend_keyword_kor": "카타르 여행"
+    },
+    "SGP": {
+        "country_name_eng": "Singapore",
+        "country_name_kor": "싱가포르",
+        "country_code_2": "SG",
+        "country_code_3": "SGP",
+        "currency_code": "SGD",
+        "is_euro_zone": false,
+        "google_trend_keyword_kor": "싱가포르 여행"
+    },
+    "CHL": {
+        "country_name_eng": "Chile",
+        "country_name_kor": "칠레",
+        "country_code_2": "CL",
+        "country_code_3": "CHL",
+        "currency_code": "CLP",
+        "is_euro_zone": false,
+        "google_trend_keyword_kor": "칠레 여행"
+    },
+    "PER": {
+        "country_name_eng": "Peru",
+        "country_name_kor": "페루",
+        "country_code_2": "PE",
+        "country_code_3": "PER",
+        "currency_code": "PEN",
+        "is_euro_zone": false,
+        "google_trend_keyword_kor": "페루 여행"
+    },
+    "MNG": {
+        "country_name_eng": "Mongolia",
+        "country_name_kor": "몽골",
+        "country_code_2": "MN",
+        "country_code_3": "MNG",
+        "currency_code": "MNT",
+        "is_euro_zone": false,
+        "google_trend_keyword_kor": "몽골 여행"
+    },
+    "CAN": {
+        "country_name_eng": "Canada",
+        "country_name_kor": "캐나다",
+        "country_code_2": "CA",
+        "country_code_3": "CAN",
+        "currency_code": "CAD",
+        "is_euro_zone": false,
+        "google_trend_keyword_kor": "캐나다 여행"
+    },
+    "MAC": {
+        "country_name_eng": "Macao",
+        "country_name_kor": "마카오",
+        "country_code_2": "MO",
+        "country_code_3": "MAC",
+        "currency_code": "MOP",
+        "is_euro_zone": false,
+        "google_trend_keyword_kor": "마카오 여행"
+    },
+    "HRV": {
+        "country_name_eng": "Croatia",
+        "country_name_kor": "크로아티아",
+        "country_code_2": "HR",
+        "country_code_3": "HRV",
+        "currency_code": "EUR",
+        "is_euro_zone": true,
+        "google_trend_keyword_kor": "크로아티아 여행"
+    },
+    "COL": {
+        "country_name_eng": "Colombia",
+        "country_name_kor": "콜롬비아",
+        "country_code_2": "CO",
+        "country_code_3": "COL",
+        "currency_code": "COP",
+        "is_euro_zone": false,
+        "google_trend_keyword_kor": "콜롬비아 여행"
+    },
+    "FIN": {
+        "country_name_eng": "Finland",
+        "country_name_kor": "핀란드",
+        "country_code_2": "FI",
+        "country_code_3": "FIN",
+        "currency_code": "EUR",
+        "is_euro_zone": true,
+        "google_trend_keyword_kor": "핀란드 여행"
+    },
+    "AUS": {
+        "country_name_eng": "Australia",
+        "country_name_kor": "호주",
+        "country_code_2": "AU",
+        "country_code_3": "AUS",
+        "currency_code": "AUD",
+        "is_euro_zone": false,
+        "google_trend_keyword_kor": "호주 여행"
+    },
+    "RUS": {
+        "country_name_eng": "Russia",
+        "country_name_kor": "러시아",
+        "country_code_2": "RU",
+        "country_code_3": "RUS",
+        "currency_code": "RUB",
+        "is_euro_zone": false,
+        "google_trend_keyword_kor": "러시아 여행"
+    },
+    "ISR": {
+        "country_name_eng": "Israel",
+        "country_name_kor": "이스라엘",
+        "country_code_2": "IL",
+        "country_code_3": "ISR",
+        "currency_code": "ILS",
+        "is_euro_zone": false,
+        "google_trend_keyword_kor": "이스라엘 여행"
+    },
+    "GRC": {
+        "country_name_eng": "Greece",
+        "country_name_kor": "그리스",
+        "country_code_2": "GR",
+        "country_code_3": "GRC",
+        "currency_code": "EUR",
+        "is_euro_zone": true,
+        "google_trend_keyword_kor": "그리스 여행"
+    },
+    "PRT": {
+        "country_name_eng": "Portugal",
+        "country_name_kor": "포르투갈",
+        "country_code_2": "PT",
+        "country_code_3": "PRT",
+        "currency_code": "EUR",
+        "is_euro_zone": true,
+        "google_trend_keyword_kor": "포르투갈 여행"
+    },
+    "HUN": {
+        "country_name_eng": "Hungary",
+        "country_name_kor": "헝가리",
+        "country_code_2": "HU",
+        "country_code_3": "HUN",
+        "currency_code": "HUF",
+        "is_euro_zone": false,
+        "google_trend_keyword_kor": "헝가리 여행"
+    },
+    "GEO": {
+        "country_name_eng": "Georgia",
+        "country_name_kor": "조지아",
+        "country_code_2": "GE",
+        "country_code_3": "GEO",
+        "currency_code": null,
+        "is_euro_zone": false,
+        "google_trend_keyword_kor": "조지아 여행"
+    },
+    "DNK": {
+        "country_name_eng": "Denmark",
+        "country_name_kor": "덴마크",
+        "country_code_2": "DK",
+        "country_code_3": "DNK",
+        "currency_code": "DKK",
+        "is_euro_zone": false,
+        "google_trend_keyword_kor": "덴마크 여행"
+    },
+    "EGY": {
+        "country_name_eng": "Egypt",
+        "country_name_kor": "이집트",
+        "country_code_2": "EG",
+        "country_code_3": "EGY",
+        "currency_code": "EGP",
+        "is_euro_zone": false,
+        "google_trend_keyword_kor": "이집트 여행"
+    },
+    "KHM": {
+        "country_name_eng": "Cambodia",
+        "country_name_kor": "캄보디아",
+        "country_code_2": "KH",
+        "country_code_3": "KHM",
+        "currency_code": "KHR",
+        "is_euro_zone": false,
+        "google_trend_keyword_kor": "캄보디아 여행"
+    },
+    "BGR": {
+        "country_name_eng": "Bulgaria",
+        "country_name_kor": "불가리아",
+        "country_code_2": "BG",
+        "country_code_3": "BGR",
+        "currency_code": "BGN",
+        "is_euro_zone": false,
+        "google_trend_keyword_kor": "불가리아 여행"
+    },
+    "LTU": {
+        "country_name_eng": "Lithuania",
+        "country_name_kor": "리투아니아",
+        "country_code_2": "LT",
+        "country_code_3": "LTU",
+        "currency_code": "EUR",
+        "is_euro_zone": true,
+        "google_trend_keyword_kor": "리투아니아 여행"
+    },
+    "SVN": {
+        "country_name_eng": "Slovenia",
+        "country_name_kor": "슬로베니아",
+        "country_code_2": "SI",
+        "country_code_3": "SVN",
+        "currency_code": "EUR",
+        "is_euro_zone": true,
+        "google_trend_keyword_kor": "슬로베니아 여행"
+    },
+    "PHL": {
+        "country_name_eng": "Philippines",
+        "country_name_kor": "필리핀",
+        "country_code_2": "PH",
+        "country_code_3": "PHL",
+        "currency_code": "PHP",
+        "is_euro_zone": false,
+        "google_trend_keyword_kor": "필리핀 여행"
+    },
+    "NOR": {
+        "country_name_eng": "Norway",
+        "country_name_kor": "노르웨이",
+        "country_code_2": "NO",
+        "country_code_3": "NOR",
+        "currency_code": "NOK",
+        "is_euro_zone": false,
+        "google_trend_keyword_kor": "노르웨이 여행"
+    },
+    "IRL": {
+        "country_name_eng": "Ireland",
+        "country_name_kor": "아일랜드",
+        "country_code_2": "IE",
+        "country_code_3": "IRL",
+        "currency_code": "EUR",
+        "is_euro_zone": true,
+        "google_trend_keyword_kor": "아일랜드 여행"
+    },
+    "IDN": {
+        "country_name_eng": "Indonesia",
+        "country_name_kor": "인도네시아",
+        "country_code_2": "ID",
+        "country_code_3": "IDN",
+        "currency_code": "IDR",
+        "is_euro_zone": false,
+        "google_trend_keyword_kor": "인도네시아 여행"
+    },
+    "JPN": {
+        "country_name_eng": "Japan",
+        "country_name_kor": "일본",
+        "country_code_2": "JP",
+        "country_code_3": "JPN",
+        "currency_code": "JPY",
+        "is_euro_zone": false,
+        "google_trend_keyword_kor": "일본 여행"
+    },
+    "NZL": {
+        "country_name_eng": "New Zealand",
+        "country_name_kor": "뉴질랜드",
+        "country_code_2": "NZ",
+        "country_code_3": "NZL",
+        "currency_code": "NZD",
+        "is_euro_zone": false,
+        "google_trend_keyword_kor": "뉴질랜드 여행"
+    },
+    "ISL": {
+        "country_name_eng": "Iceland",
+        "country_name_kor": "아이슬란드",
+        "country_code_2": "IS",
+        "country_code_3": "ISL",
+        "currency_code": "ISK",
+        "is_euro_zone": false,
+        "google_trend_keyword_kor": "아이슬란드 여행"
+    },
+    "AUT": {
+        "country_name_eng": "Austria",
+        "country_name_kor": "오스트리아",
+        "country_code_2": "AT",
+        "country_code_3": "AUT",
+        "currency_code": "EUR",
+        "is_euro_zone": true,
+        "google_trend_keyword_kor": "오스트리아 여행"
+    },
+    "THA": {
+        "country_name_eng": "Thailand",
+        "country_name_kor": "태국",
+        "country_code_2": "TH",
+        "country_code_3": "THA",
+        "currency_code": "THB",
+        "is_euro_zone": false,
+        "google_trend_keyword_kor": "태국 여행"
+    },
+    "DEU": {
+        "country_name_eng": "Germany",
+        "country_name_kor": "독일",
+        "country_code_2": "DE",
+        "country_code_3": "DEU",
+        "currency_code": "EUR",
+        "is_euro_zone": true,
+        "google_trend_keyword_kor": "독일 여행"
+    },
+    "POL": {
+        "country_name_eng": "Poland",
+        "country_name_kor": "폴란드",
+        "country_code_2": "PL",
+        "country_code_3": "POL",
+        "currency_code": "PLN",
+        "is_euro_zone": false,
+        "google_trend_keyword_kor": "폴란드 여행"
+    },
+    "CRI": {
+        "country_name_eng": "Costa Rica",
+        "country_name_kor": "코스타리카",
+        "country_code_2": "CR",
+        "country_code_3": "CRI",
+        "currency_code": "CRC",
+        "is_euro_zone": false,
+        "google_trend_keyword_kor": "코스타리카 여행"
+    },
+    "TWN": {
+        "country_name_eng": "Taiwan",
+        "country_name_kor": "대만",
+        "country_code_2": "TW",
+        "country_code_3": "TWN",
+        "currency_code": "TWD",
+        "is_euro_zone": false,
+        "google_trend_keyword_kor": "대만 여행"
+    },
+    "IND": {
+        "country_name_eng": "India",
+        "country_name_kor": "인도",
+        "country_code_2": "IN",
+        "country_code_3": "IND",
+        "currency_code": "INR",
+        "is_euro_zone": false,
+        "google_trend_keyword_kor": "인도 여행"
+    },
+    "GBR": {
+        "country_name_eng": "United Kingdom",
+        "country_name_kor": "영국",
+        "country_code_2": "GB",
+        "country_code_3": "GBR",
+        "currency_code": "GBP",
+        "is_euro_zone": false,
+        "google_trend_keyword_kor": "영국 여행"
+    },
+    "MEX": {
+        "country_name_eng": "Mexico",
+        "country_name_kor": "멕시코",
+        "country_code_2": "MX",
+        "country_code_3": "MEX",
+        "currency_code": "MXN",
+        "is_euro_zone": false,
+        "google_trend_keyword_kor": "멕시코 여행"
+    },
+    "SRB": {
+        "country_name_eng": "Serbia",
+        "country_name_kor": "세르비아",
+        "country_code_2": "RS",
+        "country_code_3": "SRB",
+        "currency_code": "RSD",
+        "is_euro_zone": false,
+        "google_trend_keyword_kor": "세르비아 여행"
+    },
+    "UKR": {
+        "country_name_eng": "Ukraine",
+        "country_name_kor": "우크라이나",
+        "country_code_2": "UA",
+        "country_code_3": "UKR",
+        "currency_code": "UAH",
+        "is_euro_zone": false,
+        "google_trend_keyword_kor": "우크라이나 여행"
+    },
+    "ESP": {
+        "country_name_eng": "Spain",
+        "country_name_kor": "스페인",
+        "country_code_2": "ES",
+        "country_code_3": "ESP",
+        "currency_code": "EUR",
+        "is_euro_zone": true,
+        "google_trend_keyword_kor": "스페인 여행"
+    },
+    "MAR": {
+        "country_name_eng": "Morocco",
+        "country_name_kor": "모로코",
+        "country_code_2": "MA",
+        "country_code_3": "MAR",
+        "currency_code": "MAD",
+        "is_euro_zone": false,
+        "google_trend_keyword_kor": "모로코 여행"
+    },
+    "BEL": {
+        "country_name_eng": "Belgium",
+        "country_name_kor": "벨기에",
+        "country_code_2": "BE",
+        "country_code_3": "BEL",
+        "currency_code": "EUR",
+        "is_euro_zone": true,
+        "google_trend_keyword_kor": "벨기에 여행"
+    },
+    "SVK": {
+        "country_name_eng": "Slovakia",
+        "country_name_kor": "슬로바키아",
+        "country_code_2": "SK",
+        "country_code_3": "SVK",
+        "currency_code": "EUR",
+        "is_euro_zone": true,
+        "google_trend_keyword_kor": "슬로바키아 여행"
+    },
+    "EST": {
+        "country_name_eng": "Estonia",
+        "country_name_kor": "에스토니아",
+        "country_code_2": "EE",
+        "country_code_3": "EST",
+        "currency_code": "EUR",
+        "is_euro_zone": true,
+        "google_trend_keyword_kor": "에스토니아 여행"
+    },
+    "MYS": {
+        "country_name_eng": "Malaysia",
+        "country_name_kor": "말레이시아",
+        "country_code_2": "MY",
+        "country_code_3": "MYS",
+        "currency_code": "MYR",
+        "is_euro_zone": false,
+        "google_trend_keyword_kor": "말레이시아 여행"
+    },
+    "CHN": {
+        "country_name_eng": "China",
+        "country_name_kor": "중국",
+        "country_code_2": "CN",
+        "country_code_3": "CHN",
+        "currency_code": "CNY",
+        "is_euro_zone": false,
+        "google_trend_keyword_kor": "중국 여행"
+    },
+    "USA": {
+        "country_name_eng": "United States",
+        "country_name_kor": "미국",
+        "country_code_2": "US",
+        "country_code_3": "USA",
+        "currency_code": "USD",
+        "is_euro_zone": false,
+        "google_trend_keyword_kor": "미국 여행"
+    },
+    "CUB": {
+        "country_name_eng": "Cuba",
+        "country_name_kor": "쿠바",
+        "country_code_2": "CU",
+        "country_code_3": "CUB",
+        "currency_code": "CUP",
+        "is_euro_zone": false,
+        "google_trend_keyword_kor": "쿠바 여행"
+    },
+    "MCO": {
+        "country_name_eng": "Monaco",
+        "country_name_kor": "모나코",
+        "country_code_2": "MC",
+        "country_code_3": "MCO",
+        "currency_code": "EUR",
+        "is_euro_zone": true,
+        "google_trend_keyword_kor": "모나코 여행"
+    },
+    "LVA": {
+        "country_name_eng": "Latvia",
+        "country_name_kor": "라트비아",
+        "country_code_2": "LV",
+        "country_code_3": "LVA",
+        "currency_code": "EUR",
+        "is_euro_zone": true,
+        "google_trend_keyword_kor": "라트비아 여행"
+    },
+    "FRA": {
+        "country_name_eng": "France",
+        "country_name_kor": "프랑스",
+        "country_code_2": "FR",
+        "country_code_3": "FRA",
+        "currency_code": "EUR",
+        "is_euro_zone": true,
+        "google_trend_keyword_kor": "프랑스 여행"
+    },
+    "IRN": {
+        "country_name_eng": "Iran",
+        "country_name_kor": "이란",
+        "country_code_2": "IR",
+        "country_code_3": "IRN",
+        "currency_code": "IRR",
+        "is_euro_zone": false,
+        "google_trend_keyword_kor": "이란 여행"
+    },
+    "NLD": {
+        "country_name_eng": "Netherlands",
+        "country_name_kor": "네덜란드",
+        "country_code_2": "NL",
+        "country_code_3": "NLD",
+        "currency_code": "EUR",
+        "is_euro_zone": true,
+        "google_trend_keyword_kor": "네덜란드 여행"
+    },
+    "VNM": {
+        "country_name_eng": "Vietnam",
+        "country_name_kor": "베트남",
+        "country_code_2": "VN",
+        "country_code_3": "VNM",
+        "currency_code": "VND",
+        "is_euro_zone": false,
+        "google_trend_keyword_kor": "베트남 여행"
+    },
+    "LAO": {
+        "country_name_eng": "Laos",
+        "country_name_kor": "라오스",
+        "country_code_2": "LA",
+        "country_code_3": "LAO",
+        "currency_code": "LAK",
+        "is_euro_zone": false,
+        "google_trend_keyword_kor": "라오스 여행"
+    }
+}
