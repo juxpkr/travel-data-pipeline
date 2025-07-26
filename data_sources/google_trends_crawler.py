@@ -17,7 +17,6 @@ from tenacity import (
 from requests.exceptions import RequestException
 from pytrends.exceptions import TooManyRequestsError
 
-
 # 재시도 로깅을 위한 헬퍼 함수
 def retry_log(retry_state):
     logging.warning(
@@ -28,7 +27,7 @@ def retry_log(retry_state):
     )
 
 
-# 특정 키워드 그룹의 Google Trends 데이터를 가져와 처리하는 핵심 로직 함수
+# 특정 키워드 그룹의 Google Trends 데이터를 가져와 처리하는 로직 함수
 def get_trends_data_for_group(
     keywords_in_group: list, timeframe: str = "today 3-m", geo: str = "KR"
 ) -> list:
