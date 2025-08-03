@@ -11,7 +11,8 @@
 ```
 TRAVEL-DATA-PIPELINE/
 ├── .venv/                                # 파이썬 가상 환경 
-├── .vscode/                              # VS Code 설정 
+├── .vscode/                              # VS Code 설정
+├── _archive/                             # 팀원들이 담당했던 일부 데이터 수집/전처리 코드 
 ├── config/
 │   └── master_country_crawler.json       # 국가, 도시를 매핑하기 위한 JSON파일
 ├── data_sources/                         # 핵심 비즈니스 로직: 데이터 수집/처리/변환 함수들
@@ -128,6 +129,7 @@ TRAVEL-DATA-PIPELINE/
 
 ### 4.1 나의 역할 및 기여
 이 프로젝트에서 저는 **End-to-End 데이터 파이프라인의 핵심인 데이터 수집, 처리, 저장 과정을 단독으로 책임지고 완성**했습니다.
+(참고: 팀원들이 담당했던 일부 데이터 수집/전처리 코드(flight_*.py)는 현재 메인 파이프라인에는 통합되지 않았으며, _archive 폴더에 별도로 보관되어 있습니다.)
 
 -  **데이터 파이프라인 설계 및 구축**: `429 Too Many Requests` 에러를 해결하기 위한 **분산 처리 아키텍처 설계**와 `Azure Stream Analytics`의 한계를 극복하고 `Databricks`를 도입하는 **아키텍처 변경을 주도**했습니다. `Azure Functions`, `Event Hubs`, `Databricks`, `Delta Lake`를 활용하여 파이프라인의 모든 기술적 난관을 해결했습니다.
 - **데이터 처리 및 분석**: `PySpark`를 사용하여 다양한 이기종 데이터를 통합하고, 복잡한 비즈니스 로직에 따라 여행지 매력도 점수를 계산하는 핵심 로직을 구현했습니다.
