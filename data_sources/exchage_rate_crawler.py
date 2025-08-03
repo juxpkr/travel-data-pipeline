@@ -35,7 +35,7 @@ REQUEST_HEADERS = {
 # --- MASTER_COUNTRY_CRAWLER_MAP 로딩 ---
 MASTER_COUNTRY_CRAWLER_MAP = {}
 # 유로존 국가 정보 리스트 (EUR 통화에 매핑될 국가들)
-EUROZONE_COUNTRIES_INFO = []  
+EUROZONE_COUNTRIES_INFO = []
 
 # 맵 파일 경로
 MASTER_MAP_FILE_PATH = os.path.join(
@@ -101,6 +101,7 @@ def get_kst_date_yyyymmdd(dt: datetime.date) -> str:
 
 def get_kst_date_yyyy_mm_dd(dt: datetime.date) -> str:
     return dt.strftime("%Y-%m-%d")
+
 
 # 내부 헬퍼 함수: 실제 웹 요청 및 HTML 파싱
 @exchange_rate_api_retry
