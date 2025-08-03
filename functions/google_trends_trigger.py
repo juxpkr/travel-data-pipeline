@@ -6,12 +6,11 @@ import azure.functions as func
 from azure.storage.queue import QueueClient, BinaryBase64EncodePolicy
 import time
 import random
-import sys  # sys 모듈 추가: 파일 로딩 실패 시 종료 위함
+import sys
 
 # --- MASTER_COUNTRY_CRAWLER_MAP 로딩 ---
 MASTER_COUNTRY_CRAWLER_MAP = {}
 
-# 맵 파일 경로: 현재 스크립트의 두 단계 상위 디렉토리의 config 폴더 안의 JSON 파일을 참조합니다.
 MASTER_MAP_FILE_PATH = os.path.join(
     os.path.dirname(os.path.dirname(__file__)), "config", "master_country_crawler.json"
 )
@@ -38,14 +37,14 @@ except Exception as e:
     )
     sys.exit(1)  # 기타 심각한 오류이므로 프로그램 종료
 
-# '해외여행' 앵커 키워드는 유지합니다.
+# '해외여행' 앵커 키워드
 anchor_keyword = "해외여행"
 
 
 def register_google_trends_crawler(app_instance):
 
     # Google Trends 검색 키워드 목록을 MASTER_COUNTRY_CRAWLER_MAP에서 동적으로 생성
-    # 모든 국가 정보를 순회하며 google_trend_keyword_kor 필드의 값을 추출합니다.
+    # 모든 국가 정보를 돌면서 google_trend_keyword_kor 필드의 값을 추출
     all_search_keywords_values = []
     for country_code_3, country_info in MASTER_COUNTRY_CRAWLER_MAP.items():
         keyword = country_info.get("google_trend_keyword_kor")
@@ -98,7 +97,7 @@ def register_google_trends_crawler(app_instance):
             )
             logging.info(f"Successfully connected to queue '{queue_name}'.")
         except Exception as e:
-            # 큐 연결 자체에 실패한 경우만 심각한 오류로 처리하고 종료합니다.
+            # 큐 연결 자체에 실패한 경우만 심각한 오류로 처리하고 종료
             logging.critical(
                 f"Failed to connect to Azure Queue Storage '{queue_name}': {e}. Exiting Google Trends crawler."
             )
@@ -108,12 +107,12 @@ def register_google_trends_crawler(app_instance):
         batch_size_for_trends_api = 4
 
         messages_to_send_in_batches = []
-        # 4개씩 키워드를 묶어서 메시지를 만든다
+        # 4개씩 키워드를 묶어서 메시지를 만듬
         for i in range(0, total_keyword_count, batch_size_for_trends_api):
             current_country_keywords_chunk = all_search_keywords_values[
                 i : i + batch_size_for_trends_api
             ]
-            # 여기에 앵커 키워드를 추가하여 총 5개 키워드 묶음을 만든다.
+            # 여기에 앵커 키워드를 추가하여 총 5개 키워드 묶음을 만듬
             keywords_for_api_request = current_country_keywords_chunk + [anchor_keyword]
 
             task_message = {
