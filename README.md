@@ -35,7 +35,7 @@ TRAVEL-DATA-PIPELINE/
 ├── requirements.txt                      # 프로젝트 의존성 목록
 ├── .funcignore                           
 ├── .gitignore                            
-└── README.md                             # 프로젝트 설명
+└── README.md                            
 ```
 
 
