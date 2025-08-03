@@ -18,6 +18,8 @@ TRAVEL-DATA-PIPELINE/
 ├── data_sources/                         # 핵심 비즈니스 로직: 데이터 수집/처리/변환 함수들
 │   ├── __init__.py                       
 │   ├── exchange_rate_crawler.py          # 환율 크롤링 로직
+│	  ├──	google_trend_crawler.py           # Google Trends 크롤링 로직
+│	  └──	retry_utils.py                    # API 재시도 유틸리티 로직
 ├── functions/                            # 각 Azure Function의 트리거 및 바인딩 정의
 │   ├── __init__.py                       
 │   ├──exchange_rate_trigger.py           # 환율 데이터 수집을 위한 Timer Trigger 함수
