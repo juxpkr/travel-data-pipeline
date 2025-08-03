@@ -4,13 +4,13 @@ import json
 import os
 import azure.functions as func
 
-# data_sources 크롤링 로직 함수 import
+# data_sources 크롤링 로직 함수
 from data_sources.exchage_rate_crawler import get_exchange_rate_data
 
 
 # 이 함수는 외부(function_app.py)로부터 Azure Functions 앱 인스턴스(app_instance)를 받아
 # 그 인스턴스에 실제 트리거 함수를 등록하는 역할을 함
-def register_exchange_rate_crawler(app_instance):  # app 객체를 인자로 받는다
+def register_exchange_rate_crawler(app_instance):
     @app_instance.timer_trigger(
         schedule="0 */5 * * * *",
         run_on_startup=False,
@@ -33,7 +33,7 @@ def register_exchange_rate_crawler(app_instance):  # app 객체를 인자로 받
         if myTimer.past_due:
             logging.info("Timer run was overdue!")
 
-        # get_exchange_rate_data 함수를 호출하여 실제 환율 데이터를 가져온다
+        # get_exchange_rate_data 함수를 호출하여 실제 환율 데이터를 가져옴
         all_exchange_rates_data = get_exchange_rate_data()
 
         # 가져온 데이터가 있다면 처리
