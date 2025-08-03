@@ -16,7 +16,7 @@ TRAVEL-DATA-PIPELINE/
 │   └── master_country_crawler.json       # 국가, 도시를 매핑하기 위한 JSON파일
 ├── data_sources/                         # 핵심 비즈니스 로직: 데이터 수집/처리/변환 함수들
 │   ├── __init__.py                       # 파이썬 패키지임을 알리는 빈 파일
-│   ├── exchange_rate_crawler.py          # 환율 크롤링 로직
+│   └── exchange_rate_crawler.py          # 환율 크롤링 로직
 │	├──	flight_avg_merge.py               # 항공권 평균 가격 데이터 병합 로직(팀원 담당)
 │	├──	flight_price_preprocessing.py     # 항곤권가격 전처리 로직(팀원 담당) 
 │	├──	google_trend_crawler.py           # Google Trends 크롤링 로직
