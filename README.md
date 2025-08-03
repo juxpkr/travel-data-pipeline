@@ -2,7 +2,7 @@
 
 **🔗 상세 포트폴리오:** [juseong.dev](https://juseong.dev) (핵심 요약본)
 
-**✍️ 기술 블로그:** [[블로그 링크]](https://juxpkr.github.io/projects/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-1/) (더 상세한 과정)
+**✍️ 기술 블로그:** [블로그 바로가기](https://juxpkr.github.io/projects/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-1/) (더 상세한 과정)
 
 
 개인화된 데이터와 실시간 분석을 통해, 사용자에게 최적의 여행지를 추천하는 데이터 플랫폼 구축 프로젝트입니다.
