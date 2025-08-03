@@ -17,7 +17,7 @@ TRAVEL-DATA-PIPELINE/
 │   └── master_country_crawler.json       # 국가, 도시를 매핑하기 위한 JSON파일
 ├── data_sources/                         # 핵심 비즈니스 로직: 데이터 수집/처리/변환 함수들
 │   ├── __init__.py                       
-│   ├── exchange_rate_crawler.py          # 환율 크롤링 로직 
+│   ├── exchange_rate_crawler.py          # 환율 크롤링 로직
 │	  ├──	google_trend_crawler.py           # Google Trends 크롤링 로직
 │	  └──	retry_utils.py                    # API 재시도 유틸리티 로직
 ├── functions/                            # 각 Azure Function의 트리거 및 바인딩 정의
