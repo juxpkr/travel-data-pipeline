@@ -17,6 +17,7 @@ from tenacity import (
 from requests.exceptions import RequestException
 from pytrends.exceptions import TooManyRequestsError
 
+
 # 재시도 로깅을 위한 헬퍼 함수
 def retry_log(retry_state):
     logging.warning(
